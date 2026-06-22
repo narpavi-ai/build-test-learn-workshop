@@ -1,0 +1,22 @@
+{
+  "name": "fridgechef",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FridgeChef — the 'done properly' full build: React + Vite front-end calling a Node/Express API over seeded data. The real round-trip the Lovable demo only fakes.",
+  "workspaces": [
+    "apps/web",
+    "apps/api"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c magenta,green \"npm run dev -w apps/api\" \"npm run dev -w apps/web\"",
+    "dev:api": "npm run dev -w apps/api",
+    "dev:web": "npm run dev -w apps/web",
+    "build": "npm run build -w apps/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

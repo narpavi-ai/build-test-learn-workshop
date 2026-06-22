@@ -1,0 +1,16 @@
+{
+  "name": "@fridgechef/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "FridgeChef API — Express server exposing POST /api/recipes over a seeded recipe dataset.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
