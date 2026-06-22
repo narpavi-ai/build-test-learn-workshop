@@ -261,6 +261,54 @@
   }
   .note{font-size:16px; color:var(--muted); margin-top:18px; font-style:italic;}
   .dark .note{color:rgba(255,255,255,.65);}
+
+  /* ===== Icons ===== */
+  .ic{width:1em; height:1em; flex:none; vertical-align:-.14em; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round;}
+
+  /* Big stage icon badge above the heading */
+  .stage-icon{
+    width:74px; height:74px; border-radius:20px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,var(--purple),var(--purple-deep));
+    color:#fff; font-size:38px; margin-bottom:22px;
+    box-shadow:0 12px 30px rgba(139,79,251,.32);
+  }
+  .stage-icon.green{background:linear-gradient(135deg,var(--green),#04935a); box-shadow:0 12px 30px rgba(0,186,110,.30);}
+  .stage-icon.blue{background:linear-gradient(135deg,var(--blue),#0a5fd0); box-shadow:0 12px 30px rgba(0,140,255,.30);}
+  .dark .stage-icon{box-shadow:0 12px 30px rgba(0,0,0,.4);}
+
+  /* Icon chip inside card tags */
+  .card .tag{display:inline-flex; align-items:center; gap:7px;}
+  .card .tag .ic{font-size:16px;}
+
+  /* Icon circle inside cards (alt) */
+  .card-ic{
+    width:46px; height:46px; border-radius:13px; font-size:24px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(139,79,251,.10); color:var(--purple-deep); margin-bottom:14px;
+  }
+  .dark .card-ic{background:rgba(0,186,110,.16); color:#7df0bd;}
+
+  /* Icons inside flow pills */
+  .pill{display:inline-flex; align-items:center; gap:9px;}
+  .pill .ic{font-size:18px; opacity:.9;}
+
+  /* Icon next to eyebrow */
+  .eyebrow{display:inline-flex; align-items:center; gap:9px;}
+  .eyebrow .ic{font-size:16px;}
+
+  /* Stat icon */
+  .stat .stat-ic{font-size:26px; color:var(--purple); margin-bottom:6px; display:block;}
+  .stat.accent .stat-ic{color:var(--green);}
+
+  /* Timeline icon */
+  .tl .tl-ic{font-size:20px; color:var(--purple-deep); display:block; margin-bottom:6px;}
+  .num-badge .ic{font-size:32px;}
+
+  /* List icon variant — replace diamond with check on reslist */
+  .reslist li{padding-left:32px;}
+  .reslist li .ic{position:absolute; left:0; top:3px; font-size:20px; color:var(--green);}
+  .reslist li.has-ic::before{display:none;}
 </style>
 </head>
 <body>
@@ -293,6 +341,41 @@ const circuit = () => `
 
 const blobs = () => `<div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>`;
 
+/* ---- Inline SVG icon library (stroke, currentColor) ---- */
+const ICONS = {
+  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>',
+  chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l.9-5.4A8 8 0 1 1 21 12Z"/><path d="M8 11h8M8 14h5"/>',
+  scissors:'<circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8.1 7.6 20 18M8.1 16.4 20 6"/>',
+  layers:'<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/>',
+  wrench:'<path d="M14.7 6.3a4 4 0 0 0-5.2 5.2L3 18l3 3 6.5-6.5a4 4 0 0 0 5.2-5.2l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6Z"/>',
+  flask:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/>',
+  rocket:'<path d="M5 15c-2 1-2 5-2 5s4 0 5-2M9 13l-2 2M11 15l-2 2"/><path d="M14.5 9.5 19 5c1-1 1-3 0-3s-3 0-4 1l-3.5 4.5"/><path d="M9 13s-1-4 2-7 7-2 7-2 1 4-2 7-7 2-7 2Z"/><circle cx="14.5" cy="9.5" r="1.3"/>',
+  scale:'<path d="M3 17l5-9 5 9M3 17h10M8 8V4"/><path d="M16 13l3-5 3 5M16 13h6"/>',
+  users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6"/>',
+  code:'<path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 6l-4 12"/>',
+  chart:'<path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-7"/>',
+  bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.4 1 2.5h6c0-1.1.3-1.8 1-2.5A6 6 0 0 0 12 3Z"/>',
+  wifi:'<path d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0M11 18.5a2 2 0 0 1 2 0"/><circle cx="12" cy="20" r=".6" fill="currentColor" stroke="none"/>',
+  alert:'<path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>',
+  eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+  check:'<path d="m20 6-11 11-5-5"/>',
+  checkc:'<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.6"/>',
+  heart:'<path d="M12 20s-7-4.5-9.2-9A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5c-2.2 4.5-9.2 9-9.2 9Z"/>',
+  terminal:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/>',
+  github:'<path d="M9 19c-4 1.4-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.3 1.8 5.3 2.1 5.3 2.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 8.5c0 4.6 2.7 5.7 5.5 6-.4.4-.5.9-.5 1.7V21"/>',
+  flag:'<path d="M5 21V4M5 4h11l-2 3 2 3H5"/>',
+  scope:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M3 9h18"/><circle cx="15" cy="15" r="2.2"/>',
+  play:'<circle cx="12" cy="12" r="9"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/>',
+  spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  arrowr:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  book:'<path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 19a2 2 0 0 0 2 2h12"/>',
+  hand:'<path d="M7 11V6a1.5 1.5 0 0 1 3 0v4M10 10V4.5a1.5 1.5 0 0 1 3 0V10M13 10V6a1.5 1.5 0 0 1 3 0v6c0 4-2.5 8-6 8s-6-3-6-6v-1l-1-2a1.4 1.4 0 0 1 2.3-1.6L7 12"/>'
+};
+const ic = (name) => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]||''}</svg>`;
+
 /* ============================================================
    Slides
 ============================================================ */
@@ -319,9 +402,9 @@ const slides = [
     <div class="eyebrow">House rules for the next 2.5 hours</div>
     <h2>This is a working session, not a lecture</h2>
     <div class="cards c3">
-      <div class="card"><span class="tag">Live = unpredictable</span><h3>We troubleshoot together</h3><p>AI tools hiccup. When something breaks on screen, that's part of the lesson — we'll debug it live.</p></div>
-      <div class="card"><span class="tag">Stay on the idea</span><h3>Idea &gt; pixels</h3><p>Don't polish. The goal is a clickable version that proves the one thing your idea does.</p></div>
-      <div class="card"><span class="tag">Get set up</span><h3>Wifi &amp; accounts</h3><p>Wifi: <span class="ph">[network]</span> / <span class="ph">[password]</span>. Have a free Lovable account open.</p></div>
+      <div class="card"><span class="tag">${ic('alert')} Live = unpredictable</span><h3>We troubleshoot together</h3><p>AI tools hiccup. When something breaks on screen, that's part of the lesson — we'll debug it live.</p></div>
+      <div class="card"><span class="tag">${ic('bulb')} Stay on the idea</span><h3>Idea &gt; pixels</h3><p>Don't polish. The goal is a clickable version that proves the one thing your idea does.</p></div>
+      <div class="card"><span class="tag">${ic('wifi')} Get set up</span><h3>Wifi &amp; accounts</h3><p>Wifi: <span class="ph">[network]</span> / <span class="ph">[password]</span>. Have a free Lovable account open.</p></div>
     </div>
     <p class="note">Bring a laptop, an idea, and a willingness to ship something rough.</p>
   </div>
@@ -352,7 +435,7 @@ const slides = [
   ${circuit()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">The point of tonight</div></div>
   <div class="slide-body">
-    <div class="eyebrow">14 days from now</div>
+    <div class="eyebrow">${ic('clock')} 14 days from now</div>
     <h1>On July 14, you want to<br/><strong>show</strong>, not describe.</h1>
     <p class="lead">Most founders can only <em>talk</em> about their idea. The ones who win the room let people <strong>see it work</strong>. Tonight you'll get a repeatable process to turn "here's what it would do" into "here, try it."</p>
   </div>
@@ -363,12 +446,12 @@ const slides = [
 `<section class="slide light" data-chip="The room">
   <div class="topbar">${wordmark(false)}<div class="stage-chip">Where you are today</div></div>
   <div class="slide-body">
-    <div class="eyebrow">From your pre-workshop survey</div>
+    <div class="eyebrow">${ic('chart')} From your pre-workshop survey</div>
     <h2>This room, by the numbers</h2>
     <div class="stats">
-      <div class="stat"><div class="num">14<span style="font-size:28px">/23</span></div><div class="lbl">founders told us where they're at</div></div>
-      <div class="stat"><div class="num">~13</div><div class="lbl">are building <strong>software</strong> — websites, apps &amp; platforms (1 is building hardware)</div></div>
-      <div class="stat accent"><div class="num">50/50</div><div class="lbl">split between <strong>ideation / concept</strong> and <strong>early prototyping</strong> — a couple near MVP</div></div>
+      <div class="stat"><span class="stat-ic">${ic('users')}</span><div class="num">14<span style="font-size:28px">/23</span></div><div class="lbl">founders told us where they're at</div></div>
+      <div class="stat"><span class="stat-ic">${ic('code')}</span><div class="num">~13</div><div class="lbl">are building <strong>software</strong> — websites, apps &amp; platforms (1 is building hardware)</div></div>
+      <div class="stat accent"><span class="stat-ic">${ic('chart')}</span><div class="num">50/50</div><div class="lbl">split between <strong>ideation / concept</strong> and <strong>early prototyping</strong> — a couple near MVP</div></div>
     </div>
     <p class="note">Wherever you are on that line, the same stages apply tonight — we'll meet you there.</p>
   </div>
@@ -380,17 +463,17 @@ const slides = [
   ${circuit()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">The core message</div></div>
   <div class="slide-body">
-    <div class="eyebrow">One idea to hold onto</div>
+    <div class="eyebrow">${ic('bulb')} One idea to hold onto</div>
     <h1>AI shows up at <strong>every stage</strong> of the build.</h1>
     <p class="lead">Spec, design, build, test, ship — there's an AI assist for each. The <strong>fundamentals (the stages) stay the same</strong> no matter which tool you use. Learn the stages once; swap the tool whenever something better comes along.</p>
     <div class="flow">
-      <span class="pill">Problem</span><span class="arrow">→</span>
-      <span class="pill">Spec</span><span class="arrow">→</span>
-      <span class="pill">Scope</span><span class="arrow">→</span>
-      <span class="pill">Build</span><span class="arrow">→</span>
-      <span class="pill">Test</span><span class="arrow">→</span>
-      <span class="pill">Ship</span><span class="arrow">→</span>
-      <span class="pill">Scale</span>
+      <span class="pill">${ic('target')} Problem</span><span class="arrow">→</span>
+      <span class="pill">${ic('chat')} Spec</span><span class="arrow">→</span>
+      <span class="pill">${ic('scissors')} Scope</span><span class="arrow">→</span>
+      <span class="pill">${ic('wrench')} Build</span><span class="arrow">→</span>
+      <span class="pill">${ic('flask')} Test</span><span class="arrow">→</span>
+      <span class="pill">${ic('rocket')} Ship</span><span class="arrow">→</span>
+      <span class="pill">${ic('scale')} Scale</span>
     </div>
   </div>
   <div class="footer"><span>The big idea</span><span>06</span></div>
@@ -401,7 +484,7 @@ const slides = [
   ${blobs()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">Worked example</div></div>
   <div class="slide-body">
-    <div class="num-badge">⌘</div>
+    <div class="num-badge">${ic('wrench')}</div>
     <div class="eyebrow">Follow one idea all the way through</div>
     <h1>Let's build FridgeChef — through every stage.</h1>
     <p class="lead">Type the few ingredients you actually have → get a recipe you can cook tonight. We'll walk this single idea through all 8 stages.</p>
@@ -413,12 +496,13 @@ const slides = [
 `<section class="slide light" data-chip="Stage 1 · Problem">
   <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 1 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon">${ic('target')}</div>
     <div class="eyebrow">Stage 1 — Problem</div>
     <h2>Who hurts, and why?</h2>
     <p class="lead">Before any tool: name one person and one pain in a single sentence.</p>
     <div class="cards c2">
-      <div class="card"><span class="tag">The person</span><h3>The broke, busy student</h3><p>Has a half-empty fridge, no plan, and 20 minutes. Ends up ordering in — or throwing food out.</p></div>
-      <div class="card"><span class="tag">The pain</span><h3>"What can I even make?"</h3><p>Students waste food and money because they can't connect <strong>what they have</strong> to <strong>what they could cook</strong>.</p></div>
+      <div class="card"><span class="tag">${ic('users')} The person</span><h3>The broke, busy student</h3><p>Has a half-empty fridge, no plan, and 20 minutes. Ends up ordering in — or throwing food out.</p></div>
+      <div class="card"><span class="tag">${ic('alert')} The pain</span><h3>"What can I even make?"</h3><p>Students waste food and money because they can't connect <strong>what they have</strong> to <strong>what they could cook</strong>.</p></div>
     </div>
     <p class="note">FridgeChef's whole reason to exist: turn "random ingredients" into "dinner, sorted."</p>
   </div>
@@ -430,6 +514,7 @@ const slides = [
   ${circuit()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 2 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon">${ic('chat')}</div>
     <div class="eyebrow">Stage 2 — Spec it with AI</div>
     <h2>Turn the idea into a tight build brief</h2>
     <p>Don't start building. Start by making a chat AI define the smallest version <em>for</em> you. Paste this:</p>
@@ -446,11 +531,12 @@ const slides = [
 `<section class="slide light" data-chip="Stage 3 · Scope">
   <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 3 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon">${ic('scissors')}</div>
     <div class="eyebrow">Stage 3 — Scope &amp; Design</div>
     <h2>MVP = the one magic-moment screen</h2>
     <div class="cards c2">
-      <div class="card" style="border-color:var(--green);"><span class="tag" style="color:var(--green)">Keep — the magic moment</span><h3>Ingredients in → recipe out</h3><p>One input box, one button, a grid of recipe cards, and a detail view. That's the entire MVP.</p></div>
-      <div class="card"><span class="tag" style="color:#c23">Cut — for now</span><h3>Everything else</h3><p>No accounts. No saving favourites. No grocery delivery, no nutrition tracking, no social feed.</p></div>
+      <div class="card" style="border-color:var(--green);"><span class="tag" style="color:var(--green)">${ic('check')} Keep — the magic moment</span><h3>Ingredients in → recipe out</h3><p>One input box, one button, a grid of recipe cards, and a detail view. That's the entire MVP.</p></div>
+      <div class="card"><span class="tag" style="color:#c23">${ic('scissors')} Cut — for now</span><h3>Everything else</h3><p>No accounts. No saving favourites. No grocery delivery, no nutrition tracking, no social feed.</p></div>
     </div>
     <p class="note">If a feature isn't the magic moment, it's a distraction tonight. Cut ruthlessly.</p>
   </div>
@@ -461,12 +547,13 @@ const slides = [
 `<section class="slide light" data-chip="Stage 4 · Tech">
   <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 4 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon">${ic('layers')}</div>
     <div class="eyebrow">Stage 4 — Just-enough tech + tools</div>
     <h2>The front of the app vs. the data behind it</h2>
     <p class="lead">The <strong>front-end</strong> is what people see and click. The <strong>data</strong> is what fills it. For a demo, you can <strong>fake the data</strong> — and nobody can tell.</p>
     <div class="cards c2">
-      <div class="card"><span class="tag">Hands-on tonight</span><h3>Lovable <em>(free tier)</em></h3><p>~5 credits/day, so aim for <strong>3–4 specific prompts</strong>. Don't debug in circles — re-prompt clearly instead.</p></div>
-      <div class="card"><span class="tag">The level-up</span><h3>Claude Code</h3><p>The full build — a real front-end + back-end + data. We'll <em>show</em> this one; you don't build it tonight.</p></div>
+      <div class="card"><span class="tag">${ic('heart')} Hands-on tonight</span><h3>Lovable <em>(free tier)</em></h3><p>~5 credits/day, so aim for <strong>3–4 specific prompts</strong>. Don't debug in circles — re-prompt clearly instead.</p></div>
+      <div class="card"><span class="tag">${ic('terminal')} The level-up</span><h3>Claude Code</h3><p>The full build — a real front-end + back-end + data. We'll <em>show</em> this one; you don't build it tonight.</p></div>
     </div>
   </div>
   <div class="footer"><span>Just-enough tech</span><span>11</span></div>
@@ -478,7 +565,8 @@ const slides = [
   <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 5 of 8</div></div>
   <div class="slide-body two-col">
     <div>
-      <div class="eyebrow">Stage 5 — Build with AI</div>
+      <div class="stage-icon">${ic('wrench')}</div>
+    <div class="eyebrow">Stage 5 — Build with AI</div>
       <h2>Two ways to build the same app</h2>
       <ul>
         <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable FridgeChef with faked recipe data.</li>
@@ -495,12 +583,13 @@ const slides = [
 `<section class="slide light" data-chip="Stage 6 · Test">
   <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 6 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon green">${ic('flask')}</div>
     <div class="eyebrow">Stage 6 — Test &amp; iterate</div>
     <h2>Make it work, then make it believable</h2>
     <div class="cards c3">
-      <div class="card"><span class="tag">Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type ingredients, hit go, open a recipe. Fix what breaks that path.</p></div>
-      <div class="card"><span class="tag">Seed it</span><h3>Fake data that feels real</h3><p>Give it 5–6 believable recipes with real titles, times &amp; steps. Empty or "lorem ipsum" kills the illusion.</p></div>
-      <div class="card"><span class="tag">Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
+      <div class="card"><span class="tag">${ic('check')} Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type ingredients, hit go, open a recipe. Fix what breaks that path.</p></div>
+      <div class="card"><span class="tag">${ic('flask')} Seed it</span><h3>Fake data that feels real</h3><p>Give it 5–6 believable recipes with real titles, times &amp; steps. Empty or "lorem ipsum" kills the illusion.</p></div>
+      <div class="card"><span class="tag">${ic('alert')} Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
     </div>
   </div>
   <div class="footer"><span>Test &amp; iterate</span><span>13</span></div>
@@ -511,13 +600,14 @@ const slides = [
   ${circuit()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 7 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon green">${ic('rocket')}</div>
     <div class="eyebrow">Stage 7 — Ship</div>
     <h1>Get a URL so it looks <strong>legit</strong>.</h1>
     <p class="lead">A live link beats a screenshot every time. Lovable gives you a public URL in a click — add a <strong>custom domain</strong> if you want it to feel like a real product on Demo Night.</p>
     <div class="flow">
-      <span class="pill on">Publish in Lovable</span><span class="arrow">→</span>
-      <span class="pill on">Public URL</span><span class="arrow">→</span>
-      <span class="pill">Custom domain <em>(optional)</em></span>
+      <span class="pill on">${ic('rocket')} Publish in Lovable</span><span class="arrow">→</span>
+      <span class="pill on">${ic('globe')} Public URL</span><span class="arrow">→</span>
+      <span class="pill">${ic('flag')} Custom domain <em>(optional)</em></span>
     </div>
     <p class="note">Test the link on your phone before the 14th. If it opens for a stranger, you're ready to demo.</p>
   </div>
@@ -528,15 +618,16 @@ const slides = [
 `<section class="slide light" data-chip="Stage 8 · Scale">
   <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 8 of 8</div></div>
   <div class="slide-body">
+    <div class="stage-icon">${ic('scale')}</div>
     <div class="eyebrow">Stage 8 — Scale (integrations)</div>
     <h2>You own your code — nothing's locked in</h2>
     <p class="lead">When you're ready to go past the demo, there's a clean ladder. <strong>GitHub means the code is yours</strong>, not trapped in one tool.</p>
     <div class="flow">
-      <span class="pill on">Lovable</span><span class="arrow">→</span>
-      <span class="pill">Push to GitHub</span><span class="arrow">→</span>
-      <span class="pill">Open in Claude Code</span><span class="arrow">→</span>
-      <span class="pill">Real backend <em>(Supabase)</em></span><span class="arrow">→</span>
-      <span class="pill">Payments <em>(Stripe)</em></span>
+      <span class="pill on">${ic('heart')} Lovable</span><span class="arrow">→</span>
+      <span class="pill">${ic('github')} Push to GitHub</span><span class="arrow">→</span>
+      <span class="pill">${ic('terminal')} Open in Claude Code</span><span class="arrow">→</span>
+      <span class="pill">${ic('layers')} Real backend <em>(Supabase)</em></span><span class="arrow">→</span>
+      <span class="pill">${ic('chart')} Payments <em>(Stripe)</em></span>
     </div>
     <p class="note">Climb the ladder only when a real user needs the next rung. Stay founder-light until then.</p>
   </div>
@@ -548,7 +639,7 @@ const slides = [
   ${blobs()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">Hands on keyboards</div></div>
   <div class="slide-body">
-    <div class="num-badge">▶</div>
+    <div class="num-badge">${ic('hand')}</div>
     <div class="eyebrow">Now you do it</div>
     <h1>Your turn.</h1>
     <p class="lead">Same stages, your idea. Let's get something clickable on your screen before you leave tonight.</p>
@@ -563,13 +654,13 @@ const slides = [
     <div class="eyebrow">Apply the same stages to YOUR idea</div>
     <h2>Pick your one screen and build it</h2>
     <div class="cards c2">
-      <div class="card"><span class="tag">Pre-product?</span><h3>Build a validation / landing page</h3><p>Your magic-moment screen can be a landing page that explains the promise and captures interest. That's a valid demo.</p></div>
-      <div class="card"><span class="tag">Already building?</span><h3>Build your core screen</h3><p>Isolate the one screen that shows your magic moment and make <em>that</em> clickable with faked data.</p></div>
+      <div class="card"><span class="tag">${ic('globe')} Pre-product?</span><h3>Build a validation / landing page</h3><p>Your magic-moment screen can be a landing page that explains the promise and captures interest. That's a valid demo.</p></div>
+      <div class="card"><span class="tag">${ic('scope')} Already building?</span><h3>Build your core screen</h3><p>Isolate the one screen that shows your magic moment and make <em>that</em> clickable with faked data.</p></div>
     </div>
     <ul class="reslist" style="margin-top:22px;">
-      <li><strong>Checkpoint 1:</strong> Scoped to ONE screen &amp; specced with AI?</li>
-      <li><strong>Checkpoint 2:</strong> Built in Lovable with fake data that looks real?</li>
-      <li><strong>Checkpoint 3:</strong> Published to a URL you can open on your phone?</li>
+      <li class="has-ic">${ic('checkc')}<strong>Checkpoint 1:</strong> Scoped to ONE screen &amp; specced with AI?</li>
+      <li class="has-ic">${ic('checkc')}<strong>Checkpoint 2:</strong> Built in Lovable with fake data that looks real?</li>
+      <li class="has-ic">${ic('checkc')}<strong>Checkpoint 3:</strong> Published to a URL you can open on your phone?</li>
     </ul>
   </div>
   <div class="footer"><span>Work block</span><span>17</span></div>
@@ -582,12 +673,12 @@ const slides = [
     <div class="eyebrow">Turn it into your Demo Night story</div>
     <h2>Your 5 minutes on stage</h2>
     <div class="timeline">
-      <div class="tl"><div class="t">30s</div><div class="n">Intro</div><div class="d">Who you are &amp; the one-line hook</div></div>
-      <div class="tl"><div class="t">30s</div><div class="n">Problem</div><div class="d">Who hurts &amp; why it matters</div></div>
-      <div class="tl"><div class="t">1m</div><div class="n">Market</div><div class="d">Who this is for &amp; how many</div></div>
-      <div class="tl" style="border-color:var(--purple);"><div class="t" style="color:var(--green)">2m</div><div class="n">Solution + live demo</div><div class="d">Show the clickable screen working</div></div>
-      <div class="tl"><div class="t">30s</div><div class="n">Next steps</div><div class="d">What you'll build next</div></div>
-      <div class="tl"><div class="t">30s</div><div class="n">Contact</div><div class="d">How to reach you + Q&amp;A</div></div>
+      <div class="tl"><div class="t">30s</div><span class="tl-ic">${ic('mic')}</span><div class="n">Intro</div><div class="d">Who you are &amp; the one-line hook</div></div>
+      <div class="tl"><div class="t">30s</div><span class="tl-ic">${ic('alert')}</span><div class="n">Problem</div><div class="d">Who hurts &amp; why it matters</div></div>
+      <div class="tl"><div class="t">1m</div><span class="tl-ic">${ic('users')}</span><div class="n">Market</div><div class="d">Who this is for &amp; how many</div></div>
+      <div class="tl" style="border-color:var(--purple);"><div class="t" style="color:var(--green)">2m</div><span class="tl-ic">${ic('play')}</span><div class="n">Solution + live demo</div><div class="d">Show the clickable screen working</div></div>
+      <div class="tl"><div class="t">30s</div><span class="tl-ic">${ic('arrowr')}</span><div class="n">Next steps</div><div class="d">What you'll build next</div></div>
+      <div class="tl"><div class="t">30s</div><span class="tl-ic">${ic('book')}</span><div class="n">Contact</div><div class="d">How to reach you + Q&amp;A</div></div>
     </div>
     <p class="note">The 2-minute live demo is the heart of it — everything you built tonight feeds that slot.</p>
   </div>
@@ -611,10 +702,10 @@ const slides = [
     <div>
       <div class="eyebrow">Resources &amp; contact</div>
       <ul class="reslist">
-        <li>Lovable build script (handout) — <span class="ph">[link]</span></li>
-        <li>FridgeChef full-build repo — <span class="ph">[GitHub link]</span></li>
-        <li>Reach me: <span class="ph">[email / handle]</span></li>
-        <li>Office hours before Demo Night — <span class="ph">[when]</span></li>
+        <li class="has-ic">${ic('book')}Lovable build script (handout) — <span class="ph">[link]</span></li>
+        <li class="has-ic">${ic('github')}FridgeChef full-build repo — <span class="ph">[GitHub link]</span></li>
+        <li class="has-ic">${ic('chat')}Reach me: <span class="ph">[email / handle]</span></li>
+        <li class="has-ic">${ic('clock')}Office hours before Demo Night — <span class="ph">[when]</span></li>
       </ul>
     </div>
   </div>
@@ -626,7 +717,7 @@ const slides = [
   ${blobs()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">See you July 14</div></div>
   <div class="slide-body">
-    <div class="num-badge">★</div>
+    <div class="num-badge">${ic('spark')}</div>
     <div class="eyebrow">Edmonton Unlimited · Student Founders Launch</div>
     <h1>Now go show it.</h1>
     <p class="lead">Thanks for building with me tonight. Get that link working — and break a leg on Demo Night.</p>
