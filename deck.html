@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Build It, Show It — Rapid Prototyping with AI · Edmonton Unlimited</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ===== Edmonton Unlimited brand (extracted from the reference template) ===== */
+  :root{
+    --navy:#08005B;        /* deep navy — title & dark slides */
+    --purple:#8B4FFB;      /* bright brand purple */
+    --purple-deep:#6137B3; /* deep purple */
+    --green:#00BA6E;       /* green accent */
+    --blue:#008CFF;        /* blue accent */
+    --yellow:#FFFF00;      /* yellow — used sparingly */
+    --ink:#15123A;         /* body text on light slides */
+    --muted:#5b5773;       /* secondary text */
+    --paper:#ffffff;
+    --paper-soft:#f6f4ff;
+    --line:#e7e2fb;
+    --head:'Saira', system-ui, sans-serif;       /* squared geometric headings */
+    --body:'Poppins', system-ui, sans-serif;      /* humanist body */
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:var(--body);
+    background:#0a0838;
+    color:var(--ink);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ===== Stage: 16:9 scaled to viewport ===== */
+  #stage{
+    position:fixed; inset:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  #frame{
+    position:relative;
+    width:1280px; height:720px;
+    transform-origin:center center;
+    box-shadow:0 30px 90px rgba(0,0,0,.45);
+    overflow:hidden;
+    border-radius:6px;
+    background:#fff;
+  }
+
+  .slide{
+    position:absolute; inset:0;
+    padding:64px 84px;
+    display:none;
+    flex-direction:column;
+    opacity:0;
+    transition:opacity .35s ease;
+  }
+  .slide.active{display:flex; opacity:1;}
+
+  /* ===== Light vs dark vs divider ===== */
+  .slide.light{background:var(--paper); color:var(--ink);}
+  .slide.dark{background:var(--navy); color:#fff;}
+  .slide.divider{
+    background:linear-gradient(135deg,var(--purple) 0%, var(--purple-deep) 100%);
+    color:#fff;
+    justify-content:center;
+  }
+
+  /* ===== Headings & text ===== */
+  h1,h2,h3{font-family:var(--head); font-weight:700; line-height:1.04; letter-spacing:-.5px;}
+  .slide h1{font-size:58px; font-weight:800;}
+  .slide h2{font-size:42px;}
+  .eyebrow{
+    font-family:var(--head);
+    font-weight:700; font-size:15px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--purple);
+    margin-bottom:16px;
+  }
+  .dark .eyebrow{color:var(--green);}
+  .divider .eyebrow{color:rgba(255,255,255,.85);}
+  p{font-size:21px; line-height:1.5; color:var(--muted); max-width:62ch;}
+  .dark p{color:rgba(255,255,255,.82);}
+  .lead{font-size:25px; color:var(--ink); max-width:60ch;}
+  .dark .lead{color:#fff;}
+  strong{color:var(--purple-deep); font-weight:600;}
+  .dark strong{color:var(--green);}
+  .ph{ /* personalize placeholder */
+    color:var(--blue); font-weight:600; font-style:normal;
+    background:rgba(0,140,255,.10); padding:1px 8px; border-radius:6px;
+  }
+  .dark .ph{color:#7ec2ff; background:rgba(126,194,255,.14);}
+
+  ul{list-style:none; margin-top:8px;}
+  li{
+    position:relative; font-size:21px; line-height:1.45; color:var(--muted);
+    padding-left:34px; margin:14px 0; max-width:60ch;
+  }
+  .dark li{color:rgba(255,255,255,.85);}
+  li::before{
+    content:""; position:absolute; left:0; top:11px;
+    width:14px; height:14px; border-radius:4px;
+    background:var(--purple); transform:rotate(45deg);
+  }
+  .dark li::before{background:var(--green);}
+
+  /* ===== Header band (logo + stage chip) ===== */
+  .topbar{
+    position:absolute; top:34px; left:84px; right:84px;
+    display:flex; align-items:center; justify-content:space-between;
+    z-index:5;
+  }
+  .wordmark{display:flex; align-items:center; gap:12px;}
+  .logo-mark{
+    width:34px; height:34px; border-radius:9px;
+    background:linear-gradient(135deg,var(--purple),var(--blue));
+    position:relative; flex:none;
+  }
+  .logo-mark::after{
+    content:""; position:absolute; inset:9px;
+    border:2.5px solid rgba(255,255,255,.9); border-radius:4px;
+  }
+  .dark .logo-mark::after,.divider .logo-mark::after{border-color:rgba(255,255,255,.95);}
+  .wordmark span{
+    font-family:var(--head); font-weight:700; font-size:13px;
+    letter-spacing:2.5px; text-transform:uppercase; color:var(--ink);
+  }
+  .dark .wordmark span,.divider .wordmark span{color:#fff;}
+  .wordmark small{display:block; font-size:9px; letter-spacing:2px; color:var(--purple); font-weight:600;}
+  .stage-chip{
+    font-family:var(--head); font-weight:700; font-size:12px; letter-spacing:2px;
+    text-transform:uppercase;
+    padding:7px 14px; border-radius:999px;
+    background:var(--paper-soft); color:var(--purple-deep);
+    border:1px solid var(--line);
+  }
+  .dark .stage-chip{background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.18);}
+  .divider .stage-chip{background:rgba(255,255,255,.16); color:#fff; border-color:rgba(255,255,255,.28);}
+
+  .slide-body{margin-top:96px; display:flex; flex-direction:column; flex:1; justify-content:center;}
+  .slide.title-slide .slide-body,.slide.divider .slide-body{justify-content:center;}
+
+  /* ===== Circuit-trace motif (dark slides) ===== */
+  .circuit{position:absolute; inset:0; pointer-events:none; z-index:0; opacity:.5;}
+  .circuit svg{position:absolute;}
+  .c-tr{top:-30px; right:-30px;}
+  .c-bl{bottom:-30px; left:-30px;}
+  .slide-body, .topbar{z-index:2;}
+
+  /* ===== Divider blobs ===== */
+  .blobs{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0;}
+  .blob{position:absolute; border-radius:60px; background:rgba(255,255,255,.08);}
+  .blob.b1{width:380px; height:380px; top:-120px; right:-80px; transform:rotate(18deg);}
+  .blob.b2{width:280px; height:280px; bottom:-110px; left:60px; transform:rotate(-12deg); background:rgba(255,255,255,.06);}
+  .blob.b3{width:160px; height:160px; top:120px; left:-50px; transform:rotate(22deg); background:rgba(255,255,0,.10);}
+
+  /* ===== Cards / grids ===== */
+  .cards{display:grid; gap:20px; margin-top:30px;}
+  .cards.c2{grid-template-columns:1fr 1fr;}
+  .cards.c3{grid-template-columns:repeat(3,1fr);}
+  .card{
+    background:var(--paper-soft); border:1px solid var(--line);
+    border-radius:16px; padding:24px 26px;
+  }
+  .card h3{font-size:21px; color:var(--navy); margin-bottom:8px;}
+  .card p{font-size:16px; margin:0;}
+  .dark .card{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.14);}
+  .dark .card h3{color:#fff;}
+  .dark .card p{color:rgba(255,255,255,.78);}
+  .card .tag{font-family:var(--head); font-weight:700; font-size:13px; letter-spacing:1px; color:var(--purple); text-transform:uppercase;}
+
+  /* ===== Stats (survey slide) ===== */
+  .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:34px;}
+  .stat{background:var(--paper-soft); border:1px solid var(--line); border-radius:18px; padding:30px 26px;}
+  .stat .num{font-family:var(--head); font-weight:800; font-size:62px; line-height:1; color:var(--purple-deep);}
+  .stat .lbl{font-size:16px; color:var(--muted); margin-top:10px; line-height:1.35;}
+  .stat.accent .num{color:var(--green);}
+
+  /* ===== Prompt block (spec slide) ===== */
+  .prompt-box{
+    margin-top:26px; background:var(--navy); color:#ede9ff;
+    border-radius:16px; padding:28px 30px; position:relative;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .prompt-box .label{font-family:var(--head); font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:12px;}
+  .prompt-box code{
+    font-family:'Poppins',monospace; font-size:18px; line-height:1.55; color:#fff;
+    display:block; white-space:normal;
+  }
+  .prompt-box .accentword{color:var(--yellow);}
+
+  /* ===== Pills / flow ===== */
+  .flow{display:flex; align-items:center; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .pill{
+    font-family:var(--head); font-weight:700; font-size:17px;
+    padding:12px 20px; border-radius:999px; background:var(--paper-soft);
+    border:1px solid var(--line); color:var(--navy);
+  }
+  .pill.on{background:var(--purple); color:#fff; border-color:var(--purple);}
+  .arrow{color:var(--purple); font-weight:700; font-size:22px;}
+  .dark .pill{background:rgba(255,255,255,.07); color:#fff; border-color:rgba(255,255,255,.16);}
+
+  /* ===== Two-column layout ===== */
+  .two-col{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; flex:1;}
+  .slot{
+    border:2px dashed var(--blue); border-radius:18px;
+    background:rgba(0,140,255,.05);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--blue); font-weight:600; font-size:16px; text-align:center; padding:20px;
+    min-height:300px;
+  }
+  .dark .slot{border-color:#7ec2ff; color:#7ec2ff; background:rgba(126,194,255,.07);}
+
+  /* ===== Title slide specifics ===== */
+  .title-slide h1{font-size:74px; line-height:1; margin-bottom:22px;}
+  .title-kicker{font-family:var(--head); font-weight:700; font-size:18px; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:26px;}
+  .title-meta{margin-top:40px; font-size:20px; color:rgba(255,255,255,.78);}
+  .title-meta b{color:#fff; font-weight:600;}
+
+  /* ===== Divider type ===== */
+  .divider h1{font-size:66px; max-width:20ch;}
+  .divider .num-badge{
+    font-family:var(--head); font-weight:800; font-size:20px;
+    width:64px; height:64px; border-radius:18px;
+    background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center;
+    margin-bottom:24px;
+  }
+
+  /* ===== Demo-night timeline ===== */
+  .timeline{display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-top:36px;}
+  .tl{background:var(--paper-soft); border:1px solid var(--line); border-radius:14px; padding:18px 16px; text-align:center;}
+  .tl .t{font-family:var(--head); font-weight:800; font-size:24px; color:var(--purple-deep);}
+  .tl .n{font-size:14px; color:var(--ink); font-weight:600; margin-top:8px;}
+  .tl .d{font-size:12px; color:var(--muted); margin-top:4px; line-height:1.3;}
+
+  /* ===== Resources / recap ===== */
+  .reslist li{font-size:19px;}
+  .reslist li::before{background:var(--green);}
+
+  /* ===== Footer / progress ===== */
+  .footer{
+    position:absolute; bottom:26px; left:84px; right:84px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+    font-family:var(--head); font-weight:600; color:var(--muted); z-index:5;
+  }
+  .dark .footer,.divider .footer{color:rgba(255,255,255,.6);}
+  .progress{
+    position:absolute; bottom:0; left:0; height:4px;
+    background:var(--purple); transition:width .35s ease; z-index:6;
+  }
+  .divider .progress{background:var(--yellow);}
+
+  /* ===== Help hint ===== */
+  #hint{
+    position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    font-family:var(--head); font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    color:rgba(255,255,255,.45); z-index:50;
+  }
+  .note{font-size:16px; color:var(--muted); margin-top:18px; font-style:italic;}
+  .dark .note{color:rgba(255,255,255,.65);}
+</style>
+</head>
+<body>
+<div id="stage"><div id="frame"><!-- slides injected --></div></div>
+<div id="hint">← → arrows / space to navigate · F fullscreen</div>
+
+<script>
+/* ============================================================
+   Reusable chrome
+============================================================ */
+const wordmark = (dark) => `
+  <div class="wordmark">
+    <div class="logo-mark" title="Edmonton Unlimited logo placeholder"></div>
+    <div><span>Edmonton Unlimited</span><small>Student Founders Launch</small></div>
+  </div>`;
+
+const circuit = () => `
+  <div class="circuit">
+    <svg class="c-tr" width="320" height="220" viewBox="0 0 320 220" fill="none">
+      <path d="M320 40 H210 a30 30 0 0 0 -30 30 V150 a30 30 0 0 1 -30 30 H40" stroke="#8B4FFB" stroke-width="2" stroke-linecap="round"/>
+      <path d="M320 100 H260 a20 20 0 0 0 -20 20 V180" stroke="#00BA6E" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="180" cy="70" r="5" fill="#00BA6E"/><circle cx="40" cy="180" r="5" fill="#8B4FFB"/>
+    </svg>
+    <svg class="c-bl" width="320" height="220" viewBox="0 0 320 220" fill="none">
+      <path d="M0 180 H110 a30 30 0 0 0 30 -30 V70 a30 30 0 0 1 30 -30 H280" stroke="#8B4FFB" stroke-width="2" stroke-linecap="round"/>
+      <path d="M0 120 H60 a20 20 0 0 0 20 -20 V40" stroke="#008CFF" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="140" cy="150" r="5" fill="#008CFF"/>
+    </svg>
+  </div>`;
+
+const blobs = () => `<div class="blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>`;
+
+/* ============================================================
+   Slides
+============================================================ */
+const slides = [
+
+/* 1 — TITLE */
+`<section class="slide dark title-slide" data-chip="Welcome">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Demo Night Prep</div></div>
+  <div class="slide-body">
+    <div class="title-kicker">Student Founders Launch · Demo Night Prep</div>
+    <h1>Build It, Show It<br/>Rapid Prototyping with AI</h1>
+    <p class="lead">Turn the idea in your head into something a stranger can click — tonight.</p>
+    <div class="title-meta">Edmonton Unlimited · Tuesday, June 30, 2026 · 6:00–8:30pm<br/>
+      Hosted by <b><span class="ph">[Your name]</span></b> · <span class="ph">[your title / company]</span></div>
+  </div>
+  <div class="footer"><span>Build It, Show It</span><span>Edmonton Unlimited</span></div>
+</section>`,
+
+/* 2 — HOUSEKEEPING */
+`<section class="slide light" data-chip="Housekeeping">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Before we start</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">House rules for the next 2.5 hours</div>
+    <h2>This is a working session, not a lecture</h2>
+    <div class="cards c3">
+      <div class="card"><span class="tag">Live = unpredictable</span><h3>We troubleshoot together</h3><p>AI tools hiccup. When something breaks on screen, that's part of the lesson — we'll debug it live.</p></div>
+      <div class="card"><span class="tag">Stay on the idea</span><h3>Idea &gt; pixels</h3><p>Don't polish. The goal is a clickable version that proves the one thing your idea does.</p></div>
+      <div class="card"><span class="tag">Get set up</span><h3>Wifi &amp; accounts</h3><p>Wifi: <span class="ph">[network]</span> / <span class="ph">[password]</span>. Have a free Lovable account open.</p></div>
+    </div>
+    <p class="note">Bring a laptop, an idea, and a willingness to ship something rough.</p>
+  </div>
+  <div class="footer"><span>Housekeeping</span><span>02</span></div>
+</section>`,
+
+/* 3 — WHO AM I */
+`<section class="slide light" data-chip="Intro">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Who's running this</div></div>
+  <div class="slide-body two-col">
+    <div>
+      <div class="eyebrow">Hi, I'm your host</div>
+      <h2><span class="ph">[Your name]</span></h2>
+      <p class="lead"><span class="ph">[One line on who you are — e.g. builder / founder / engineer]</span></p>
+      <ul>
+        <li><span class="ph">[What you've built or shipped]</span></li>
+        <li><span class="ph">[Why you care about helping founders demo]</span></li>
+        <li><span class="ph">[Find me: link / handle]</span></li>
+      </ul>
+    </div>
+    <div class="slot">[ Headshot photo ]<br/>(drop your image here)</div>
+  </div>
+  <div class="footer"><span>Who am I</span><span>03</span></div>
+</section>`,
+
+/* 4 — WHY WE'RE HERE */
+`<section class="slide dark" data-chip="Why">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">The point of tonight</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">14 days from now</div>
+    <h1>On July 14, you want to<br/><strong>show</strong>, not describe.</h1>
+    <p class="lead">Most founders can only <em>talk</em> about their idea. The ones who win the room let people <strong>see it work</strong>. Tonight you'll get a repeatable process to turn "here's what it would do" into "here, try it."</p>
+  </div>
+  <div class="footer"><span>Why we're here</span><span>04</span></div>
+</section>`,
+
+/* 5 — WHERE THIS ROOM IS (survey) */
+`<section class="slide light" data-chip="The room">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Where you are today</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">From your pre-workshop survey</div>
+    <h2>This room, by the numbers</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">14<span style="font-size:28px">/23</span></div><div class="lbl">founders told us where they're at</div></div>
+      <div class="stat"><div class="num">~13</div><div class="lbl">are building <strong>software</strong> — websites, apps &amp; platforms (1 is building hardware)</div></div>
+      <div class="stat accent"><div class="num">50/50</div><div class="lbl">split between <strong>ideation / concept</strong> and <strong>early prototyping</strong> — a couple near MVP</div></div>
+    </div>
+    <p class="note">Wherever you are on that line, the same stages apply tonight — we'll meet you there.</p>
+  </div>
+  <div class="footer"><span>Where this room is</span><span>05</span></div>
+</section>`,
+
+/* 6 — THE BIG IDEA */
+`<section class="slide dark" data-chip="Big idea">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">The core message</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">One idea to hold onto</div>
+    <h1>AI shows up at <strong>every stage</strong> of the build.</h1>
+    <p class="lead">Spec, design, build, test, ship — there's an AI assist for each. The <strong>fundamentals (the stages) stay the same</strong> no matter which tool you use. Learn the stages once; swap the tool whenever something better comes along.</p>
+    <div class="flow">
+      <span class="pill">Problem</span><span class="arrow">→</span>
+      <span class="pill">Spec</span><span class="arrow">→</span>
+      <span class="pill">Scope</span><span class="arrow">→</span>
+      <span class="pill">Build</span><span class="arrow">→</span>
+      <span class="pill">Test</span><span class="arrow">→</span>
+      <span class="pill">Ship</span><span class="arrow">→</span>
+      <span class="pill">Scale</span>
+    </div>
+  </div>
+  <div class="footer"><span>The big idea</span><span>06</span></div>
+</section>`,
+
+/* 7 — DIVIDER: Let's build FridgeChef */
+`<section class="slide divider" data-chip="Live build">
+  ${blobs()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Worked example</div></div>
+  <div class="slide-body">
+    <div class="num-badge">⌘</div>
+    <div class="eyebrow">Follow one idea all the way through</div>
+    <h1>Let's build FridgeChef — through every stage.</h1>
+    <p class="lead">Type the few ingredients you actually have → get a recipe you can cook tonight. We'll walk this single idea through all 8 stages.</p>
+  </div>
+  <div class="footer"><span>Section</span><span>07</span></div>
+</section>`,
+
+/* 8 — STAGE 1: PROBLEM */
+`<section class="slide light" data-chip="Stage 1 · Problem">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 1 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 1 — Problem</div>
+    <h2>Who hurts, and why?</h2>
+    <p class="lead">Before any tool: name one person and one pain in a single sentence.</p>
+    <div class="cards c2">
+      <div class="card"><span class="tag">The person</span><h3>The broke, busy student</h3><p>Has a half-empty fridge, no plan, and 20 minutes. Ends up ordering in — or throwing food out.</p></div>
+      <div class="card"><span class="tag">The pain</span><h3>"What can I even make?"</h3><p>Students waste food and money because they can't connect <strong>what they have</strong> to <strong>what they could cook</strong>.</p></div>
+    </div>
+    <p class="note">FridgeChef's whole reason to exist: turn "random ingredients" into "dinner, sorted."</p>
+  </div>
+  <div class="footer"><span>Problem</span><span>08</span></div>
+</section>`,
+
+/* 9 — STAGE 2: SPEC IT WITH AI (worked prompt) */
+`<section class="slide dark" data-chip="Stage 2 · Spec">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 2 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 2 — Spec it with AI</div>
+    <h2>Turn the idea into a tight build brief</h2>
+    <p>Don't start building. Start by making a chat AI define the smallest version <em>for</em> you. Paste this:</p>
+    <div class="prompt-box">
+      <div class="label">▷ Paste into ChatGPT / Claude</div>
+      <code>Act as a <span class="accentword">product coach</span>. I want to build <span class="accentword">FridgeChef</span>. Define: the <span class="accentword">one user</span>, the <span class="accentword">single core action</span>, the <span class="accentword">inputs and outputs</span> of that one screen, what <span class="accentword">data to fake</span> for a demo, and what to explicitly <span class="accentword">leave OUT</span>. Keep it to one screen buildable in a no-code tool tonight.</code>
+    </div>
+    <p class="note">The output becomes your spec — and the seed for your build prompts in Lovable.</p>
+  </div>
+  <div class="footer"><span>Spec it with AI</span><span>09</span></div>
+</section>`,
+
+/* 10 — STAGE 3: SCOPE & DESIGN */
+`<section class="slide light" data-chip="Stage 3 · Scope">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 3 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 3 — Scope &amp; Design</div>
+    <h2>MVP = the one magic-moment screen</h2>
+    <div class="cards c2">
+      <div class="card" style="border-color:var(--green);"><span class="tag" style="color:var(--green)">Keep — the magic moment</span><h3>Ingredients in → recipe out</h3><p>One input box, one button, a grid of recipe cards, and a detail view. That's the entire MVP.</p></div>
+      <div class="card"><span class="tag" style="color:#c23">Cut — for now</span><h3>Everything else</h3><p>No accounts. No saving favourites. No grocery delivery, no nutrition tracking, no social feed.</p></div>
+    </div>
+    <p class="note">If a feature isn't the magic moment, it's a distraction tonight. Cut ruthlessly.</p>
+  </div>
+  <div class="footer"><span>Scope &amp; Design</span><span>10</span></div>
+</section>`,
+
+/* 11 — STAGE 4: JUST-ENOUGH TECH + TOOLS */
+`<section class="slide light" data-chip="Stage 4 · Tech">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 4 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 4 — Just-enough tech + tools</div>
+    <h2>The front of the app vs. the data behind it</h2>
+    <p class="lead">The <strong>front-end</strong> is what people see and click. The <strong>data</strong> is what fills it. For a demo, you can <strong>fake the data</strong> — and nobody can tell.</p>
+    <div class="cards c2">
+      <div class="card"><span class="tag">Hands-on tonight</span><h3>Lovable <em>(free tier)</em></h3><p>~5 credits/day, so aim for <strong>3–4 specific prompts</strong>. Don't debug in circles — re-prompt clearly instead.</p></div>
+      <div class="card"><span class="tag">The level-up</span><h3>Claude Code</h3><p>The full build — a real front-end + back-end + data. We'll <em>show</em> this one; you don't build it tonight.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Just-enough tech</span><span>11</span></div>
+</section>`,
+
+/* 12 — STAGE 5: BUILD WITH AI */
+`<section class="slide dark" data-chip="Stage 5 · Build">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 5 of 8</div></div>
+  <div class="slide-body two-col">
+    <div>
+      <div class="eyebrow">Stage 5 — Build with AI</div>
+      <h2>Two ways to build the same app</h2>
+      <ul>
+        <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable FridgeChef with faked recipe data.</li>
+        <li><strong>The real version:</strong> the same app as a proper Node + React project — UI calls an API, API returns real matches.</li>
+      </ul>
+      <p class="note">Same idea, same screens — one fakes the data, one does a real round-trip.</p>
+    </div>
+    <div class="slot">[ Live screen-share<br/>of Lovable build ]<br/><br/>(switch to browser here)</div>
+  </div>
+  <div class="footer"><span>Build with AI</span><span>12</span></div>
+</section>`,
+
+/* 13 — STAGE 6: TEST & ITERATE */
+`<section class="slide light" data-chip="Stage 6 · Test">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 6 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 6 — Test &amp; iterate</div>
+    <h2>Make it work, then make it believable</h2>
+    <div class="cards c3">
+      <div class="card"><span class="tag">Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type ingredients, hit go, open a recipe. Fix what breaks that path.</p></div>
+      <div class="card"><span class="tag">Seed it</span><h3>Fake data that feels real</h3><p>Give it 5–6 believable recipes with real titles, times &amp; steps. Empty or "lorem ipsum" kills the illusion.</p></div>
+      <div class="card"><span class="tag">Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Test &amp; iterate</span><span>13</span></div>
+</section>`,
+
+/* 14 — STAGE 7: SHIP */
+`<section class="slide dark" data-chip="Stage 7 · Ship">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 7 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 7 — Ship</div>
+    <h1>Get a URL so it looks <strong>legit</strong>.</h1>
+    <p class="lead">A live link beats a screenshot every time. Lovable gives you a public URL in a click — add a <strong>custom domain</strong> if you want it to feel like a real product on Demo Night.</p>
+    <div class="flow">
+      <span class="pill on">Publish in Lovable</span><span class="arrow">→</span>
+      <span class="pill on">Public URL</span><span class="arrow">→</span>
+      <span class="pill">Custom domain <em>(optional)</em></span>
+    </div>
+    <p class="note">Test the link on your phone before the 14th. If it opens for a stranger, you're ready to demo.</p>
+  </div>
+  <div class="footer"><span>Ship</span><span>14</span></div>
+</section>`,
+
+/* 15 — STAGE 8: SCALE (integrations) */
+`<section class="slide light" data-chip="Stage 8 · Scale">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 8 of 8</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Stage 8 — Scale (integrations)</div>
+    <h2>You own your code — nothing's locked in</h2>
+    <p class="lead">When you're ready to go past the demo, there's a clean ladder. <strong>GitHub means the code is yours</strong>, not trapped in one tool.</p>
+    <div class="flow">
+      <span class="pill on">Lovable</span><span class="arrow">→</span>
+      <span class="pill">Push to GitHub</span><span class="arrow">→</span>
+      <span class="pill">Open in Claude Code</span><span class="arrow">→</span>
+      <span class="pill">Real backend <em>(Supabase)</em></span><span class="arrow">→</span>
+      <span class="pill">Payments <em>(Stripe)</em></span>
+    </div>
+    <p class="note">Climb the ladder only when a real user needs the next rung. Stay founder-light until then.</p>
+  </div>
+  <div class="footer"><span>Scale</span><span>15</span></div>
+</section>`,
+
+/* 16 — DIVIDER: Your turn */
+`<section class="slide divider" data-chip="Your turn">
+  ${blobs()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Hands on keyboards</div></div>
+  <div class="slide-body">
+    <div class="num-badge">▶</div>
+    <div class="eyebrow">Now you do it</div>
+    <h1>Your turn.</h1>
+    <p class="lead">Same stages, your idea. Let's get something clickable on your screen before you leave tonight.</p>
+  </div>
+  <div class="footer"><span>Section</span><span>16</span></div>
+</section>`,
+
+/* 17 — WORK BLOCK */
+`<section class="slide light" data-chip="Work block">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">~40 min · build time</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Apply the same stages to YOUR idea</div>
+    <h2>Pick your one screen and build it</h2>
+    <div class="cards c2">
+      <div class="card"><span class="tag">Pre-product?</span><h3>Build a validation / landing page</h3><p>Your magic-moment screen can be a landing page that explains the promise and captures interest. That's a valid demo.</p></div>
+      <div class="card"><span class="tag">Already building?</span><h3>Build your core screen</h3><p>Isolate the one screen that shows your magic moment and make <em>that</em> clickable with faked data.</p></div>
+    </div>
+    <ul class="reslist" style="margin-top:22px;">
+      <li><strong>Checkpoint 1:</strong> Scoped to ONE screen &amp; specced with AI?</li>
+      <li><strong>Checkpoint 2:</strong> Built in Lovable with fake data that looks real?</li>
+      <li><strong>Checkpoint 3:</strong> Published to a URL you can open on your phone?</li>
+    </ul>
+  </div>
+  <div class="footer"><span>Work block</span><span>17</span></div>
+</section>`,
+
+/* 18 — DEMO NIGHT STORY */
+`<section class="slide light" data-chip="Demo story">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Mapping to July 14</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">Turn it into your Demo Night story</div>
+    <h2>Your 5 minutes on stage</h2>
+    <div class="timeline">
+      <div class="tl"><div class="t">30s</div><div class="n">Intro</div><div class="d">Who you are &amp; the one-line hook</div></div>
+      <div class="tl"><div class="t">30s</div><div class="n">Problem</div><div class="d">Who hurts &amp; why it matters</div></div>
+      <div class="tl"><div class="t">1m</div><div class="n">Market</div><div class="d">Who this is for &amp; how many</div></div>
+      <div class="tl" style="border-color:var(--purple);"><div class="t" style="color:var(--green)">2m</div><div class="n">Solution + live demo</div><div class="d">Show the clickable screen working</div></div>
+      <div class="tl"><div class="t">30s</div><div class="n">Next steps</div><div class="d">What you'll build next</div></div>
+      <div class="tl"><div class="t">30s</div><div class="n">Contact</div><div class="d">How to reach you + Q&amp;A</div></div>
+    </div>
+    <p class="note">The 2-minute live demo is the heart of it — everything you built tonight feeds that slot.</p>
+  </div>
+  <div class="footer"><span>Demo Night story</span><span>18</span></div>
+</section>`,
+
+/* 19 — RECAP + RESOURCES */
+`<section class="slide dark" data-chip="Recap">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Take it home</div></div>
+  <div class="slide-body two-col">
+    <div>
+      <div class="eyebrow">Recap</div>
+      <h2>What to remember</h2>
+      <ul>
+        <li>Learn the <strong>stages</strong>, swap the tool.</li>
+        <li>Scope to <strong>one magic-moment screen</strong>.</li>
+        <li><strong>Fake the data</strong> — ship a URL, not a slide.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="eyebrow">Resources &amp; contact</div>
+      <ul class="reslist">
+        <li>Lovable build script (handout) — <span class="ph">[link]</span></li>
+        <li>FridgeChef full-build repo — <span class="ph">[GitHub link]</span></li>
+        <li>Reach me: <span class="ph">[email / handle]</span></li>
+        <li>Office hours before Demo Night — <span class="ph">[when]</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Recap + resources</span><span>19</span></div>
+</section>`,
+
+/* 20 — THANK YOU */
+`<section class="slide divider" data-chip="Thank you">
+  ${blobs()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">See you July 14</div></div>
+  <div class="slide-body">
+    <div class="num-badge">★</div>
+    <div class="eyebrow">Edmonton Unlimited · Student Founders Launch</div>
+    <h1>Now go show it.</h1>
+    <p class="lead">Thanks for building with me tonight. Get that link working — and break a leg on Demo Night.</p>
+    <div class="title-meta">Hosted by <b><span class="ph">[Your name]</span></b> · <span class="ph">[contact]</span></div>
+  </div>
+  <div class="footer"><span>Thank you</span><span>20</span></div>
+</section>`,
+
+];
+
+/* ============================================================
+   Engine: render, navigate, scale, fullscreen
+============================================================ */
+const frame = document.getElementById('frame');
+frame.innerHTML = slides.join('') + '<div class="progress" id="prog"></div>';
+const nodes = [...frame.querySelectorAll('.slide')];
+const prog = document.getElementById('prog');
+let i = 0;
+
+function show(n){
+  i = Math.max(0, Math.min(slides.length-1, n));
+  nodes.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+  prog.style.width = ((i+1)/slides.length*100) + '%';
+  location.hash = i+1;
+}
+function next(){ show(i+1); }
+function prev(){ show(i-1); }
+
+document.addEventListener('keydown', e=>{
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); next(); }
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+  else if(e.key==='Home'){ show(0); }
+  else if(e.key==='End'){ show(slides.length-1); }
+  else if(e.key==='f'||e.key==='F'){ toggleFs(); }
+});
+// click right half = next, left half = prev
+frame.addEventListener('click', e=>{
+  const x = e.clientX - frame.getBoundingClientRect().left;
+  (x > frame.clientWidth/2) ? next() : prev();
+});
+
+function toggleFs(){
+  if(!document.fullscreenElement){ document.documentElement.requestFullscreen?.(); }
+  else { document.exitFullscreen?.(); }
+}
+
+// scale 1280x720 to fit viewport, preserving 16:9
+function fit(){
+  const pad = 0;
+  const sx = (window.innerWidth - pad) / 1280;
+  const sy = (window.innerHeight - pad) / 720;
+  frame.style.transform = 'scale(' + Math.min(sx, sy) + ')';
+}
+window.addEventListener('resize', fit);
+fit();
+
+// open to hash slide if present
+const start = parseInt(location.hash.replace('#',''),10);
+show(Number.isFinite(start) && start>0 ? start-1 : 0);
+</script>
+</body>
+</html>
