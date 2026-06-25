@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scope & Design · FridgeChef</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><div class="logo-mark"></div><div><b>Edmonton Unlimited</b><small>Build It, Show It</small></div></div>
+      <div class="chip">Stage 3 · Scope &amp; Design</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">✂</div>
+      <div class="eyebrow">Route B — Scope &amp; Design</div>
+      <h1>One magic-moment screen + your brand</h1>
+      <p>Cut to the one screen, then make the starter template look like FridgeChef.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · what you told the AI</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">Confirm the one screen?</div><div class="a">Yes — ingredients in → recipe cards → tap for the full recipe.</div></li>
+        <li><div class="q">What are we cutting?</div><div class="a">Accounts, saving favourites, grocery delivery, nutrition, social feed.</div></li>
+        <li><div class="q">Name & tagline?</div><div class="a">FridgeChef — "Type what's in your fridge, get dinner."</div></li>
+        <li><div class="q">Logo?</div><div class="a">Emoji mark for now: 🍳</div></li>
+        <li><div class="q">Primary colour?</div><div class="a">Fresh green — #00BA6E.</div></li>
+        <li><div class="q">Vibe in two words?</div><div class="a">Warm + friendly.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · scope + brand</h2>
+    <div class="cols">
+      <div class="panel">
+        <h3>Keep — the magic moment</h3>
+        <ul class="bullets keep">
+          <li>Ingredient input + "Find recipes"</li>
+          <li>Grid of ranked recipe cards</li>
+          <li>Recipe detail view</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Cut — for now</h3>
+        <ul class="bullets cut">
+          <li>Accounts &amp; login</li>
+          <li>Saving favourites</li>
+          <li>Delivery, nutrition, social</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Brand applied to <code>apps/web/src/brand.js</code></h3>
+      <div class="prompt">
+        <div class="label">brand.js</div>
+<pre>name: 'FridgeChef',
+tagline: 'Type what’s in your fridge, get dinner.',
+logo: '🍳',
+colors: { primary: '#00BA6E', ink: '#15123A', bg: '#f2fbf6' },
+searchPlaceholder: 'eggs, cheese, spinach…',
+searchButton: 'Find recipes',
+emptyHint: 'Tell me what’s in your fridge ↑'</pre>
+      </div>
+      <p>Data model rename queued for build: <strong>items → recipes</strong> in <code>apps/api/src/db.js</code>.</p>
+    </div>
+
+    <p class="note">The app is now branded as FridgeChef. Next: <strong>/4-build</strong> to wire the screen into the starter template.</p>
+    <div class="foot"><span>FridgeChef</span><span>Scope &amp; Design · worked example</span></div>
+  </div>
+</body>
+</html>

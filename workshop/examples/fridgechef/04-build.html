@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build · FridgeChef</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><div class="logo-mark"></div><div><b>Edmonton Unlimited</b><small>Build It, Show It</small></div></div>
+      <div class="chip">Stage 4 · Build</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">🔧</div>
+      <div class="eyebrow">Route B — Build into the starter template</div>
+      <h1>A real round-trip for one screen</h1>
+      <p>The same FridgeChef, done properly: React UI → Express API → SQLite.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · build decisions</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">Resource name?</div><div class="a">items → recipes</div></li>
+        <li><div class="q">Fields each record needs?</div><div class="a">title, time, ingredients (tags), steps (body).</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · what changed</h2>
+    <div class="panel">
+      <h3>Files touched in the starter template</h3>
+      <ul class="bullets">
+        <li><strong>apps/api/src/db.js</strong> — table <code>items</code> → <code>recipes</code> (title, time, ingredients, steps).</li>
+        <li><strong>apps/api/src/data/seed-items.js</strong> — 6 believable recipes (Cheesy Scramble, Spinach &amp; Feta Omelette, Garlic Fried Rice, …).</li>
+        <li><strong>apps/api/src/items.js</strong> — routes renamed to <code>/api/recipes</code>; search matches against ingredients.</li>
+        <li><strong>apps/web/src/App.jsx</strong> + components — labels reworded ("Find recipes", "ingredients"), cards show cook time.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Round-trip verified</h3>
+      <div class="prompt">
+        <div class="label">terminal</div>
+<pre>$ npm run dev
+  api  → API on http://localhost:3001
+  web  → http://localhost:5173
+
+$ curl http://localhost:3001/api/health
+{"ok":true}
+
+$ curl "http://localhost:3001/api/recipes?q=eggs"
+[{"id":1,"title":"Cheesy Scramble","time":"8 min", …}]</pre>
+      </div>
+      <p>Type <strong>eggs, cheese</strong> at localhost:5173 → ranked recipe cards → tap one → full recipe. Real data from SQLite, not faked.</p>
+    </div>
+
+    <p class="note">Architecture stayed the same; only the data and the words changed. Next: <strong>/5-test-iterate</strong>.</p>
+    <div class="foot"><span>FridgeChef</span><span>Build · worked example</span></div>
+  </div>
+</body>
+</html>

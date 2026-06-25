@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build · Lovable · FridgeChef</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><div class="logo-mark"></div><div><b>Edmonton Unlimited</b><small>Build It, Show It</small></div></div>
+      <div class="chip">Stage 3 · Build · Lovable</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">✦</div>
+      <div class="eyebrow">Route A — Build in Lovable (no-code)</div>
+      <h1>3–4 prompts → a clickable FridgeChef</h1>
+      <p>The hands-on route. Paste these into Lovable one at a time, free-tier friendly.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · what you told the AI</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">App name & tagline?</div><div class="a">FridgeChef — "Type what's in your fridge, get dinner."</div></li>
+        <li><div class="q">Brand vibe & colour?</div><div class="a">Warm and friendly; a fresh green.</div></li>
+        <li><div class="q">Anything about the look that matters?</div><div class="a">Big ingredient box up top; appetising recipe cards.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · the prompt script</h2>
+
+    <div class="prompt">
+      <div class="label">Prompt 1 · Scaffold the screen</div>
+      <code>Build a single-page app called FridgeChef. Top: a heading "FridgeChef" with the tagline "Type what's in your fridge, get dinner." Below: a text input placeholder "eggs, cheese, spinach…" and a green "Find recipes" button. Under that, an empty responsive grid where recipe cards will go. Warm, friendly style, fresh green accent.</code>
+    </div>
+    <p class="note">Should produce: the empty screen with input + button. <strong>If it breaks:</strong> re-prompt with "just the layout, no data yet."</p>
+
+    <div class="prompt">
+      <div class="label">Prompt 2 · Add believable fake data</div>
+      <code>Add 6 hard-coded recipes (no backend): Cheesy Scramble, Spinach & Feta Omelette, Garlic Fried Rice, Tomato Pasta, Veggie Quesadilla, Banana Oat Pancakes. Each has a title, cook time, an emoji, and a list of ingredients. Show them as cards in the grid. When I type ingredients and click Find recipes, filter to recipes that use any typed ingredient.</code>
+    </div>
+    <p class="note">Should produce: typing "eggs, cheese" filters to matching cards. <strong>If it breaks:</strong> ask it to "log the filter and show all cards if the box is empty."</p>
+
+    <div class="prompt">
+      <div class="label">Prompt 3 · Detail view</div>
+      <code>When I click a recipe card, open a detail view showing the title, cook time, full ingredient list, and 4–5 numbered steps. Add a "← Back to results" button.</code>
+    </div>
+    <p class="note">Should produce: click a card → full recipe → back. <strong>If it breaks:</strong> "use a simple modal instead of routing."</p>
+
+    <div class="prompt">
+      <div class="label">Prompt 4 · Polish</div>
+      <code>Polish FridgeChef: fresh-green primary colour, rounded cards with soft shadows, a friendly empty state ("Tell me what's in your fridge ↑"), and a loading state. Make it look finished.</code>
+    </div>
+    <p class="note">Should produce: a demo-ready look. <strong>If it breaks:</strong> stop here — polish is optional; a working demo beats a pretty broken one.</p>
+
+    <p class="note">Free tier is ~5 credits/day, so 3–4 prompts. Don't debug in circles — re-prompt clearly instead. Next: <strong>/5-test-iterate</strong>, then publish to a URL.</p>
+    <div class="foot"><span>FridgeChef</span><span>Build · Lovable · worked example</span></div>
+  </div>
+</body>
+</html>
