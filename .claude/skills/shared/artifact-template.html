@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- ===========================================================================
+  ARTIFACT TEMPLATE — every skill fills this in and writes it to
+  workshop/<NN>-<stage>.html. Replace every {{TOKEN}}. Keep the structure.
+  Sections: INPUTS = what the founder said in the interview.
+            OUTPUTS = what AI produced from those inputs.
+  Delete any block you don't need; add <div class="panel"> blocks as needed.
+=========================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{STAGE_NAME}} · {{PROJECT}}</title>
+  <link rel="stylesheet" href="assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark">
+        <div class="logo-mark"></div>
+        <div><b>Edmonton Unlimited</b><small>Build It, Show It</small></div>
+      </div>
+      <div class="chip">Stage {{STAGE_NUM}} · {{STAGE_LABEL}}</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">{{ICON}}</div>
+      <div class="eyebrow">{{STAGE_NAME}}</div>
+      <h1>{{HEADLINE}}</h1>
+      <p>{{SUBHEAD}}</p>
+    </div>
+
+    <!-- ===== INPUTS: the interview record ===== -->
+    <h2 class="sec in">Inputs · what you told the AI</h2>
+    <div class="panel">
+      <ul class="qa">
+        <!-- repeat per question -->
+        <li><div class="q">{{QUESTION}}</div><div class="a">{{ANSWER}}</div></li>
+      </ul>
+    </div>
+
+    <!-- ===== OUTPUTS: what the AI produced ===== -->
+    <h2 class="sec out">Outputs · what the AI gave back</h2>
+    <div class="panel">
+      <h3>{{OUTPUT_TITLE}}</h3>
+      <p>{{OUTPUT_BODY}}</p>
+    </div>
+
+    <p class="note">{{NOTE}}</p>
+
+    <div class="foot"><span>{{PROJECT}}</span><span>{{STAGE_NAME}} · {{DATE}}</span></div>
+  </div>
+</body>
+</html>

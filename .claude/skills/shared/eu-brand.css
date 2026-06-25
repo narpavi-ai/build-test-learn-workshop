@@ -1,0 +1,86 @@
+/* ===========================================================================
+   Edmonton Unlimited brand — shared stylesheet for workshop artifacts.
+   Matches deck.html. Each stage artifact links to this file:
+     <link rel="stylesheet" href="assets/eu-brand.css" />
+   =========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --navy:#08005B; --purple:#8B4FFB; --purple-deep:#6137B3;
+  --green:#00BA6E; --blue:#008CFF; --yellow:#FFFF00;
+  --ink:#15123A; --muted:#5b5773; --paper:#fff; --paper-soft:#f6f4ff; --line:#e7e2fb;
+  --head:'Saira',system-ui,sans-serif; --body:'Poppins',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--body);background:#eee9fb;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;}
+
+.page{max-width:880px;margin:0 auto;padding:0 24px 96px;}
+
+/* Header band */
+.bar{display:flex;align-items:center;justify-content:space-between;padding:26px 0;}
+.wordmark{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--blue));position:relative;flex:none;}
+.logo-mark::after{content:"";position:absolute;inset:9px;border:2.5px solid rgba(255,255,255,.9);border-radius:4px;}
+.wordmark b{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;display:block;}
+.wordmark small{font-size:9px;letter-spacing:2px;color:var(--purple);font-weight:600;}
+.chip{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:#fff;color:var(--purple-deep);border:1px solid var(--line);}
+
+/* Stage hero */
+.hero{background:var(--navy);color:#fff;border-radius:22px;padding:40px 44px;margin-bottom:28px;}
+.hero .stage-icon{width:62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px;background:linear-gradient(135deg,var(--purple),var(--purple-deep));margin-bottom:18px;}
+.hero .eyebrow{font-family:var(--head);font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.hero h1{font-family:var(--head);font-weight:800;font-size:40px;line-height:1.05;letter-spacing:-.5px;}
+.hero p{color:rgba(255,255,255,.82);font-size:18px;margin-top:12px;max-width:60ch;}
+
+/* Sections */
+h2.sec{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--purple);margin:34px 0 14px;}
+h2.sec.in{color:var(--blue);}
+h2.sec.out{color:var(--green);}
+
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin-bottom:16px;}
+.panel h3{font-family:var(--head);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:8px;}
+.panel p{color:var(--muted);font-size:16px;}
+.panel p+p{margin-top:10px;}
+.panel strong{color:var(--purple-deep);font-weight:600;}
+
+/* Q&A list (the interview record) */
+.qa{list-style:none;}
+.qa li{padding:14px 0;border-bottom:1px solid var(--line);}
+.qa li:last-child{border-bottom:none;}
+.qa .q{font-weight:600;color:var(--ink);font-size:15px;}
+.qa .a{color:var(--muted);font-size:16px;margin-top:4px;}
+
+/* Bullets */
+ul.bullets{list-style:none;margin-top:6px;}
+ul.bullets li{position:relative;padding-left:28px;margin:10px 0;color:var(--muted);font-size:16px;}
+ul.bullets li::before{content:"";position:absolute;left:0;top:8px;width:12px;height:12px;border-radius:3px;background:var(--purple);transform:rotate(45deg);}
+ul.bullets.keep li::before{background:var(--green);}
+ul.bullets.cut li::before{background:#d2466b;}
+
+/* Prompt / code block (for showing AI prompts) */
+.prompt{background:var(--navy);color:#ede9ff;border-radius:14px;padding:22px 24px;margin:12px 0;}
+.prompt .label{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.prompt code,.prompt pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;color:#fff;white-space:pre-wrap;display:block;}
+
+/* Two columns */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:640px){.cols{grid-template-columns:1fr;}}
+
+/* Route cards (the post-spec fork) */
+.routes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
+.route{border:2px solid var(--line);border-radius:16px;padding:22px;}
+.route.a{border-color:var(--blue);} .route.b{border-color:var(--green);}
+.route .tag{font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;}
+.route.a .tag{color:var(--blue);} .route.b .tag{color:var(--green);}
+
+.note{font-style:italic;color:var(--muted);font-size:15px;margin-top:18px;}
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--head);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;}
+
+/* Dashboard (index.html) */
+.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:20px;}
+a.tile{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;color:var(--ink);transition:transform .12s,box-shadow .12s;}
+a.tile:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(139,79,251,.16);}
+a.tile .n{font-family:var(--head);font-weight:800;font-size:13px;color:var(--purple);letter-spacing:1px;}
+a.tile h3{font-family:var(--head);font-size:19px;color:var(--navy);margin:6px 0 4px;}
+a.tile p{color:var(--muted);font-size:14px;}
+a.tile.todo{opacity:.55;border-style:dashed;}
