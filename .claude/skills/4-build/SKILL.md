@@ -18,6 +18,8 @@ already applied to `apps/web/src/brand.js` by `/3b-scope-design` — verify it's
 
 ## Beat 1 — Confirm the build (short)
 
+Ask with the **AskUserQuestion** tool:
+
 1. Confirm the resource name (e.g. `items` → `recipes`, `listings`, `prompts`).
 2. Confirm the fields each record needs (title + a few — keep it to what the
    screen shows).

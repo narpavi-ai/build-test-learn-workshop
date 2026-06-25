@@ -15,8 +15,9 @@ Project name: `$ARGUMENTS` (ask if empty).
 
 ## Beat 1 — Interview
 
-Ask these **one at a time**, in plain language. Wait for each answer. Push back
-gently if an answer is vague ("everyone" is not a user).
+Ask these with the **AskUserQuestion** tool (group them into one or two panels;
+the founder picks **Other** to type their own answer). Push back gently if an
+answer is vague ("everyone" is not a user).
 
 1. In one sentence, what's the idea?
 2. Who *exactly* feels this pain? Name one person or role — not "everyone".

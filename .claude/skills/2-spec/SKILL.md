@@ -18,7 +18,8 @@ Problem stage already answered. If it's missing, ask for the one-sentence proble
 
 ## Beat 1 — Interview
 
-Ask one at a time:
+Ask these with the **AskUserQuestion** tool (one or two panels; founders pick
+**Other** to type their own):
 
 1. When someone opens this for the first time, what's the **one action** they take?
 2. What do they put **in**, and what do they get **out**?

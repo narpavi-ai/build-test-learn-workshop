@@ -4,8 +4,8 @@ Run the harness live without improvising. Type the command, then paste the
 answers below as the skill asks. These match the worked example in
 `workshop/examples/fridgechef/`, so your live output should look the same.
 
-> Tip: the skills ask **one question at a time**. You can either answer one by
-> one, or paste a whole block at once — the skill will pick up each answer.
+> Tip: the skills ask through an **interactive picker** (the panel that pops up).
+> Pick an offered option, or choose **Other** to paste the matching answer below.
 
 ---
 

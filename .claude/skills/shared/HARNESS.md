@@ -15,8 +15,12 @@ something an earlier artifact already answers — read it first.
 
 ## How every skill works (three beats)
 
-1. **Interview** — ask the founder ONE question at a time (or a tight batch).
-   Ask only what AI can't decide for them. Wait for answers; don't invent them.
+1. **Interview** — ask with the `AskUserQuestion` tool so the founder gets the
+   interactive picker (not a wall of text). Group 2–4 related questions per panel.
+   For each, offer 2–4 sensible options when it helps them decide; the built-in
+   **Other** choice lets them type a free-text answer — use it for open prompts
+   like their one-sentence idea. Ask only what AI can't decide for them; never
+   invent answers.
 2. **Do the work** — produce the artifact/code from their answers.
 3. **Show it back** — summarize what you wrote and where, then point to the
    next skill in the flow.

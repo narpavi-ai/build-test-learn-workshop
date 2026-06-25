@@ -17,15 +17,18 @@ Read `workshop/02-spec.html` (and `01-problem.html`). If missing, run `/2-spec` 
 
 ## Beat 1 — Interview
 
+Ask with the **AskUserQuestion** tool — these are choice-friendly, so offer
+options (the founder picks **Other** to type their own).
+
 **Scope** — confirm one screen, cut the rest:
 1. Confirm the one magic-moment screen (input → results → detail). Right?
-2. What are we cutting for now? (accounts, saving, payments, extra screens…)
+2. What are we cutting for now? (offer: accounts · saving favourites · payments · extra screens)
 
 **Brand** — make it theirs:
 3. Product name and one-line tagline?
-4. Logo — got one, or want a simple text/emoji mark for now? (which emoji/letter?)
-5. Pick a primary colour (hex or just describe it; suggest one if unsure).
-6. Vibe in two words (e.g. "warm + friendly", "sharp + techy")?
+4. Logo — a simple emoji/letter mark for now, or an image you'll drop in?
+5. Primary colour (offer swatches: purple #8B4FFB · green #00BA6E · blue #008CFF · Other for a custom hex).
+6. Vibe (offer: warm + friendly · sharp + techy · bold + playful · calm + minimal).
 
 ## Beat 2 — Do the work
 

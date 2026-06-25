@@ -18,7 +18,8 @@ screen, inputs/outputs, and faked data. If the spec is missing, run `/2-spec` fi
 
 ## Beat 1 — Interview (short)
 
-Lovable's free tier is ~5 credits/day, so plan for **3–4 prompts**. Confirm:
+Lovable's free tier is ~5 credits/day, so plan for **3–4 prompts**. Ask these
+with the **AskUserQuestion** tool:
 
 1. App name and one-line tagline?
 2. Brand vibe — playful, clean, bold? Any colour you want?

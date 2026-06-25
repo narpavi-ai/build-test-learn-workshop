@@ -41,7 +41,7 @@ curl the endpoints. For the Lovable route, walk it in the Lovable preview.
 
 ## Beat 3 — Capture learnings & save
 
-Ask the founder:
+Ask the founder (use the **AskUserQuestion** tool):
 1. What surprised you while building this?
 2. What would you change about the idea now that you've seen it work?
 3. What's the next smallest thing a real user would need?
