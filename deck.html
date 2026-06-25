@@ -451,14 +451,31 @@ const slides = [
     <div class="stats">
       <div class="stat"><span class="stat-ic">${ic('users')}</span><div class="num">14<span style="font-size:28px">/23</span></div><div class="lbl">founders told us where they're at</div></div>
       <div class="stat"><span class="stat-ic">${ic('code')}</span><div class="num">~13</div><div class="lbl">are building <strong>software</strong> — websites, apps &amp; platforms (1 is building hardware)</div></div>
-      <div class="stat accent"><span class="stat-ic">${ic('chart')}</span><div class="num">50/50</div><div class="lbl">split between <strong>ideation / concept</strong> and <strong>early prototyping</strong> — a couple near MVP</div></div>
+      <div class="stat accent"><span class="stat-ic">${ic('chart')}</span><div class="num">6·8·2</div><div class="lbl"><strong>6</strong> ideating · <strong>8</strong> early-prototyping · <strong>2</strong> near MVP — websites, platforms, apps, a desktop app &amp; hardware</div></div>
     </div>
-    <p class="note">Wherever you are on that line, the same stages apply tonight — we'll meet you there.</p>
+    <p class="note">Key insight: you're <strong>early</strong>, and you're all building <strong>different things</strong> — so tonight teaches the stages, not one tool. Wherever you are on that line, we'll meet you there.</p>
   </div>
   <div class="footer"><span>Where this room is</span><span>05</span></div>
 </section>`,
 
-/* 6 — THE BIG IDEA */
+/* 6 — TONIGHT'S FOCUS (from the survey) */
+`<section class="slide dark" data-chip="Tonight's focus">
+  ${circuit()}
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">What we'll focus on</div></div>
+  <div class="slide-body">
+    <div class="eyebrow">${ic('target')} Built around your survey answers</div>
+    <h2>So here's what tonight is about</h2>
+    <div class="cards c3">
+      <div class="card"><span class="tag">${ic('flag')} You're early</span><h3>Clickable &gt; polished</h3><p>Most of you are ideating or early-prototyping. The win tonight is <strong>one thing a stranger can click</strong> — not a finished product.</p></div>
+      <div class="card"><span class="tag">${ic('layers')} You're all different</span><h3>Process, not a tool</h3><p>Websites, platforms, apps, a desktop app, even hardware. We teach the <strong>stages that fit any idea</strong>, then pick the tool that fits yours.</p></div>
+      <div class="card"><span class="tag">${ic('globe')} Some are pre-product</span><h3>A landing page is a demo</h3><p>No build yet? A sharp <strong>validation / landing page</strong> that sells the promise is a completely valid Demo Night demo.</p></div>
+    </div>
+    <p class="note">Goal: leave with something clickable — and a repeatable process you can rerun before <strong>July 14</strong>.</p>
+  </div>
+  <div class="footer"><span>Tonight's focus</span><span>06</span></div>
+</section>`,
+
+/* 7 — THE BIG IDEA */
 `<section class="slide dark" data-chip="Big idea">
   ${circuit()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">The core message</div></div>
@@ -476,7 +493,7 @@ const slides = [
       <span class="pill">${ic('scale')} Scale</span>
     </div>
   </div>
-  <div class="footer"><span>The big idea</span><span>06</span></div>
+  <div class="footer"><span>The big idea</span><span>07</span></div>
 </section>`,
 
 /* 7 — THE HARNESS (runnable skills) */
@@ -485,7 +502,7 @@ const slides = [
   <div class="slide-body">
     <div class="eyebrow">${ic('terminal')} Tonight the stages are runnable</div>
     <h2>The harness: type a command, AI runs the stage with you</h2>
-    <p class="lead">Each stage is a skill you invoke in Claude Code. It <strong>interviews you</strong>, does the work, and <strong>saves your inputs &amp; outputs</strong> — so the back-and-forth is right there to revisit.</p>
+    <p class="lead">Each stage is a skill you invoke in Claude Code. It <strong>interviews you</strong>, does the work, and saves your inputs &amp; outputs as <strong>branded HTML you can actually show</strong> — <em>HTML is the new Markdown</em>.</p>
     <div class="flow">
       <span class="pill on">${ic('target')} /1-problem</span><span class="arrow">→</span>
       <span class="pill on">${ic('chat')} /2-spec</span><span class="arrow">→</span>
@@ -497,7 +514,7 @@ const slides = [
     </div>
     <p class="note">After the spec the path forks: build no-code in Lovable, or level up in the starter template. Both end in a clickable demo.</p>
   </div>
-  <div class="footer"><span>The harness</span><span>07</span></div>
+  <div class="footer"><span>The harness</span><span>08</span></div>
 </section>`,
 
 /* 8 — THE STARTER KIT */
@@ -518,7 +535,7 @@ const slides = [
     </div>
     <p class="note">It runs out of the box — then <strong>/4-build</strong> makes it yours: same screens as Lovable, but a real round-trip you own.</p>
   </div>
-  <div class="footer"><span>The starter kit</span><span>08</span></div>
+  <div class="footer"><span>The starter kit</span><span>09</span></div>
 </section>`,
 
 /* 9 — DIVIDER: Let's build FridgeChef */
@@ -531,7 +548,7 @@ const slides = [
     <h1>Let's build FridgeChef — through every stage.</h1>
     <p class="lead">Type the few ingredients you actually have → get a recipe you can cook tonight. We'll walk this single idea through all 8 stages.</p>
   </div>
-  <div class="footer"><span>Section</span><span>09</span></div>
+  <div class="footer"><span>Section</span><span>10</span></div>
 </section>`,
 
 /* 8 — STAGE 1: PROBLEM */
@@ -548,7 +565,7 @@ const slides = [
     </div>
     <p class="note">FridgeChef's whole reason to exist: turn "random ingredients" into "dinner, sorted."</p>
   </div>
-  <div class="footer"><span>Problem</span><span>10</span></div>
+  <div class="footer"><span>Problem</span><span>11</span></div>
 </section>`,
 
 /* 9 — STAGE 2: SPEC IT WITH AI (worked prompt) */
@@ -566,7 +583,7 @@ const slides = [
     </div>
     <p class="note">The output becomes your spec — and the seed for your build prompts in Lovable.</p>
   </div>
-  <div class="footer"><span>Spec it with AI</span><span>11</span></div>
+  <div class="footer"><span>Spec it with AI</span><span>12</span></div>
 </section>`,
 
 /* 10 — STAGE 3: SCOPE & DESIGN */
@@ -582,7 +599,7 @@ const slides = [
     </div>
     <p class="note">If a feature isn't the magic moment, it's a distraction tonight. Cut ruthlessly.</p>
   </div>
-  <div class="footer"><span>Scope &amp; Design</span><span>12</span></div>
+  <div class="footer"><span>Scope &amp; Design</span><span>13</span></div>
 </section>`,
 
 /* 11 — STAGE 4: JUST-ENOUGH TECH + TOOLS */
@@ -598,7 +615,7 @@ const slides = [
       <div class="card"><span class="tag">${ic('terminal')} The level-up</span><h3>Claude Code</h3><p>The full build — a real front-end + back-end + data. We'll <em>show</em> this one; you don't build it tonight.</p></div>
     </div>
   </div>
-  <div class="footer"><span>Just-enough tech</span><span>13</span></div>
+  <div class="footer"><span>Just-enough tech</span><span>14</span></div>
 </section>`,
 
 /* 12 — STAGE 5: BUILD WITH AI */
@@ -618,7 +635,7 @@ const slides = [
     </div>
     <div class="slot">[ Live screen-share<br/>of Lovable build ]<br/><br/>(switch to browser here)</div>
   </div>
-  <div class="footer"><span>Build with AI</span><span>14</span></div>
+  <div class="footer"><span>Build with AI</span><span>15</span></div>
 </section>`,
 
 /* 13 — STAGE 6: TEST & ITERATE */
@@ -634,7 +651,7 @@ const slides = [
       <div class="card"><span class="tag">${ic('alert')} Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
     </div>
   </div>
-  <div class="footer"><span>Test &amp; iterate</span><span>15</span></div>
+  <div class="footer"><span>Test &amp; iterate</span><span>16</span></div>
 </section>`,
 
 /* 14 — STAGE 7: SHIP */
@@ -653,7 +670,7 @@ const slides = [
     </div>
     <p class="note">Test the link on your phone before the 14th. If it opens for a stranger, you're ready to demo.</p>
   </div>
-  <div class="footer"><span>Ship</span><span>16</span></div>
+  <div class="footer"><span>Ship</span><span>17</span></div>
 </section>`,
 
 /* 15 — STAGE 8: SCALE (integrations) */
@@ -673,7 +690,7 @@ const slides = [
     </div>
     <p class="note">Climb the ladder only when a real user needs the next rung. Stay founder-light until then.</p>
   </div>
-  <div class="footer"><span>Scale</span><span>17</span></div>
+  <div class="footer"><span>Scale</span><span>18</span></div>
 </section>`,
 
 /* 16 — DIVIDER: Your turn */
@@ -686,7 +703,7 @@ const slides = [
     <h1>Your turn.</h1>
     <p class="lead">Same stages, your idea. Let's get something clickable on your screen before you leave tonight.</p>
   </div>
-  <div class="footer"><span>Section</span><span>18</span></div>
+  <div class="footer"><span>Section</span><span>19</span></div>
 </section>`,
 
 /* 17 — WORK BLOCK */
@@ -705,7 +722,7 @@ const slides = [
       <li class="has-ic">${ic('checkc')}<strong>Checkpoint 3:</strong> Published to a URL you can open on your phone?</li>
     </ul>
   </div>
-  <div class="footer"><span>Work block</span><span>19</span></div>
+  <div class="footer"><span>Work block</span><span>20</span></div>
 </section>`,
 
 /* 18 — DEMO NIGHT STORY */
@@ -724,7 +741,7 @@ const slides = [
     </div>
     <p class="note">The 2-minute live demo is the heart of it — everything you built tonight feeds that slot.</p>
   </div>
-  <div class="footer"><span>Demo Night story</span><span>20</span></div>
+  <div class="footer"><span>Demo Night story</span><span>21</span></div>
 </section>`,
 
 /* 19 — RECAP + RESOURCES */
@@ -752,7 +769,7 @@ const slides = [
       </ul>
     </div>
   </div>
-  <div class="footer"><span>Recap + resources</span><span>21</span></div>
+  <div class="footer"><span>Recap + resources</span><span>22</span></div>
 </section>`,
 
 /* 20 — THANK YOU */
@@ -766,7 +783,7 @@ const slides = [
     <p class="lead">Thanks for building with me tonight. Get that link working — and break a leg on Demo Night.</p>
     <div class="title-meta">Hosted by <b><span class="ph">[Your name]</span></b> · <span class="ph">[contact]</span></div>
   </div>
-  <div class="footer"><span>Thank you</span><span>22</span></div>
+  <div class="footer"><span>Thank you</span><span>23</span></div>
 </section>`,
 
 ];
