@@ -84,6 +84,10 @@ After `/2-spec` the path forks: build it in **Lovable** (no-code) *or* build it
 right here in this **starter template** with Claude Code. Both are valid demos.
 The number prefixes keep the stages in order in the `/` menu.
 
+**Running it live?** [`workshop/DEMO-SCRIPT.md`](workshop/DEMO-SCRIPT.md) has
+paste-ready answers for every stage's interview (FridgeChef), so you can walk the
+whole harness on stage without improvising.
+
 ---
 
 ## When this becomes "real"
