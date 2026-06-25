@@ -1,120 +1,100 @@
-# FridgeChef 🍳 — the "done properly" full build
+# Founder Starter Kit 🚀
 
-Type the few ingredients you actually have → get recipes you can cook tonight.
+A tiny, **brandable** full-stack app you build your idea into during the
+*Build It, Show It* workshop (Edmonton Unlimited · Student Founders Launch).
 
-This is the **Claude Code level-up showcase** for the *Build It, Show It — Rapid
-Prototyping with AI* workshop (Edmonton Unlimited · Student Founders Launch). It
-demonstrates a **real front-end → back-end → data round-trip** — the thing the
-Lovable live build only fakes.
+It's already a real round-trip: **React UI → Express API → SQLite database**.
+Your job is to make it *yours* — rename the resource, swap the seed data, set
+your brand, and ship the one screen that proves your idea.
 
-> The same idea exists three ways in this repo:
-> - **`deck.html`** — the workshop slide deck.
-> - **`lovable-build-script.md`** — prompts to build a *faked-data* FridgeChef live on Lovable.
-> - **this monorepo** — the *real* version: React UI calling a Node API over seeded data.
+> This repo is also a **harness**: a set of `/` skills that walk you from a raw
+> idea to a clickable demo. See [the harness](#the-harness-skills) below.
+
+---
+
+## Run it (two commands)
+
+```bash
+npm install      # installs both workspaces (web + api) + better-sqlite3
+npm run dev      # starts the API and the web app together
+```
+
+| App | URL | What it does |
+| --- | --- | --- |
+| **Web** (React + Vite) | http://localhost:5173 | The screen you click |
+| **API** (Express + SQLite) | http://localhost:3001 | `/api/items`, `/api/health` |
+
+The database (`apps/api/data/app.db`) is created and seeded automatically on
+first run, so the app is never blank. Re-seed any time with `npm run seed`.
+
+**Prerequisites:** Node.js 18+ (`node --version`). No accounts, no API keys.
 
 ---
 
 ## What's inside
 
 ```
-fridgechef/
-├─ package.json          # npm workspaces + `npm run dev` (runs both apps)
+founder-starter-kit/
+├─ package.json            # npm workspaces + `npm run dev`
 ├─ apps/
-│  ├─ web/               # React + Vite front-end
-│  │  ├─ index.html
-│  │  ├─ vite.config.js  # proxies /api -> localhost:3001 in dev
+│  ├─ web/                 # React + Vite front-end
 │  │  └─ src/
-│  │     ├─ App.jsx              # the one screen: input → results → detail
-│  │     ├─ api.js               # fetch wrapper for POST /api/recipes
+│  │     ├─ App.jsx        # THE screen: search → results grid → detail
+│  │     ├─ brand.js       # 🎨 your name, tagline, logo, colours (edit this!)
+│  │     ├─ api.js         # fetch wrapper for the API
 │  │     ├─ styles.css
-│  │     └─ components/
-│  │        ├─ RecipeCard.jsx
-│  │        └─ RecipeDetail.jsx
-│  └─ api/               # Node.js + Express back-end
-│     ├─ server.js
+│  │     └─ components/    # Card.jsx, Detail.jsx
+│  └─ api/                 # Node + Express back-end
+│     ├─ server.js         # routes + first-run auto-seed
 │     └─ src/
-│        ├─ recipes.js           # POST /api/recipes  (+ real-data hook)
-│        ├─ match.js             # ranks recipes by ingredient overlap
-│        └─ data/
-│           └─ seed-recipes.js   # the seeded "fake data" — cleanly separated
+│        ├─ db.js          # SQLite connection + schema (your data model)
+│        ├─ items.js       # GET/POST routes (+ real-data hook)
+│        ├─ seed.js        # seed runner
+│        └─ data/seed-items.js   # the believable demo data
+└─ .claude/skills/         # the harness (see below)
 ```
+
+## Make it yours (4 edits)
+
+1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, colours.
+2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns.
+3. **Demo data** → `apps/api/src/data/seed-items.js` — 5–6 believable rows.
+4. **Words on the screen** → `apps/web/src/App.jsx` — labels and copy.
+
+That's the whole MVP. Everything else is a distraction until a real user needs it.
 
 ---
 
-## Prerequisites
+## The harness (skills)
 
-- **Node.js 18+** (check with `node --version`)
-- **npm** (ships with Node)
+Type these in Claude Code to walk your idea from problem to demo. Each one
+**interviews you**, does the work, and saves a branded HTML record of your
+inputs and outputs into `workshop/`.
 
-No API keys, no database, no `.env` — it runs fully local on seeded data.
-
-## Run it (one command)
-
-```bash
-npm install      # installs both workspaces + concurrently
-npm run dev      # starts the API and the web app together
+```
+/problem        → who hurts and why            → workshop/01-problem.html
+/spec           → the tight build brief         → workshop/02-spec.html
+   ├─ /lovable        → no-code build prompts    (the hands-on route)
+   └─ /scope-design   → the one screen + brand   (the Claude Code route)
+        → /build         → build it into THIS template
+        → /test-iterate  → make it work, capture learnings
 ```
 
-Then open the web app:
-
-| App | URL | What it does |
-| --- | --- | --- |
-| **Web** (React + Vite) | http://localhost:5173 | The FridgeChef UI you click |
-| **API** (Express)      | http://localhost:3001 | `POST /api/recipes`, `GET /api/health` |
-
-Type ingredients like `eggs, cheese, spinach` and hit **Find recipes**, or tap an
-example chip. Click a card to open the full recipe, then **Back to results**.
-
-Run them separately if you prefer: `npm run dev:api` and `npm run dev:web`.
-
-### Try the API directly
-
-```bash
-curl -X POST http://localhost:3001/api/recipes \
-  -H "Content-Type: application/json" \
-  -d '{"ingredients":"eggs, cheese, spinach"}'
-```
+After `/spec` the path forks: build it in **Lovable** (no-code) *or* build it
+right here in this **starter template** with Claude Code. Both are valid demos.
 
 ---
 
-## How it maps to the workshop stages (the SDLC spine)
+## When this becomes "real"
 
-| Stage | Where it lives in this repo |
-| --- | --- |
-| **1. Problem** | The reason FridgeChef exists — stated in `deck.html` & this README. |
-| **2. Spec** | The shape of `POST /api/recipes` (ingredients in → ranked recipes out) is the spec, made concrete. |
-| **3. Scope & Design** | One screen only (`App.jsx`): input → results grid → detail. No accounts, no saving. |
-| **4. Just-enough tech** | Front-end (`apps/web`) vs. data behind it (`apps/api`) — the exact split the deck teaches. |
-| **5. Build** | The whole monorepo. The Lovable script fakes the data; here it's a real round-trip. |
-| **6. Test & iterate** | `match.js` is a pure function (easy to test); `seed-recipes.js` is believable demo data. |
-| **7. Ship** | `npm run build -w apps/web` produces a static front-end you can host anywhere. |
-| **8. Scale** | The **real-data hook** in `apps/api/src/recipes.js` — swap the seed for a recipe API or an LLM without touching the UI. |
-
----
-
-## Where this becomes "real"
-
-`apps/api/src/recipes.js` has one function, `getRecipes()`, that today returns the
-local seed. It's commented with two drop-in options — call a real recipe API, or
-have an LLM (e.g. Anthropic's Claude) generate recipes. **The route, the matching
-logic, and the entire front-end stay exactly the same.** That's the point: the
-architecture is already right; only the data source changes.
-
-## From Lovable → GitHub → Claude Code (the ladder)
-
-1. Build the quick version in **Lovable** (faked data, one screen).
-2. **Push it to GitHub** — now you own the code; nothing is locked into one tool.
-3. **Open the repo in Claude Code** and ask it to restructure into a real
-   front-end + back-end (this monorepo is what that looks like).
-4. When a real user needs it, climb the next rung: a real backend (e.g. Supabase)
-   and payments (e.g. Stripe) — only when you actually need them.
+`apps/api/src/items.js` has a **real-data hook** comment. When you outgrow the
+local SQLite seed, that's the only place that changes — swap it for a real API,
+an LLM, or a hosted database. The routes and the entire front-end stay the same.
 
 ```bash
 # turn this into your own GitHub repo
-git init
-git add .
-git commit -m "FridgeChef full build"
-gh repo create fridgechef --public --source=. --push
+git init && git add . && git commit -m "my idea, starter build"
+gh repo create my-idea --public --source=. --push
 ```
 
 Stay founder-light. Build the next rung only when a real user is waiting on it.

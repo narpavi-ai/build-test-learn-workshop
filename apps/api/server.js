@@ -1,21 +1,26 @@
 // ---------------------------------------------------------------------------
-// FridgeChef API server
-// Node.js + Express. No API keys, no database — runs fully local on seed data.
+// Starter API — Express + SQLite. Runs on http://localhost:3001.
+// Start with `npm run dev` from the repo root (runs this and the web app).
 // ---------------------------------------------------------------------------
+import express from 'express';
+import cors from 'cors';
+import { isEmpty } from './src/db.js';
+import { seed } from './src/seed.js';
+import { items } from './src/items.js';
 
-import express from "express";
-import cors from "cors";
-import recipesRouter from "./src/recipes.js";
-
-const PORT = process.env.PORT || 3001;
+// First run convenience: if the database is empty, load the seed data so the
+// app is never blank during a live demo.
+if (isEmpty()) {
+  const n = seed();
+  console.log(`Empty database — seeded ${n} items.`);
+}
 
 const app = express();
-app.use(cors());            // allow the Vite dev server to call us
+app.use(cors());
 app.use(express.json());
 
-app.get("/api/health", (_req, res) => res.json({ ok: true }));
-app.use("/api", recipesRouter);
+app.get('/api/health', (_req, res) => res.json({ ok: true }));
+app.use('/api/items', items);
 
-app.listen(PORT, () => {
-  console.log(`🍳  FridgeChef API listening on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log(`API on http://localhost:${PORT}`));

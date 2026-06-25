@@ -1,9 +1,9 @@
 {
-  "name": "@fridgechef/web",
+  "name": "@starter/web",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "FridgeChef web — React + Vite front-end that calls the FridgeChef API.",
+  "description": "Starter web — React + Vite front-end that calls the starter API.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -1,15 +1,12 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// The web app talks to the API at /api. In dev, proxy /api to the Express
-// server on :3001 so the front-end can use same-origin relative URLs.
+// In dev, calls to /api are proxied to the Express server on :3001,
+// so the front-end code can just fetch('/api/items') with no CORS fuss.
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    proxy: {
-      // Defaults to the API's default port; override with VITE_API_PROXY if needed.
-      "/api": process.env.VITE_API_PROXY || "http://localhost:3001"
-    }
-  }
+    proxy: { '/api': 'http://localhost:3001' },
+  },
 });

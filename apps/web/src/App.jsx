@@ -1,101 +1,76 @@
-import { useState } from "react";
-import { fetchRecipes } from "./api.js";
-import RecipeCard from "./components/RecipeCard.jsx";
-import RecipeDetail from "./components/RecipeDetail.jsx";
-
-const EXAMPLES = ["eggs, cheese", "pasta, tomato, garlic", "banana, oats, egg"];
+// ---------------------------------------------------------------------------
+// The ONE screen: search input → results grid → detail view.
+// This is your magic-moment screen. Rename "items", restyle, and make it yours.
+// ---------------------------------------------------------------------------
+import { useEffect, useState } from 'react';
+import { brand } from './brand.js';
+import { searchItems, getItem } from './api.js';
+import Card from './components/Card.jsx';
+import Detail from './components/Detail.jsx';
 
 export default function App() {
-  const [ingredients, setIngredients] = useState("");
+  const [q, setQ] = useState('');
   const [results, setResults] = useState([]);
-  const [fallback, setFallback] = useState(false);
-  const [status, setStatus] = useState("idle"); // idle | loading | done | error
   const [selected, setSelected] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
 
-  async function search(query) {
-    const value = (query ?? ingredients).trim();
-    if (!value) return;
-    if (query !== undefined) setIngredients(query);
-    setStatus("loading");
+  // Load everything once on mount so the grid is never empty.
+  useEffect(() => { runSearch(''); }, []);
+
+  async function runSearch(query) {
+    setLoading(true);
+    setSelected(null);
     try {
-      const data = await fetchRecipes(value);
-      setResults(data.results);
-      setFallback(data.fallback);
-      setStatus("done");
-    } catch (err) {
-      console.error(err);
-      setStatus("error");
+      setResults(await searchItems(query));
+    } finally {
+      setLoading(false);
+      setSearched(true);
     }
   }
 
+  async function open(id) {
+    setSelected(await getItem(id));
+  }
+
   return (
-    <div className="app">
+    <div className="page">
       <header className="hero">
-        <div className="logo">🍳 FridgeChef</div>
-        <p className="tagline">
-          Tell me what's in your fridge, I'll tell you what to cook.
-        </p>
+        <div className="logo">{brand.logo}</div>
+        <h1>{brand.name}</h1>
+        <p className="tagline">{brand.tagline}</p>
       </header>
 
-      <form
-        className="search"
-        onSubmit={(e) => {
-          e.preventDefault();
-          search();
-        }}
-      >
-        <input
-          type="text"
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-          placeholder="e.g. eggs, spinach, cheese, bread"
-          aria-label="Ingredients"
-        />
-        <button type="submit" disabled={status === "loading"}>
-          {status === "loading" ? "Cooking…" : "Find recipes"}
-        </button>
-      </form>
+      {selected ? (
+        <Detail item={selected} onBack={() => setSelected(null)} />
+      ) : (
+        <>
+          <form
+            className="searchbar"
+            onSubmit={(e) => { e.preventDefault(); runSearch(q); }}
+          >
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder={brand.searchPlaceholder}
+            />
+            <button type="submit">{brand.searchButton}</button>
+          </form>
 
-      <div className="chips">
-        <span>Try:</span>
-        {EXAMPLES.map((ex) => (
-          <button key={ex} className="chip" onClick={() => search(ex)}>
-            {ex}
-          </button>
-        ))}
-      </div>
+          {loading && <p className="hint">Loading…</p>}
+          {!loading && results.length === 0 && (
+            <p className="hint">{searched ? 'No results — try another search.' : brand.emptyHint}</p>
+          )}
 
-      <main className="results">
-        {status === "idle" && (
-          <p className="empty">Add a few ingredients to see what you can make.</p>
-        )}
-        {status === "error" && (
-          <p className="empty error">
-            Couldn't reach the kitchen. Is the API running on port 3001?
-          </p>
-        )}
-        {status === "done" && fallback && (
-          <p className="note">
-            Nothing matched exactly — here are some quick ideas.
-          </p>
-        )}
-        {status === "done" && results.length > 0 && (
           <div className="grid">
-            {results.map((r) => (
-              <RecipeCard key={r.id} recipe={r} onOpen={setSelected} />
+            {results.map((item) => (
+              <Card key={item.id} item={item} onOpen={open} />
             ))}
           </div>
-        )}
-      </main>
-
-      {selected && (
-        <RecipeDetail recipe={selected} onBack={() => setSelected(null)} />
+        </>
       )}
 
-      <footer className="foot">
-        Real round-trip: React → Express API → seeded data ·
-        the "done properly" version of the Lovable demo.
-      </footer>
+      <footer className="foot">Built with the Founder Starter Kit · Edmonton Unlimited</footer>
     </div>
   );
 }
