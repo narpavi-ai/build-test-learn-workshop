@@ -72,16 +72,17 @@ Type these in Claude Code to walk your idea from problem to demo. Each one
 inputs and outputs into `workshop/`.
 
 ```
-/problem        → who hurts and why            → workshop/01-problem.html
-/spec           → the tight build brief         → workshop/02-spec.html
-   ├─ /lovable        → no-code build prompts    (the hands-on route)
-   └─ /scope-design   → the one screen + brand   (the Claude Code route)
-        → /build         → build it into THIS template
-        → /test-iterate  → make it work, capture learnings
+/1-problem        → who hurts and why          → workshop/01-problem.html
+/2-spec           → the tight build brief       → workshop/02-spec.html
+   ├─ /3a-lovable        → no-code build prompts (the hands-on route)
+   └─ /3b-scope-design   → the one screen + brand (the Claude Code route)
+        → /4-build         → build it into THIS template
+        → /5-test-iterate  → make it work, capture learnings
 ```
 
-After `/spec` the path forks: build it in **Lovable** (no-code) *or* build it
+After `/2-spec` the path forks: build it in **Lovable** (no-code) *or* build it
 right here in this **starter template** with Claude Code. Both are valid demos.
+The number prefixes keep the stages in order in the `/` menu.
 
 ---
 

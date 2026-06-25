@@ -1,6 +1,6 @@
 ---
-name: problem
-description: Runs the Problem stage of the Build It, Show It workshop — interviews a founder to name one user and one pain, then saves a branded HTML artifact. Use when starting a new idea or when the user types /problem.
+name: 1-problem
+description: Runs the Problem stage of the Build It, Show It workshop — interviews a founder to name one user and one pain, then saves a branded HTML artifact. Use when starting a new idea or when the user types /1-problem.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Bash(mkdir *), Bash(cp *)
@@ -39,5 +39,5 @@ Save the artifact to `workshop/01-problem.html` following the **Saving artifacts
 section of HARNESS.md (icon 🎯, stage 1, label "Problem"). Put the interview Q&A
 in the Inputs section and the problem statement + supporting points in Outputs.
 
-Then show the founder the problem statement and say: **next, run `/spec` to turn
+Then show the founder the problem statement and say: **next, run `/2-spec` to turn
 this into a tight build brief.**

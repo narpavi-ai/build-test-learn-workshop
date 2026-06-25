@@ -1,6 +1,6 @@
 ---
-name: scope-design
-description: Route B of the Build It, Show It workshop — cuts a spec down to one magic-moment screen and captures the brand (name, tagline, logo, colours) for the starter template, then saves a branded HTML artifact. Use after /spec for the Claude Code path or when the user types /scope-design.
+name: 3b-scope-design
+description: Route B of the Build It, Show It workshop — cuts a spec down to one magic-moment screen and captures the brand (name, tagline, logo, colours) for the starter template, then saves a branded HTML artifact. Use after /2-spec for the Claude Code path or when the user types /3b-scope-design.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Edit, Bash(mkdir *), Bash(cp *)
@@ -13,7 +13,7 @@ starter template becomes the founder's product. Read `.claude/skills/shared/HARN
 
 ## Beat 0 — Load context
 
-Read `workshop/02-spec.html` (and `01-problem.html`). If missing, run `/spec` first.
+Read `workshop/02-spec.html` (and `01-problem.html`). If missing, run `/2-spec` first.
 
 ## Beat 1 — Interview
 
@@ -37,7 +37,7 @@ Read `workshop/02-spec.html` (and `01-problem.html`). If missing, run `/spec` fi
    lightweight — one file. If a logo image is provided, note where to drop it;
    otherwise use the emoji/letter mark.
 3. Note the data model rename they'll need in `apps/api/src/db.js` (e.g.
-   `items` → `recipes`) — `/build` will do the actual rename.
+   `items` → `recipes`) — `/4-build` will do the actual rename.
 
 ## Beat 3 — Save & hand off
 
@@ -45,5 +45,5 @@ Save to `workshop/03b-scope-design.html` (icon ✂, stage 3, label "Scope & Desi
 interview answers in Inputs; the scope (keep/cut lists) and the brand choices
 (show the colour + name) in Outputs.
 
-Then tell the founder: the app is now branded as **[name]**. Next: **`/build`**
+Then tell the founder: the app is now branded as **[name]**. Next: **`/4-build`**
 to wire your one screen into the starter template.

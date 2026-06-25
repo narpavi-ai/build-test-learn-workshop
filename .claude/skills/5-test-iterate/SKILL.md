@@ -1,6 +1,6 @@
 ---
-name: test-iterate
-description: Final stage of the Build It, Show It workshop — walks the demo path to make it work and believable, fixes what breaks, and captures learnings to feed the next idea. Works for both the Lovable and starter-template routes. Use after /build or /lovable, or when the user types /test-iterate.
+name: 5-test-iterate
+description: Final stage of the Build It, Show It workshop — walks the demo path to make it work and believable, fixes what breaks, and captures learnings to feed the next idea. Works for both the Lovable and starter-template routes. Use after /4-build or /3a-lovable, or when the user types /5-test-iterate.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Edit, Bash(npm *), Bash(curl *), Bash(mkdir *), Bash(cp *)
@@ -48,7 +48,7 @@ Ask the founder:
 
 Save to `workshop/05-test-iterate.html` (icon 🧪, stage 5, label "Test & Iterate"):
 the demo path + issues found in Inputs; the fixes, the believable-data notes, and
-a short **Learnings** list in Outputs (these feed your next `/problem`).
+a short **Learnings** list in Outputs (these feed your next `/1-problem`).
 
 Then close the loop: the founder has something clickable. Point them to ship it
 (publish in Lovable, or `npm run build` + host the template) for Demo Night.

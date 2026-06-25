@@ -1,6 +1,6 @@
 ---
-name: lovable
-description: Route A of the Build It, Show It workshop — converts a spec into a sequence of 3-4 copy-paste Lovable prompts for a no-code build, then saves a branded HTML artifact. Use after /spec for the no-code path or when the user types /lovable.
+name: 3a-lovable
+description: Route A of the Build It, Show It workshop — converts a spec into a sequence of 3-4 copy-paste Lovable prompts for a no-code build, then saves a branded HTML artifact. Use after /2-spec for the no-code path or when the user types /3a-lovable.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Bash(mkdir *), Bash(cp *)
@@ -14,7 +14,7 @@ to get a clickable demo. Read `.claude/skills/shared/HARNESS.md` first.
 ## Beat 0 — Load context
 
 Read `workshop/02-spec.html` (and `01-problem.html`). Build from the spec's one
-screen, inputs/outputs, and faked data. If the spec is missing, run `/spec` first.
+screen, inputs/outputs, and faked data. If the spec is missing, run `/2-spec` first.
 
 ## Beat 1 — Interview (short)
 
@@ -45,5 +45,5 @@ interview answers in Inputs; the prompt script (each prompt in a `.prompt` block
 with its note + fallback) in Outputs.
 
 Then tell the founder: paste prompt 1 into Lovable, check it produced the right
-thing, then move on. Next: **`/test-iterate`** to make the demo believable, then
+thing, then move on. Next: **`/5-test-iterate`** to make the demo believable, then
 publish to a URL.

@@ -6,8 +6,8 @@ artifact-saving step so the instructions stay DRY.
 ## The flow
 
 ```
-/problem → /spec → ┬─ /lovable                    (no-code route)
-                   └─ /scope-design → /build ⇄ /test-iterate   (Claude Code route)
+/1-problem → /2-spec → ┬─ /3a-lovable                          (no-code route)
+                       └─ /3b-scope-design → /4-build ⇄ /5-test-iterate   (Claude Code route)
 ```
 
 Each stage reads the previous stage's artifact and builds on it. Never re-ask
@@ -42,12 +42,12 @@ Edmonton-Unlimited-branded HTML file.
 
 | Skill | File | Stage label | Icon |
 | --- | --- | --- | --- |
-| problem | `workshop/01-problem.html` | Problem | 🎯 |
-| spec | `workshop/02-spec.html` | Spec | 💬 |
-| lovable | `workshop/03a-lovable.html` | Build · Lovable | ✦ |
-| scope-design | `workshop/03b-scope-design.html` | Scope & Design | ✂ |
-| build | `workshop/04-build.html` | Build | 🔧 |
-| test-iterate | `workshop/05-test-iterate.html` | Test & Iterate | 🧪 |
+| /1-problem | `workshop/01-problem.html` | Problem | 🎯 |
+| /2-spec | `workshop/02-spec.html` | Spec | 💬 |
+| /3a-lovable | `workshop/03a-lovable.html` | Build · Lovable | ✦ |
+| /3b-scope-design | `workshop/03b-scope-design.html` | Scope & Design | ✂ |
+| /4-build | `workshop/04-build.html` | Build | 🔧 |
+| /5-test-iterate | `workshop/05-test-iterate.html` | Test & Iterate | 🧪 |
 
 Use `$ARGUMENTS` (if provided) as the project name; otherwise read it from the
 most recent artifact, or ask. Keep the same project name across all artifacts.
