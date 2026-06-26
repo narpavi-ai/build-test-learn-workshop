@@ -2,11 +2,18 @@
 // Starter API — Express + SQLite. Runs on http://localhost:3001.
 // Start with `npm run dev` from the repo root (runs this and the web app).
 // ---------------------------------------------------------------------------
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { isEmpty } from './src/db.js';
 import { seed } from './src/seed.js';
 import { items } from './src/items.js';
+
+// Load the repo-root .env (copy .env.example → .env to override the port etc.).
+const __dirname = dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: join(__dirname, '../../.env') });
 
 // First run convenience: if the database is empty, load the seed data so the
 // app is never blank during a live demo.
