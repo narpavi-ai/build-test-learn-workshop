@@ -1,19 +1,23 @@
 ---
-name: 3b-scope-design
-description: Route B of the Build It, Show It workshop — cuts a spec down to one magic-moment screen and captures the brand (name, tagline, logo, colours) for the starter template, then saves a branded HTML artifact. Use after /2-spec for the Claude Code path or when the user types /3b-scope-design.
+name: 4b-scope-design
+description: Route B of the Build It, Show It workshop — cuts the spec down to one magic-moment screen and captures the brand (name, tagline, logo, colours) for the starter template, then saves a branded HTML artifact. Use after /3-opportunity for the Claude Code path or when the user types /4b-scope-design.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Edit, Bash(mkdir *), Bash(cp *)
 ---
 
-# Stage 3B — Scope & Design
+# Stage 4B — Scope & Design
 
 Goal: lock the **one screen** to build, and decide how the app **looks** so the
-starter template becomes the founder's product. Read `.claude/skills/shared/HARNESS.md` first.
+starter template becomes the founder's product. Read `.claude/skills/shared/HARNESS.md`
+first. For the brand.js field map, colour/vibe guidance, and logo options, read
+`reference.md` in this folder.
 
 ## Beat 0 — Load context
 
-Read `workshop/02-spec.html` (and `01-problem.html`). If missing, run `/2-spec` first.
+Resolve the active run and read `workshop/runs/<slug>/02-spec.html` (and
+`01-problem.html`, `03-opportunity.html` — use the wedge for the name/positioning).
+If the spec is missing, run `/2-spec` first.
 
 ## Beat 1 — Interview
 
@@ -40,13 +44,13 @@ options (the founder picks **Other** to type their own).
    lightweight — one file. If a logo image is provided, note where to drop it;
    otherwise use the emoji/letter mark.
 3. Note the data model rename they'll need in `apps/api/src/db.js` (e.g.
-   `items` → `recipes`) — `/4-build` will do the actual rename.
+   `items` → `recipes`) — `/5-build` will do the actual rename.
 
 ## Beat 3 — Save & hand off
 
-Save to `workshop/03b-scope-design.html` (icon ✂, stage 3, label "Scope & Design"):
-interview answers in Inputs; the scope (keep/cut lists) and the brand choices
-(show the colour + name) in Outputs.
+Save to `workshop/runs/<slug>/04b-scope-design.html` (icon ✂, stage 4, label
+"Scope & Design"): interview answers in Inputs; the scope (keep/cut lists) and the
+brand choices (show the colour + name) in Outputs.
 
-Then tell the founder: the app is now branded as **[name]**. Next: **`/4-build`**
+Then tell the founder: the app is now branded as **[name]**. Next: **`/5-build`**
 to wire your one screen into the starter template.

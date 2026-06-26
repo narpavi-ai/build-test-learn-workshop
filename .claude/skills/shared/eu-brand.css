@@ -19,6 +19,7 @@ body{font-family:var(--body);background:#eee9fb;color:var(--ink);-webkit-font-sm
 /* Header band */
 .bar{display:flex;align-items:center;justify-content:space-between;padding:26px 0;}
 .wordmark{display:flex;align-items:center;gap:12px;}
+.logo-img{height:26px;width:auto;display:block;flex:none;}
 .logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--blue));position:relative;flex:none;}
 .logo-mark::after{content:"";position:absolute;inset:9px;border:2.5px solid rgba(255,255,255,.9);border-radius:4px;}
 .wordmark b{font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;display:block;}

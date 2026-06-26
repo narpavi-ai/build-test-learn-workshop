@@ -1,20 +1,24 @@
 ---
-name: 3a-lovable
-description: Route A of the Build It, Show It workshop — converts a spec into a sequence of 3-4 copy-paste Lovable prompts for a no-code build, then saves a branded HTML artifact. Use after /2-spec for the no-code path or when the user types /3a-lovable.
+name: 4a-lovable
+description: Route A of the Build It, Show It workshop — converts the spec into a sequence of 3-4 copy-paste Lovable prompts for a no-code build, then saves a branded HTML artifact. Use after /3-opportunity for the no-code path or when the user types /4a-lovable.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Bash(mkdir *), Bash(cp *)
 ---
 
-# Stage 3A — Build in Lovable (no-code)
+# Stage 4A — Build in Lovable (no-code)
 
 Goal: turn the spec into a tight prompt script the founder pastes into Lovable
-to get a clickable demo. Read `.claude/skills/shared/HARNESS.md` first.
+to get a clickable demo. Read `.claude/skills/shared/HARNESS.md` first. For
+prompt-writing patterns, free-tier budgeting, and live-fail fallbacks, read
+`reference.md` in this folder.
 
 ## Beat 0 — Load context
 
-Read `workshop/02-spec.html` (and `01-problem.html`). Build from the spec's one
-screen, inputs/outputs, and faked data. If the spec is missing, run `/2-spec` first.
+Resolve the active run and read `workshop/runs/<slug>/02-spec.html` (and
+`01-problem.html`, `03-opportunity.html`). Build from the spec's one screen,
+inputs/outputs, and faked data; let the opportunity wedge shape the name/copy.
+If the spec is missing, run `/2-spec` first.
 
 ## Beat 1 — Interview (short)
 
@@ -41,10 +45,10 @@ Typical shape:
 
 ## Beat 3 — Save & hand off
 
-Save to `workshop/03a-lovable.html` (icon ✦, stage 3, label "Build · Lovable"):
-interview answers in Inputs; the prompt script (each prompt in a `.prompt` block
-with its note + fallback) in Outputs.
+Save to `workshop/runs/<slug>/04a-lovable.html` (icon ✦, stage 4, label
+"Build · Lovable"): interview answers in Inputs; the prompt script (each prompt in
+a `.prompt` block with its note + fallback) in Outputs.
 
 Then tell the founder: paste prompt 1 into Lovable, check it produced the right
-thing, then move on. Next: **`/5-test-iterate`** to make the demo believable, then
+thing, then move on. Next: **`/6-test-iterate`** to make the demo believable, then
 publish to a URL.

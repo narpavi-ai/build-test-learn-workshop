@@ -1,22 +1,36 @@
 ---
 name: 1-problem
-description: Runs the Problem stage of the Build It, Show It workshop — interviews a founder to name one user and one pain, then saves a branded HTML artifact. Use when starting a new idea or when the user types /1-problem.
+description: Front door of the Build It, Show It workshop — takes a founder's idea (plus any discovery notes), pins down one user and one pain, creates the run folder, and saves a branded HTML artifact. Use when starting a new idea or when the user types /1-problem.
 disable-model-invocation: true
-argument-hint: [project name]
+argument-hint: [idea + any discovery notes]
 allowed-tools: Read, Write, Bash(mkdir *), Bash(cp *)
 ---
 
 # Stage 1 — Problem
 
 Goal: get the founder to name **one user** and **one pain** in a single sentence.
-Read `.claude/skills/shared/HARNESS.md` first for the shared rules.
+This is the **front door** — it also sets up where the whole run is saved.
+Read `.claude/skills/shared/HARNESS.md` first for the shared rules. For deeper
+guidance (how to pick one user, pain types, the FridgeChef example, common
+mistakes), read `reference.md` in this folder.
 
-Project name: `$ARGUMENTS` (ask if empty).
+## Beat 0 — Take the idea & open the run folder
+
+`$ARGUMENTS` is the founder's **idea plus any discovery notes** (free text). If
+it's empty, ask for one sentence on the idea.
+
+1. From the idea, pick a short **project name** and derive a kebab-case `<slug>`
+   (e.g. "FridgeChef" → `fridgechef`). Confirm the name with the founder if unsure.
+2. Create the run folder and ensure shared assets exist (see HARNESS.md "Saving"):
+   `mkdir -p workshop/runs/<slug> workshop/assets`, then copy the brand CSS + logo
+   if missing.
+3. **Mine the notes first.** Anything the discovery notes already answer, don't
+   re-ask — pre-fill it and just confirm.
 
 ## Beat 1 — Interview
 
-Ask these with the **AskUserQuestion** tool (group them into one or two panels;
-the founder picks **Other** to type their own answer). Push back gently if an
+Ask what's still missing with the **AskUserQuestion** tool (group into one or two
+panels; the founder picks **Other** to type their own). Push back gently if an
 answer is vague ("everyone" is not a user).
 
 1. In one sentence, what's the idea?
@@ -36,9 +50,10 @@ what "solved" would feel like. Keep it concrete and free of jargon.
 
 ## Beat 3 — Save & hand off
 
-Save the artifact to `workshop/01-problem.html` following the **Saving artifacts**
-section of HARNESS.md (icon 🎯, stage 1, label "Problem"). Put the interview Q&A
-in the Inputs section and the problem statement + supporting points in Outputs.
+Save the artifact to `workshop/runs/<slug>/01-problem.html` following the **Saving
+artifacts** section of HARNESS.md (icon 🎯, stage 1, label "Problem"). Put the
+interview Q&A in the Inputs section and the problem statement + supporting points
+in Outputs.
 
 Then show the founder the problem statement and say: **next, run `/2-spec` to turn
 this into a tight build brief.**

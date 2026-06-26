@@ -1,17 +1,37 @@
 # The Build It, Show It harness — shared conventions
 
-All six workshop skills share these rules. Each SKILL.md links here for the
+All seven workshop skills share these rules. Each SKILL.md links here for the
 artifact-saving step so the instructions stay DRY.
 
 ## The flow
 
 ```
-/1-problem → /2-spec → ┬─ /3a-lovable                          (no-code route)
-                       └─ /3b-scope-design → /4-build ⇄ /5-test-iterate   (Claude Code route)
+/1-problem → /2-spec → /3-opportunity → ┬─ /4a-lovable                       (no-code route)
+                                          └─ /4b-scope-design → /5-build ⇄ /6-test-iterate
 ```
 
-Each stage reads the previous stage's artifact and builds on it. Never re-ask
+Why this order: **Problem** names who hurts. **Spec** cuts it to one buildable
+screen — so by **Opportunity** the founder is sizing the *actual* product, not a
+vague idea, which makes the competitor read and the market story sharp enough to
+build with and pitch on Demo Night. Stage 3 then forks into the two build routes.
+
+Each stage reads the previous stages' artifacts and builds on them. Never re-ask
 something an earlier artifact already answers — read it first.
+
+## The run folder (where artifacts are saved)
+
+Every founder's run lives in its own folder so two ideas never overwrite each
+other: **`workshop/runs/<slug>/`**, where `<slug>` is the project name in
+kebab-case (e.g. "FridgeChef" → `fridgechef`, "Study Buddy" → `study-buddy`).
+
+- **`/1-problem` is the front door.** It takes the idea (+ any discovery notes)
+  as its argument, derives `<slug>`, creates `workshop/runs/<slug>/`, and saves the
+  first artifact there.
+- **Later skills resolve the active run** by: using `$ARGUMENTS` if it names a
+  project/slug; otherwise the **most-recently-modified** folder under
+  `workshop/runs/`. Read prior artifacts from that same folder.
+- The brand stylesheet is shared across all runs at **`workshop/assets/eu-brand.css`**
+  and linked from each artifact as **`../../assets/eu-brand.css`**.
 
 ## How every skill works (three beats)
 
@@ -30,31 +50,34 @@ The founder is the author; AI does the typing.
 ## Saving artifacts (do this at the end of every skill)
 
 Save BOTH the inputs (interview answers) and outputs (what you produced) as one
-Edmonton-Unlimited-branded HTML file.
+Edmonton-Unlimited-branded HTML file inside the run folder.
 
-1. Ensure the output dir exists and has the stylesheet:
-   - `mkdir -p workshop/assets`
-   - If `workshop/assets/eu-brand.css` is missing, copy it:
+1. Ensure the shared assets exist (once per workspace):
+   - `mkdir -p workshop/assets workshop/runs/<slug>`
+   - If any are missing, copy them from `.claude/skills/shared/`:
      `cp .claude/skills/shared/eu-brand.css workshop/assets/eu-brand.css`
+     `cp .claude/skills/shared/eu-logo-navy.svg workshop/assets/eu-logo-navy.svg`
 2. Read `.claude/skills/shared/artifact-template.html`, replace every `{{TOKEN}}`,
-   and write to `workshop/<NN>-<stage>.html` using the numbering below.
-3. Create or update `workshop/index.html` (dashboard) so the new artifact is
-   linked. Use the `.deck`/`a.tile` markup from eu-brand.css; mark stages not
-   yet done with `class="tile todo"`.
+   and write to `workshop/runs/<slug>/<NN>-<stage>.html` using the numbering below.
+3. Create or update `workshop/index.html` (the dashboard) so the new artifact is
+   linked under the active run. Use the `.deck`/`a.tile` markup from eu-brand.css;
+   mark stages not yet done with `class="tile todo"`.
 
 ### File numbering & icons
 
-| Skill | File | Stage label | Icon |
+| Skill | File (in `workshop/runs/<slug>/`) | Stage label | Icon |
 | --- | --- | --- | --- |
-| /1-problem | `workshop/01-problem.html` | Problem | 🎯 |
-| /2-spec | `workshop/02-spec.html` | Spec | 💬 |
-| /3a-lovable | `workshop/03a-lovable.html` | Build · Lovable | ✦ |
-| /3b-scope-design | `workshop/03b-scope-design.html` | Scope & Design | ✂ |
-| /4-build | `workshop/04-build.html` | Build | 🔧 |
-| /5-test-iterate | `workshop/05-test-iterate.html` | Test & Iterate | 🧪 |
+| /1-problem | `01-problem.html` | Problem | 🎯 |
+| /2-spec | `02-spec.html` | Spec | 💬 |
+| /3-opportunity | `03-opportunity.html` | Opportunity | 📊 |
+| /4a-lovable | `04a-lovable.html` | Build · Lovable | ✦ |
+| /4b-scope-design | `04b-scope-design.html` | Scope & Design | ✂ |
+| /5-build | `05-build.html` | Build | 🔧 |
+| /6-test-iterate | `06-test-iterate.html` | Test & Iterate | 🧪 |
 
 Use `$ARGUMENTS` (if provided) as the project name; otherwise read it from the
-most recent artifact, or ask. Keep the same project name across all artifacts.
+most recent artifact, or ask. Keep the same project name (and `<slug>`) across all
+artifacts in a run.
 
 ## Tone
 

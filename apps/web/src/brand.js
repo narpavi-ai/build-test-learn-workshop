@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------
 // 🎨 YOUR BRAND — one file to make this app look like YOUR product.
-// The /scope-design skill fills this in for you during the workshop. Change it
+// The /4b-scope-design skill fills this in for you during the workshop. Change it
 // any time: the name, the tagline, the logo, the colours, the call-to-action.
 // ---------------------------------------------------------------------------
 export const brand = {
