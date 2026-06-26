@@ -9,7 +9,7 @@
 <body>
   <div class="page">
     <div class="bar">
-      <div class="wordmark"><div class="logo-mark"></div><div><b>Edmonton Unlimited</b><small>Build It, Show It</small></div></div>
+      <div class="wordmark"><img class="logo-img" src="assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
       <div class="chip">Workshop output</div>
     </div>
 
@@ -17,28 +17,32 @@
       <div class="stage-icon">🚀</div>
       <div class="eyebrow">Your harness output</div>
       <h1>Every stage, saved as you go</h1>
-      <p>Run the skills in Claude Code and each one drops a record here. Below is a complete worked example to follow.</p>
+      <p>Run the skills in Claude Code and each one drops a record into your run folder. Below is a complete worked example to follow.</p>
     </div>
 
     <h2 class="sec">Worked example · FridgeChef</h2>
     <div class="deck">
       <a class="tile" href="examples/fridgechef/01-problem.html"><div class="n">STAGE 1</div><h3>🎯 Problem</h3><p>Who hurts and why</p></a>
-      <a class="tile" href="examples/fridgechef/02-spec.html"><div class="n">STAGE 2</div><h3>💬 Spec</h3><p>The one-screen brief + the fork</p></a>
-      <a class="tile" href="examples/fridgechef/03a-lovable.html"><div class="n">STAGE 3 · A</div><h3>✦ Build · Lovable</h3><p>No-code prompt script</p></a>
-      <a class="tile" href="examples/fridgechef/03b-scope-design.html"><div class="n">STAGE 3 · B</div><h3>✂ Scope &amp; Design</h3><p>One screen + brand</p></a>
-      <a class="tile" href="examples/fridgechef/04-build.html"><div class="n">STAGE 4</div><h3>🔧 Build</h3><p>Real round-trip in the template</p></a>
-      <a class="tile" href="examples/fridgechef/05-test-iterate.html"><div class="n">STAGE 5</div><h3>🧪 Test &amp; Iterate</h3><p>Make it work + learnings</p></a>
+      <a class="tile" href="examples/fridgechef/02-spec.html"><div class="n">STAGE 2</div><h3>💬 Spec</h3><p>The one-screen build brief</p></a>
+      <a class="tile" href="examples/fridgechef/03-opportunity.html"><div class="n">STAGE 3</div><h3>📊 Opportunity</h3><p>Competitors, demand, sizing, the wedge</p></a>
+      <a class="tile" href="examples/fridgechef/04a-lovable.html"><div class="n">STAGE 4 · A</div><h3>✦ Build · Lovable</h3><p>No-code prompt script</p></a>
+      <a class="tile" href="examples/fridgechef/04b-scope-design.html"><div class="n">STAGE 4 · B</div><h3>✂ Scope &amp; Design</h3><p>One screen + brand</p></a>
+      <a class="tile" href="examples/fridgechef/05-build.html"><div class="n">STAGE 5</div><h3>🔧 Build</h3><p>Real round-trip in the template</p></a>
+      <a class="tile" href="examples/fridgechef/06-test-iterate.html"><div class="n">STAGE 6</div><h3>🧪 Test &amp; Iterate</h3><p>Make it work + learnings</p></a>
     </div>
 
     <h2 class="sec in">Your run</h2>
-    <p style="color:var(--muted);">Run the skills in order — they fill these in. Forked at stage 3: pick Lovable <em>or</em> the starter template.</p>
+    <p style="color:var(--muted);">Start with <strong>/1-problem &lt;your idea + any discovery notes&gt;</strong>. It creates your own folder at
+    <code>workshop/runs/&lt;your-idea&gt;/</code> and every stage saves there — your run never overwrites anyone else's.
+    The path forks at stage 4: pick Lovable <em>or</em> the starter template.</p>
     <div class="deck">
-      <a class="tile todo" href="01-problem.html"><div class="n">/1-problem</div><h3>🎯 Problem</h3><p>workshop/01-problem.html</p></a>
-      <a class="tile todo" href="02-spec.html"><div class="n">/2-spec</div><h3>💬 Spec</h3><p>workshop/02-spec.html</p></a>
-      <a class="tile todo" href="03a-lovable.html"><div class="n">/3a-lovable</div><h3>✦ Build · Lovable</h3><p>workshop/03a-lovable.html</p></a>
-      <a class="tile todo" href="03b-scope-design.html"><div class="n">/3b-scope-design</div><h3>✂ Scope &amp; Design</h3><p>workshop/03b-scope-design.html</p></a>
-      <a class="tile todo" href="04-build.html"><div class="n">/4-build</div><h3>🔧 Build</h3><p>workshop/04-build.html</p></a>
-      <a class="tile todo" href="05-test-iterate.html"><div class="n">/5-test-iterate</div><h3>🧪 Test &amp; Iterate</h3><p>workshop/05-test-iterate.html</p></a>
+      <a class="tile todo"><div class="n">/1-problem</div><h3>🎯 Problem</h3><p>runs/&lt;you&gt;/01-problem.html</p></a>
+      <a class="tile todo"><div class="n">/2-spec</div><h3>💬 Spec</h3><p>runs/&lt;you&gt;/02-spec.html</p></a>
+      <a class="tile todo"><div class="n">/3-opportunity</div><h3>📊 Opportunity</h3><p>runs/&lt;you&gt;/03-opportunity.html</p></a>
+      <a class="tile todo"><div class="n">/4a-lovable</div><h3>✦ Build · Lovable</h3><p>runs/&lt;you&gt;/04a-lovable.html</p></a>
+      <a class="tile todo"><div class="n">/4b-scope-design</div><h3>✂ Scope &amp; Design</h3><p>runs/&lt;you&gt;/04b-scope-design.html</p></a>
+      <a class="tile todo"><div class="n">/5-build</div><h3>🔧 Build</h3><p>runs/&lt;you&gt;/05-build.html</p></a>
+      <a class="tile todo"><div class="n">/6-test-iterate</div><h3>🧪 Test &amp; Iterate</h3><p>runs/&lt;you&gt;/06-test-iterate.html</p></a>
     </div>
 
     <div class="foot"><span>Build It, Show It</span><span>Edmonton Unlimited · Student Founders Launch</span></div>
