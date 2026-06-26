@@ -113,16 +113,14 @@
     z-index:5;
   }
   .wordmark{display:flex; align-items:center; gap:12px;}
-  .logo-mark{
-    width:34px; height:34px; border-radius:9px;
-    background:linear-gradient(135deg,var(--purple),var(--blue));
-    position:relative; flex:none;
+  .logo-img{
+    width:128px; height:30px; flex:none;
+    background:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDkyIDI0MCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiM4YzRlZmQ7fS5jbHMtMntmaWxsOiMwODAwNWM7fTwvc3R5bGU+PC9kZWZzPjxnIGlkPSJMYXllcl8xLTIiPjxnPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMwNCwyMTkuMjN2LTg0LjZoMjQuOTl2ODAuMzljMCwxLjk2LC45LDIuODYsMi44NiwyLjg2aDI2LjQyYzIuMTEsMCwyLjg2LS45LDIuODYtMi44NnYtODAuMzloMjQuOTl2ODQuNmMwLDEzLjctNi45MiwyMC43Ny0yMC43NywyMC43N2gtNDAuNTdjLTEzLjcsMC0yMC43Ny03LjA4LTIwLjc3LTIwLjc3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQwNS41NywxMzQuNjJoMjUuNDRsMzcuMTgsNjEuODd2LTYxLjg3aDI0LjI0djEwNS4zOGgtMjMuMThsLTM5LjQ0LTY1LjMzdjY1LjMzaC0yNC4yNHYtMTA1LjM4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTUxMS45LDEzNC42MmgyNC45OXY4My40aDQ3LjY0djIxLjk4aC03Mi42M3YtMTA1LjM4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTYwMy45OSwxMzQuNjJoMjQuOTl2MTA1LjM4aC0yNC45OXYtMTA1LjM4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTY0OC40NCwxMzQuNjJoMjcuODVsMjUuODksNTguNzEsMjUuNzQtNTguNzFoMjcuN3YxMDUuMzhoLTI0LjM5di02My45OGwtMjEuMjMsNTAuNThoLTE2LjU2bC0yMS4yMy01MC41OHY2My45OGgtMjMuNzl2LTEwNS4zOFoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik03NzUuMDgsMTM0LjYyaDI0Ljk5djEwNS4zOGgtMjQuOTl2LTEwNS4zOFoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik04NDYuOTMsMTU2LjQ1aC0yNy40di0yMS44M2g3OS45NHYyMS44M2gtMjcuNTV2ODMuNTVoLTI0Ljk5di04My41NVoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik05MTguOTMsMTM0LjYyaDcyLjU2djIxLjY4aC00Ny41N3YxOS4xMmgzOC4wOXYyMS4zOGgtMzguMDl2MjEuNTNoNDcuNTd2MjEuNjhoLTcyLjU2di0xMDUuMzhaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTAxMC45NSwxMzQuNjJoNjAuMjJjMTQsMCwyMC43Nyw2LjYyLDIwLjc3LDIwLjc3djYzLjgzYzAsMTQtNi43NywyMC43Ny0yMC43NywyMC43N2gtNjAuMjJ2LTEwNS4zOFptNTMuMTQsODMuN2MyLjExLDAsMi44Ni0uNzUsMi44Ni0yLjg2di01Ni4zYzAtMi4yNi0uNzUtMi44Ni0yLjg2LTIuODZoLTI4LjE1djYyLjAyaDI4LjE1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMwNCwwaDcyLjU2VjIxLjY4aC00Ny41N3YxOS4xMmgzOC4wOXYyMS4zOGgtMzguMDl2MjEuNTNoNDcuNTd2MjEuNjhoLTcyLjU2VjBaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzkyLjIxLDBoNjAuMjFjMTQsMCwyMC43Nyw2LjYyLDIwLjc3LDIwLjc3djYzLjgzYzAsMTQtNi43NywyMC43Ny0yMC43NywyMC43N2gtNjAuMjFWMFptNTMuMTQsODMuN2MyLjExLDAsMi44Ni0uNzUsMi44Ni0yLjg2VjI0LjU0YzAtMi4yNi0uNzUtMi44Ni0yLjg2LTIuODZoLTI4LjE1djYyLjAyaDI4LjE1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTQ4OC44NCwwaDI3Ljg1bDI1Ljg5LDU4LjcxTDU2OC4zMywwaDI3LjdWMTA1LjM4aC0yNC4zOVY0MS40bC0yMS4yMyw1MC41OGgtMTYuNTZsLTIxLjIzLTUwLjU4djYzLjk4aC0yMy43OVYwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTYxMS42Nyw4NC42VjIwLjc3YzAtMTQuMTUsNi43Ny0yMC43NywyMC43Ny0yMC43N2g0MC40OWMxNC4xNSwwLDIwLjc3LDYuNjIsMjAuNzcsMjAuNzd2NjMuODNjMCwxNC02LjYyLDIwLjc3LTIwLjc3LDIwLjc3aC00MC40OWMtMTQsMC0yMC43Ny02Ljc3LTIwLjc3LTIwLjc3Wm01NC4xOS0uOWMyLjI2LDAsMi44Ni0uNzUsMi44Ni0yLjg2VjI0LjU0YzAtMi4yNi0uNi0yLjg2LTIuODYtMi44NmgtMjYuMzRjLTIuMTEsMC0yLjg2LC42LTIuODYsMi44NnY1Ni4zYzAsMi4xMSwuNzUsMi44NiwyLjg2LDIuODZoMjYuMzRaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNzA5LjM2LDBoMjUuNDRsMzcuMTgsNjEuODdWMGgyNC4yNFYxMDUuMzhoLTIzLjE4bC0zOS40NC02NS4zM1YxMDUuMzhoLTI0LjI0VjBaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNODM5LjI3LDIxLjgzaC0yNy40VjBoNzkuOTRWMjEuODNoLTI3LjU1VjEwNS4zOGgtMjQuOTlWMjEuODNaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNOTA3LjQ1LDg0LjZWMjAuNzdjMC0xNC4xNSw2Ljc3LTIwLjc3LDIwLjc3LTIwLjc3aDQwLjQ5YzE0LjE1LDAsMjAuNzcsNi42MiwyMC43NywyMC43N3Y2My44M2MwLDE0LTYuNjIsMjAuNzctMjAuNzcsMjAuNzdoLTQwLjQ5Yy0xNCwwLTIwLjc3LTYuNzctMjAuNzctMjAuNzdabTU0LjE5LS45YzIuMjYsMCwyLjg2LS43NSwyLjg2LTIuODZWMjQuNTRjMC0yLjI2LS42LTIuODYtMi44Ni0yLjg2aC0yNi4zNGMtMi4xMSwwLTIuODYsLjYtMi44NiwyLjg2djU2LjNjMCwyLjExLC43NSwyLjg2LDIuODYsMi44NmgyNi4zNFoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xMDA1LjE0LDBoMjUuNDRsMzcuMTgsNjEuODdWMGgyNC4yNFYxMDUuMzhoLTIzLjE4bC0zOS40NC02NS4zM1YxMDUuMzhoLTI0LjI0VjBaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMjM0LDQ4aC0zMGMtNi42MywwLTEyLTUuMzctMTItMTJWNmMwLTMuMzEtMi42OS02LTYtNkg1NGMtMy4zMSwwLTYsMi42OS02LDZ2MzBjMCw2LjYzLTUuMzcsMTItMTIsMTJINmMtMy4zMSwwLTYsMi42OS02LDZ2MzZjMCwzLjMxLDIuNjksNiw2LDZoMzBjNi42MywwLDEyLDUuMzcsMTIsMTJ2MjRjMCw2LjYzLTUuMzcsMTItMTIsMTJINmMtMy4zMSwwLTYsMi42OS02LDZ2MzZjMCwzLjMxLDIuNjksNiw2LDZoMzBjNi42MywwLDEyLDUuMzcsMTIsMTJ2MzBjMCwzLjMxLDIuNjksNiw2LDZIMTg2YzMuMzEsMCw2LTIuNjksNi02di0zMGMwLTYuNjMsNS4zNy0xMiwxMi0xMmgzMGMzLjMxLDAsNi0yLjY5LDYtNlY1NGMwLTMuMzEtMi42OS02LTYtNlpNNjAsMTkyYy02LjYzLDAtMTItNS4zNy0xMi0xMnYtMjRjMC02LjYzLDUuMzctMTIsMTItMTJoNzhjMy4zMSwwLDYtMi42OSw2LTZ2LTM2YzAtMy4zMS0yLjY5LTYtNi02SDYwYy02LjYzLDAtMTItNS4zNy0xMi0xMnYtMjRjMC02LjYzLDUuMzctMTIsMTItMTJoMTIwYzYuNjMsMCwxMiw1LjM3LDEyLDEydjEyMGMwLDYuNjMtNS4zNywxMi0xMiwxMkg2MFoiLz48L2c+PC9nPjwvc3ZnPg==") no-repeat left center;
+    background-size:contain;
   }
-  .logo-mark::after{
-    content:""; position:absolute; inset:9px;
-    border:2.5px solid rgba(255,255,255,.9); border-radius:4px;
+  .dark .logo-img,.divider .logo-img{
+    background-image:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDkyIDI0MCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7fS5jbHMtMntmaWxsOiM4YzRlZmQ7fTwvc3R5bGU+PC9kZWZzPjxnIGlkPSJMYXllcl8xLTIiPjxnPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMwNCwyMTkuMjN2LTg0LjZoMjQuOTl2ODAuMzljMCwxLjk2LC45LDIuODYsMi44NiwyLjg2aDI2LjQyYzIuMTEsMCwyLjg2LS45LDIuODYtMi44NnYtODAuMzloMjQuOTl2ODQuNmMwLDEzLjctNi45MiwyMC43Ny0yMC43NywyMC43N2gtNDAuNTdjLTEzLjcsMC0yMC43Ny03LjA4LTIwLjc3LTIwLjc3WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQwNS41NywxMzQuNjJoMjUuNDRsMzcuMTgsNjEuODd2LTYxLjg3aDI0LjI0djEwNS4zOGgtMjMuMThsLTM5LjQ0LTY1LjMzdjY1LjMzaC0yNC4yNHYtMTA1LjM4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTUxMS45LDEzNC42MmgyNC45OXY4My40aDQ3LjY0djIxLjk4aC03Mi42M3YtMTA1LjM4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYwMy45OSwxMzQuNjJoMjQuOTl2MTA1LjM4aC0yNC45OXYtMTA1LjM4WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTY0OC40NCwxMzQuNjJoMjcuODVsMjUuODksNTguNzEsMjUuNzQtNTguNzFoMjcuN3YxMDUuMzhoLTI0LjM5di02My45OGwtMjEuMjMsNTAuNThoLTE2LjU2bC0yMS4yMy01MC41OHY2My45OGgtMjMuNzl2LTEwNS4zOFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik03NzUuMDgsMTM0LjYyaDI0Ljk5djEwNS4zOGgtMjQuOTl2LTEwNS4zOFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik04NDYuOTMsMTU2LjQ1aC0yNy40di0yMS44M2g3OS45NHYyMS44M2gtMjcuNTV2ODMuNTVoLTI0Ljk5di04My41NVoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05MTguOTMsMTM0LjYyaDcyLjU2djIxLjY4aC00Ny41N3YxOS4xMmgzOC4wOXYyMS4zOGgtMzguMDl2MjEuNTNoNDcuNTd2MjEuNjhoLTcyLjU2di0xMDUuMzhaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTAxMC45NSwxMzQuNjJoNjAuMjJjMTQsMCwyMC43Nyw2LjYyLDIwLjc3LDIwLjc3djYzLjgzYzAsMTQtNi43NywyMC43Ny0yMC43NywyMC43N2gtNjAuMjJ2LTEwNS4zOFptNTMuMTQsODMuN2MyLjExLDAsMi44Ni0uNzUsMi44Ni0yLjg2di01Ni4zYzAtMi4yNi0uNzUtMi44Ni0yLjg2LTIuODZoLTI4LjE1djYyLjAyaDI4LjE1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMwNCwwaDcyLjU2VjIxLjY4aC00Ny41N3YxOS4xMmgzOC4wOXYyMS4zOGgtMzguMDl2MjEuNTNoNDcuNTd2MjEuNjhoLTcyLjU2VjBaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzkyLjIxLDBoNjAuMjFjMTQsMCwyMC43Nyw2LjYyLDIwLjc3LDIwLjc3djYzLjgzYzAsMTQtNi43NywyMC43Ny0yMC43NywyMC43N2gtNjAuMjFWMFptNTMuMTQsODMuN2MyLjExLDAsMi44Ni0uNzUsMi44Ni0yLjg2VjI0LjU0YzAtMi4yNi0uNzUtMi44Ni0yLjg2LTIuODZoLTI4LjE1djYyLjAyaDI4LjE1WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTQ4OC44NCwwaDI3Ljg1bDI1Ljg5LDU4LjcxTDU2OC4zMywwaDI3LjdWMTA1LjM4aC0yNC4zOVY0MS40bC0yMS4yMyw1MC41OGgtMTYuNTZsLTIxLjIzLTUwLjU4djYzLjk4aC0yMy43OVYwWiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTYxMS42Nyw4NC42VjIwLjc3YzAtMTQuMTUsNi43Ny0yMC43NywyMC43Ny0yMC43N2g0MC40OWMxNC4xNSwwLDIwLjc3LDYuNjIsMjAuNzcsMjAuNzd2NjMuODNjMCwxNC02LjYyLDIwLjc3LTIwLjc3LDIwLjc3aC00MC40OWMtMTQsMC0yMC43Ny02Ljc3LTIwLjc3LTIwLjc3Wm01NC4xOS0uOWMyLjI2LDAsMi44Ni0uNzUsMi44Ni0yLjg2VjI0LjU0YzAtMi4yNi0uNi0yLjg2LTIuODYtMi44NmgtMjYuMzRjLTIuMTEsMC0yLjg2LC42LTIuODYsMi44NnY1Ni4zYzAsMi4xMSwuNzUsMi44NiwyLjg2LDIuODZoMjYuMzRaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNzA5LjM2LDBoMjUuNDRsMzcuMTgsNjEuODdWMGgyNC4yNFYxMDUuMzhoLTIzLjE4bC0zOS40NC02NS4zM1YxMDUuMzhoLTI0LjI0VjBaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNODM5LjI3LDIxLjgzaC0yNy40VjBoNzkuOTRWMjEuODNoLTI3LjU1VjEwNS4zOGgtMjQuOTlWMjEuODNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOTA3LjQ1LDg0LjZWMjAuNzdjMC0xNC4xNSw2Ljc3LTIwLjc3LDIwLjc3LTIwLjc3aDQwLjQ5YzE0LjE1LDAsMjAuNzcsNi42MiwyMC43NywyMC43N3Y2My44M2MwLDE0LTYuNjIsMjAuNzctMjAuNzcsMjAuNzdoLTQwLjQ5Yy0xNCwwLTIwLjc3LTYuNzctMjAuNzctMjAuNzdabTU0LjE5LS45YzIuMjYsMCwyLjg2LS43NSwyLjg2LTIuODZWMjQuNTRjMC0yLjI2LS42LTIuODYtMi44Ni0yLjg2aC0yNi4zNGMtMi4xMSwwLTIuODYsLjYtMi44NiwyLjg2djU2LjNjMCwyLjExLC43NSwyLjg2LDIuODYsMi44NmgyNi4zNFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMDA1LjE0LDBoMjUuNDRsMzcuMTgsNjEuODdWMGgyNC4yNFYxMDUuMzhoLTIzLjE4bC0zOS40NC02NS4zM1YxMDUuMzhoLTI0LjI0VjBaIi8+PHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjM0LDQ4aC0zMGMtNi42MywwLTEyLTUuMzctMTItMTJWNmMwLTMuMzEtMi42OS02LTYtNkg1NGMtMy4zMSwwLTYsMi42OS02LDZ2MzBjMCw2LjYzLTUuMzcsMTItMTIsMTJINmMtMy4zMSwwLTYsMi42OS02LDZ2MzZjMCwzLjMxLDIuNjksNiw2LDZoMzBjNi42MywwLDEyLDUuMzcsMTIsMTJ2MjRjMCw2LjYzLTUuMzcsMTItMTIsMTJINmMtMy4zMSwwLTYsMi42OS02LDZ2MzZjMCwzLjMxLDIuNjksNiw2LDZoMzBjNi42MywwLDEyLDUuMzcsMTIsMTJ2MzBjMCwzLjMxLDIuNjksNiw2LDZIMTg2YzMuMzEsMCw2LTIuNjksNi02di0zMGMwLTYuNjMsNS4zNy0xMiwxMi0xMmgzMGMzLjMxLDAsNi0yLjY5LDYtNlY1NGMwLTMuMzEtMi42OS02LTYtNlpNNjAsMTkyYy02LjYzLDAtMTItNS4zNy0xMi0xMnYtMjRjMC02LjYzLDUuMzctMTIsMTItMTJoNzhjMy4zMSwwLDYtMi42OSw2LTZ2LTM2YzAtMy4zMS0yLjY5LTYtNi02SDYwYy02LjYzLDAtMTItNS4zNy0xMi0xMnYtMjRjMC02LjYzLDUuMzctMTIsMTItMTJoMTIwYzYuNjMsMCwxMiw1LjM3LDEyLDEydjEyMGMwLDYuNjMtNS4zNywxMi0xMiwxMkg2MFoiLz48L2c+PC9nPjwvc3ZnPg==");
   }
-  .dark .logo-mark::after,.divider .logo-mark::after{border-color:rgba(255,255,255,.95);}
   .wordmark span{
     font-family:var(--head); font-weight:700; font-size:13px;
     letter-spacing:2.5px; text-transform:uppercase; color:var(--ink);
@@ -321,8 +319,8 @@
 ============================================================ */
 const wordmark = (dark) => `
   <div class="wordmark">
-    <div class="logo-mark" title="Edmonton Unlimited logo placeholder"></div>
-    <div><span>Edmonton Unlimited</span><small>Student Founders Launch</small></div>
+    <div class="logo-img" role="img" aria-label="Edmonton Unlimited"></div>
+    <div><small>Student Founders Launch</small></div>
   </div>`;
 
 const circuit = () => `
@@ -506,13 +504,14 @@ const slides = [
     <div class="flow">
       <span class="pill on">${ic('target')} /1-problem</span><span class="arrow">→</span>
       <span class="pill on">${ic('chat')} /2-spec</span><span class="arrow">→</span>
-      <span class="pill">${ic('scissors')} /3a-lovable</span>
+      <span class="pill on">${ic('chart')} /3-opportunity</span><span class="arrow">→</span>
+      <span class="pill">${ic('scissors')} /4a-lovable</span>
       <span class="arrow">or</span>
-      <span class="pill">${ic('layers')} /3b-scope-design</span><span class="arrow">→</span>
-      <span class="pill">${ic('wrench')} /4-build</span><span class="arrow">⇄</span>
-      <span class="pill">${ic('flask')} /5-test-iterate</span>
+      <span class="pill">${ic('layers')} /4b-scope-design</span><span class="arrow">→</span>
+      <span class="pill">${ic('wrench')} /5-build</span><span class="arrow">⇄</span>
+      <span class="pill">${ic('flask')} /6-test-iterate</span>
     </div>
-    <p class="note">After the spec the path forks: build no-code in Lovable, or level up in the starter template. Both end in a clickable demo.</p>
+    <p class="note">After the spec you size the opportunity — competitors, demand, the wedge — then the path forks: build no-code in Lovable, or level up in the starter template. Both end in a clickable demo.</p>
   </div>
   <div class="footer"><span>The harness</span><span>08</span></div>
 </section>`,
@@ -533,7 +532,7 @@ const slides = [
       <div class="card"><span class="tag">${ic('terminal')} Back-end</span><h3>Express API</h3><p>A real round-trip, plus a <em>real-data hook</em> for when you outgrow the seed.</p></div>
       <div class="card"><span class="tag">${ic('layers')} Database</span><h3>SQLite</h3><p>Zero-config, auto-seeded on first run. Real persistence, nothing to set up.</p></div>
     </div>
-    <p class="note">It runs out of the box — then <strong>/4-build</strong> makes it yours: same screens as Lovable, but a real round-trip you own.</p>
+    <p class="note">It runs out of the box — then <strong>/5-build</strong> makes it yours: same screens as Lovable, but a real round-trip you own.</p>
   </div>
   <div class="footer"><span>The starter kit</span><span>09</span></div>
 </section>`,
@@ -546,14 +545,14 @@ const slides = [
     <div class="num-badge">${ic('wrench')}</div>
     <div class="eyebrow">Follow one idea all the way through</div>
     <h1>Let's build FridgeChef — through every stage.</h1>
-    <p class="lead">Type the few ingredients you actually have → get a recipe you can cook tonight. We'll walk this single idea through all 8 stages.</p>
+    <p class="lead">Type the few ingredients you actually have → get a recipe you can cook tonight. We'll walk this single idea through all 9 stages.</p>
   </div>
   <div class="footer"><span>Section</span><span>10</span></div>
 </section>`,
 
 /* 8 — STAGE 1: PROBLEM */
 `<section class="slide light" data-chip="Stage 1 · Problem">
-  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 1 of 8</div></div>
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 1 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon">${ic('target')}</div>
     <div class="eyebrow">Stage 1 — Problem</div>
@@ -571,7 +570,7 @@ const slides = [
 /* 9 — STAGE 2: SPEC IT WITH AI (worked prompt) */
 `<section class="slide dark" data-chip="Stage 2 · Spec">
   ${circuit()}
-  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 2 of 8</div></div>
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 2 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon">${ic('chat')}</div>
     <div class="eyebrow">Stage 2 — Spec it with AI</div>
@@ -586,12 +585,30 @@ const slides = [
   <div class="footer"><span>Spec it with AI</span><span>12</span></div>
 </section>`,
 
-/* 10 — STAGE 3: SCOPE & DESIGN */
-`<section class="slide light" data-chip="Stage 3 · Scope">
-  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 3 of 8</div></div>
+/* 10 — STAGE 3: OPPORTUNITY */
+`<section class="slide light" data-chip="Stage 3 · Opportunity">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 3 of 9</div></div>
+  <div class="slide-body">
+    <div class="stage-icon">${ic('chart')}</div>
+    <div class="eyebrow">Stage 3 — Opportunity</div>
+    <h2>Is it worth building — and what's your edge?</h2>
+    <p class="lead">Now that the one screen is clear, take five minutes to size the market and find the gap. <strong>/3-opportunity</strong> does the legwork with you.</p>
+    <div class="cards c3">
+      <div class="card"><span class="tag">${ic('users')} Competitors</span><h3>White-space grid</h3><p>What people use today (incl. "just Googling"). The empty column is your positioning.</p></div>
+      <div class="card"><span class="tag">${ic('chart')} Demand</span><h3>Three signals</h3><p>People searching, people complaining, someone already paying. All three = a real market.</p></div>
+      <div class="card"><span class="tag">${ic('target')} The wedge</span><h3>Why you, why now</h3><p>A back-of-napkin TAM/SAM/SOM and one sharp line you can pitch on Demo Night.</p></div>
+    </div>
+    <p class="note">Competition is a good sign — it means there's a market. Your job is the gap, not winning every box.</p>
+  </div>
+  <div class="footer"><span>Opportunity</span><span>13</span></div>
+</section>`,
+
+/* 11 — STAGE 4: SCOPE & DESIGN */
+`<section class="slide light" data-chip="Stage 4 · Scope">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 4 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon">${ic('scissors')}</div>
-    <div class="eyebrow">Stage 3 — Scope &amp; Design</div>
+    <div class="eyebrow">Stage 4 — Scope &amp; Design</div>
     <h2>MVP = the one magic-moment screen</h2>
     <div class="cards c2">
       <div class="card" style="border-color:var(--green);"><span class="tag" style="color:var(--green)">${ic('check')} Keep — the magic moment</span><h3>Ingredients in → recipe out</h3><p>One input box, one button, a grid of recipe cards, and a detail view. That's the entire MVP.</p></div>
@@ -599,15 +616,15 @@ const slides = [
     </div>
     <p class="note">If a feature isn't the magic moment, it's a distraction tonight. Cut ruthlessly.</p>
   </div>
-  <div class="footer"><span>Scope &amp; Design</span><span>13</span></div>
+  <div class="footer"><span>Scope &amp; Design</span><span>14</span></div>
 </section>`,
 
 /* 11 — STAGE 4: JUST-ENOUGH TECH + TOOLS */
-`<section class="slide light" data-chip="Stage 4 · Tech">
-  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 4 of 8</div></div>
+`<section class="slide light" data-chip="Stage 5 · Tech">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 5 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon">${ic('layers')}</div>
-    <div class="eyebrow">Stage 4 — Just-enough tech + tools</div>
+    <div class="eyebrow">Stage 5 — Just-enough tech + tools</div>
     <h2>The front of the app vs. the data behind it</h2>
     <p class="lead">The <strong>front-end</strong> is what people see and click. The <strong>data</strong> is what fills it. For a demo, you can <strong>fake the data</strong> — and nobody can tell.</p>
     <div class="cards c2">
@@ -615,17 +632,17 @@ const slides = [
       <div class="card"><span class="tag">${ic('terminal')} The level-up</span><h3>Claude Code</h3><p>The full build — a real front-end + back-end + data. We'll <em>show</em> this one; you don't build it tonight.</p></div>
     </div>
   </div>
-  <div class="footer"><span>Just-enough tech</span><span>14</span></div>
+  <div class="footer"><span>Just-enough tech</span><span>15</span></div>
 </section>`,
 
 /* 12 — STAGE 5: BUILD WITH AI */
-`<section class="slide dark" data-chip="Stage 5 · Build">
+`<section class="slide dark" data-chip="Stage 6 · Build">
   ${circuit()}
-  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 5 of 8</div></div>
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 6 of 9</div></div>
   <div class="slide-body two-col">
     <div>
       <div class="stage-icon">${ic('wrench')}</div>
-    <div class="eyebrow">Stage 5 — Build with AI</div>
+    <div class="eyebrow">Stage 6 — Build with AI</div>
       <h2>Two ways to build the same app</h2>
       <ul>
         <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable FridgeChef with faked recipe data.</li>
@@ -635,15 +652,15 @@ const slides = [
     </div>
     <div class="slot">[ Live screen-share<br/>of Lovable build ]<br/><br/>(switch to browser here)</div>
   </div>
-  <div class="footer"><span>Build with AI</span><span>15</span></div>
+  <div class="footer"><span>Build with AI</span><span>16</span></div>
 </section>`,
 
 /* 13 — STAGE 6: TEST & ITERATE */
-`<section class="slide light" data-chip="Stage 6 · Test">
-  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 6 of 8</div></div>
+`<section class="slide light" data-chip="Stage 7 · Test">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 7 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon green">${ic('flask')}</div>
-    <div class="eyebrow">Stage 6 — Test &amp; iterate</div>
+    <div class="eyebrow">Stage 7 — Test &amp; iterate</div>
     <h2>Make it work, then make it believable</h2>
     <div class="cards c3">
       <div class="card"><span class="tag">${ic('check')} Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type ingredients, hit go, open a recipe. Fix what breaks that path.</p></div>
@@ -651,16 +668,16 @@ const slides = [
       <div class="card"><span class="tag">${ic('alert')} Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
     </div>
   </div>
-  <div class="footer"><span>Test &amp; iterate</span><span>16</span></div>
+  <div class="footer"><span>Test &amp; iterate</span><span>17</span></div>
 </section>`,
 
 /* 14 — STAGE 7: SHIP */
-`<section class="slide dark" data-chip="Stage 7 · Ship">
+`<section class="slide dark" data-chip="Stage 8 · Ship">
   ${circuit()}
-  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 7 of 8</div></div>
+  <div class="topbar">${wordmark(true)}<div class="stage-chip">Stage 8 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon green">${ic('rocket')}</div>
-    <div class="eyebrow">Stage 7 — Ship</div>
+    <div class="eyebrow">Stage 8 — Ship</div>
     <h1>Get a URL so it looks <strong>legit</strong>.</h1>
     <p class="lead">A live link beats a screenshot every time. Lovable gives you a public URL in a click — add a <strong>custom domain</strong> if you want it to feel like a real product on Demo Night.</p>
     <div class="flow">
@@ -670,15 +687,15 @@ const slides = [
     </div>
     <p class="note">Test the link on your phone before the 14th. If it opens for a stranger, you're ready to demo.</p>
   </div>
-  <div class="footer"><span>Ship</span><span>17</span></div>
+  <div class="footer"><span>Ship</span><span>18</span></div>
 </section>`,
 
 /* 15 — STAGE 8: SCALE (integrations) */
-`<section class="slide light" data-chip="Stage 8 · Scale">
-  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 8 of 8</div></div>
+`<section class="slide light" data-chip="Stage 9 · Scale">
+  <div class="topbar">${wordmark(false)}<div class="stage-chip">Stage 9 of 9</div></div>
   <div class="slide-body">
     <div class="stage-icon">${ic('scale')}</div>
-    <div class="eyebrow">Stage 8 — Scale (integrations)</div>
+    <div class="eyebrow">Stage 9 — Scale (integrations)</div>
     <h2>You own your code — nothing's locked in</h2>
     <p class="lead">When you're ready to go past the demo, there's a clean ladder. <strong>GitHub means the code is yours</strong>, not trapped in one tool.</p>
     <div class="flow">
@@ -690,7 +707,7 @@ const slides = [
     </div>
     <p class="note">Climb the ladder only when a real user needs the next rung. Stay founder-light until then.</p>
   </div>
-  <div class="footer"><span>Scale</span><span>18</span></div>
+  <div class="footer"><span>Scale</span><span>19</span></div>
 </section>`,
 
 /* 16 — DIVIDER: Your turn */
@@ -703,7 +720,7 @@ const slides = [
     <h1>Your turn.</h1>
     <p class="lead">Same stages, your idea. Let's get something clickable on your screen before you leave tonight.</p>
   </div>
-  <div class="footer"><span>Section</span><span>19</span></div>
+  <div class="footer"><span>Section</span><span>20</span></div>
 </section>`,
 
 /* 17 — WORK BLOCK */
@@ -722,7 +739,7 @@ const slides = [
       <li class="has-ic">${ic('checkc')}<strong>Checkpoint 3:</strong> Published to a URL you can open on your phone?</li>
     </ul>
   </div>
-  <div class="footer"><span>Work block</span><span>20</span></div>
+  <div class="footer"><span>Work block</span><span>21</span></div>
 </section>`,
 
 /* 18 — DEMO NIGHT STORY */
@@ -741,7 +758,7 @@ const slides = [
     </div>
     <p class="note">The 2-minute live demo is the heart of it — everything you built tonight feeds that slot.</p>
   </div>
-  <div class="footer"><span>Demo Night story</span><span>21</span></div>
+  <div class="footer"><span>Demo Night story</span><span>22</span></div>
 </section>`,
 
 /* 19 — RECAP + RESOURCES */
@@ -762,14 +779,14 @@ const slides = [
       <div class="eyebrow">Resources &amp; contact</div>
       <ul class="reslist">
         <li class="has-ic">${ic('github')}Starter kit + harness repo — <span class="ph">[GitHub link]</span></li>
-        <li class="has-ic">${ic('terminal')}The skills: <strong>/1-problem → /5-test-iterate</strong></li>
+        <li class="has-ic">${ic('terminal')}The skills: <strong>/1-problem → /6-test-iterate</strong></li>
         <li class="has-ic">${ic('book')}FridgeChef worked example — <span class="ph">[link]</span> (workshop/index.html)</li>
         <li class="has-ic">${ic('chat')}Reach me: <span class="ph">[email / handle]</span></li>
         <li class="has-ic">${ic('clock')}Office hours before Demo Night — <span class="ph">[when]</span></li>
       </ul>
     </div>
   </div>
-  <div class="footer"><span>Recap + resources</span><span>22</span></div>
+  <div class="footer"><span>Recap + resources</span><span>23</span></div>
 </section>`,
 
 /* 20 — THANK YOU */
@@ -783,7 +800,7 @@ const slides = [
     <p class="lead">Thanks for building with me tonight. Get that link working — and break a leg on Demo Night.</p>
     <div class="title-meta">Hosted by <b><span class="ph">[Your name]</span></b> · <span class="ph">[contact]</span></div>
   </div>
-  <div class="footer"><span>Thank you</span><span>23</span></div>
+  <div class="footer"><span>Thank you</span><span>24</span></div>
 </section>`,
 
 ];

@@ -16,7 +16,7 @@ can show on **Demo Night (July 14)**. Come with your idea and any
 customer-discovery notes; we build live.
 
 **You'll leave with:**
-- A repeatable process — problem → spec → build → test — you can rerun anytime
+- A repeatable process — problem → spec → opportunity → build → test — you can rerun anytime
 - A clickable demo of your one core screen
 - A starter project you own on GitHub
 

@@ -37,24 +37,39 @@ answers below as the skill asks. These match the worked example in
 5. **What to leave OUT?**
    Accounts, saving favourites, grocery delivery, nutrition, social feed.
 
-→ The skill now shows the **fork**. Pick a route below.
+→ Next: **`/3-opportunity`**.
+
+---
+
+## `/3-opportunity`
+
+1. **Who/what do people use instead today?**
+   Recipe blogs (SEO-bloated), big recipe apps (Mealime/Yummly — built for planned shops), and just Googling "what can I make with…".
+2. **What would make your user switch?**
+   It starts from what's already in the fridge — 3 ingredients in, one cookable recipe out, under 20 minutes.
+3. **How big could this get?**
+   Start one campus → every budget-conscious post-secondary student in Canada.
+4. **Would anyone pay?**
+   A few dollars/month for premium (save pantry, history); demo stays free. Paid meal apps prove the willingness.
+
+→ The skill writes the competitor grid, the three demand signals, a back-of-napkin TAM/SAM/SOM, and the wedge — then shows the **build fork**. Pick a route below.
 
 ---
 
 ## Route A — no-code
 
-### `/3a-lovable`
+### `/4a-lovable`
 1. **App name & tagline?** FridgeChef — "Type what's in your fridge, get dinner."
 2. **Brand vibe & colour?** Warm and friendly; a fresh green.
 3. **Anything about the look that matters?** Big ingredient box up top; appetising recipe cards.
 
-Then jump to `/5-test-iterate` (below).
+Then jump to `/6-test-iterate` (below).
 
 ---
 
 ## Route B — Claude Code + starter template
 
-### `/3b-scope-design`
+### `/4b-scope-design`
 1. **Confirm the one screen?** Yes — ingredients in → recipe cards → tap for the full recipe.
 2. **What are we cutting?** Accounts, saving favourites, grocery delivery, nutrition, social feed.
 3. **Product name & tagline?** FridgeChef — "Type what's in your fridge, get dinner."
@@ -62,13 +77,13 @@ Then jump to `/5-test-iterate` (below).
 5. **Primary colour?** Fresh green — #00BA6E.
 6. **Vibe in two words?** Warm + friendly.
 
-### `/4-build`
+### `/5-build`
 1. **Resource name?** items → recipes
 2. **Fields each record needs?** title, time, ingredients (tags), steps (body).
 
 ---
 
-## `/5-test-iterate` (both routes)
+## `/6-test-iterate` (both routes)
 
 - **The path the audience will click:**
   Type "eggs, cheese, spinach" → see recipes → open Spinach & Feta Omelette.
