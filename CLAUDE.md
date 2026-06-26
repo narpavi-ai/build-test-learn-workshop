@@ -53,8 +53,9 @@ npm run dev        # web on :5173, api on :3001
 ```
 
 The SQLite file `apps/api/data/app.db` is created/seeded on first boot and is
-gitignored. Re-seed with `npm run seed`. If port 3001 is busy, start the API with
-`PORT=<n> node apps/api/server.js`.
+gitignored. Re-seed with `npm run seed`. **If port 3001 is busy** (e.g. Docker has
+it), run the whole kit on another port with `API_PORT=3002 npm run dev` — the API
+and the vite proxy both read `API_PORT`, so the front-end follows automatically.
 
 ## Conventions & gotchas
 
