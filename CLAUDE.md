@@ -47,6 +47,8 @@ A complete worked example for **FridgeChef** lives in
 
 ### Run it
 
+Requires **Node 20.19+** (vite 8). Check with `node -v`.
+
 ```bash
 npm install
 npm run dev        # web on :5173, api on :3001

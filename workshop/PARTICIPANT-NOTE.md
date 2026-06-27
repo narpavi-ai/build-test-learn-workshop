@@ -29,6 +29,8 @@ customer-discovery notes; we build live.
    (smoother, fewer limits) but **not mandatory***
 6. A free **Lovable** account — lovable.dev (free tier ≈5 credits/day; optional —
    see paths below)
+7. **Node.js 20.19+ (LTS)** — nodejs.org (only needed for the Claude Code +
+   starter-kit path; check yours with `node -v`)
 
 **Tools we'll use:** GitHub (your code lives here) · VS Code (your editor) ·
 Claude Code (your AI build partner) · Lovable (for the no-code path).

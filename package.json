@@ -17,13 +17,7 @@
   "devDependencies": {
     "concurrently": "^9.1.0"
   },
-  "comments": {
-    "overrides": "Force esbuild >=0.25 to clear GHSA-67mh-4wv8-2f99 (dev-server-only) without the breaking vite 5->8 jump that `npm audit fix --force` wants."
-  },
-  "overrides": {
-    "esbuild": "^0.25.0"
-  },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.19"
   }
 }
