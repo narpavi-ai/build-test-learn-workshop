@@ -13,6 +13,10 @@ Two things live here:
 2. **The starter kit** — a tiny **React + Express + SQLite** app you build your
    one screen into. Already a real round-trip; you just make it *yours*.
 
+**Built for Claude Code · also works in Cursor.** The harness is plain Markdown —
+`.cursor/rules/harness.mdc` wires it into Cursor automatically. See
+[Using with Cursor](#using-with-cursor) below.
+
 ---
 
 ## The harness flow
@@ -50,6 +54,28 @@ local and never overwrites anyone else's). A complete worked example for **Kora*
 [`workshop/examples/kora/`](workshop/examples/kora/) — open `workshop/index.html`
 to browse it. Running it live? [`workshop/DEMO-SCRIPT.md`](workshop/DEMO-SCRIPT.md)
 has paste-ready answers for every stage.
+
+---
+
+## Using with Cursor
+
+The harness was designed for **Claude Code** (slash commands, automatic
+artifact-saving). If you have **Cursor** instead, `.cursor/rules/harness.mdc`
+loads into every Cursor session automatically — no setup needed.
+
+**Instead of `/1-problem`, say:** "run stage 1" or "let's do the problem stage."
+Cursor reads the same SKILL.md files and follows the same interview → artifact
+flow. The one difference: questions arrive as chat messages rather than
+interactive pickers.
+
+| Tool | How to start a stage | Artifact saving |
+|---|---|---|
+| Claude Code | `/1-problem my idea` | Automatic |
+| Cursor | "run stage 1 — my idea" | Automatic (Cursor has file access) |
+
+No Claude Pro? The **no-code path** (stages 1–3 + stage 4a) works with
+[Lovable](https://lovable.dev) for the build step and requires no local coding
+tool at all.
 
 ---
 
