@@ -11,8 +11,8 @@ import { brand } from '@/brand.js';
 import { searchItems } from '@/api.js';
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
-import StatCard from '@/components/StatCard.jsx';
-import DataTable from '@/components/DataTable.jsx';
+import StatCard from './StatCard.jsx';
+import DataTable from './DataTable.jsx';
 
 export default function App() {
   const [items, setItems] = useState([]);

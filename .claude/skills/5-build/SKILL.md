@@ -17,13 +17,15 @@ re-seed), read `reference.md` in this folder.
 
 Resolve the active run and read `workshop/runs/<slug>/04b-scope-design.html` and
 `02-spec.html`. Read `apps/web/src/brand.js` and note the `shape` field —
-it tells you which template is active and which component files to edit:
+it tells you which template folder holds the active screen files:
 
-| `brand.shape` | Active components (in `apps/web/src/components/`) |
+| `brand.shape` | Edit files in… |
 |---|---|
-| `search` | `Card.jsx`, `Detail.jsx`, `AddForm.jsx` |
-| `tool` | `ToolForm.jsx`, `ToolOutput.jsx` |
-| `dashboard` | `StatCard.jsx`, `DataTable.jsx` |
+| `search` | `apps/web/src/templates/search/` → `App.jsx`, `Card.jsx`, `Detail.jsx`, `AddForm.jsx` |
+| `tool` | `apps/web/src/templates/tool/` → `App.jsx`, `ToolForm.jsx`, `ToolOutput.jsx` |
+| `dashboard` | `apps/web/src/templates/dashboard/` → `App.jsx`, `StatCard.jsx`, `DataTable.jsx` |
+
+Shared files (`src/components/ui/`, `src/lib/utils.js`, `src/api.js`) are never edited.
 
 ## Beat 1 — Confirm the build (short)
 
@@ -56,36 +58,32 @@ Wire the data model through the whole stack, one file at a time:
 5. **`apps/web/src/api.js`** — update the fetch paths if you renamed the API route
    (e.g. `/api/items` → `/api/recipes`).
 
-**For `shape: 'search'`** — update all three components:
+**For `shape: 'search'`** — edit `apps/web/src/templates/search/`:
 
-6. **`apps/web/src/components/Card.jsx`** — update `item.title`, `item.blurb`,
-   `item.tags` to the renamed fields.
+6. **`Card.jsx`** — update `item.title`, `item.blurb`, `item.tags` to the renamed fields.
 
-7. **`apps/web/src/components/Detail.jsx`** — update `item.title`, `item.blurb`,
-   `item.tags`, `item.body`. Add extra field rows in the `CardContent` block
-   (there's a comment placeholder showing the pattern).
+7. **`Detail.jsx`** — update `item.title`, `item.blurb`, `item.tags`, `item.body`.
+   Add extra field rows in the `CardContent` block (comment placeholder in the file).
 
-8. **`apps/web/src/components/AddForm.jsx`** — update state variable names, input
-   placeholders, and the `onAdd({ … })` object keys to match the actual fields.
+8. **`AddForm.jsx`** — update state variable names, input placeholders, and the
+   `onAdd({ … })` object keys to match the actual fields.
 
-**For `shape: 'tool'`** — update the two tool components:
+**For `shape: 'tool'`** — edit `apps/web/src/templates/tool/`:
 
-6. **`apps/web/src/components/ToolForm.jsx`** — rename the `primary`/`secondary`
-   state vars and their placeholders to match the founder's inputs. Add extra
-   `<input>` or `<textarea>` rows if the tool needs more fields.
+6. **`ToolForm.jsx`** — rename `primary`/`secondary` state vars and their
+   placeholders to match the founder's inputs. Add extra `<input>` rows if needed.
 
-7. **`apps/web/src/components/ToolOutput.jsx`** — update `item.title`, `item.blurb`,
-   `item.tags`, `item.body` to the renamed fields. Add extra field rows below
-   `item.body` using the comment placeholder in the file.
+7. **`ToolOutput.jsx`** — update `item.title`, `item.blurb`, `item.tags`, `item.body`
+   to the renamed fields. Add extra field rows using the comment placeholder.
 
-**For `shape: 'dashboard'`** — update the two dashboard components:
+**For `shape: 'dashboard'`** — edit `apps/web/src/templates/dashboard/`:
 
-6. **`apps/web/src/App.jsx`** (dashboard only) — update the three `StatCard` labels
-   and value computations in the `stats` useMemo block to reflect the data model
-   (e.g. rename "Categories" to "Brands", compute a sum instead of a count).
+6. **`App.jsx`** — update the three `StatCard` labels and value computations in the
+   `stats` useMemo to match the data model (e.g. rename "Categories" → "Brands",
+   compute a sum instead of a count).
 
-7. **`apps/web/src/components/DataTable.jsx`** — rename the `<th>` headers and the
-   `item.*` field references in each `<td>` to match the renamed columns.
+7. **`DataTable.jsx`** — rename the `<th>` column headers and `item.*` field
+   references in each `<td>` to match the renamed columns.
 
 9. **Run it** — `npm run seed` (reload the new data), then `npm run dev`. Confirm
    with `curl http://localhost:3001/api/items` (or the renamed route).

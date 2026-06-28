@@ -43,15 +43,10 @@ options (the founder picks **Other** to type their own).
 
 ## Beat 2 — Do the work
 
-0. **Activate the right template shape** — if the chosen shape is not `search`:
-   - Copy the template files into the live app:
-     - `cp apps/web/src/templates/<shape>/App.jsx apps/web/src/App.jsx`
-     - For `tool`: `cp apps/web/src/templates/tool/ToolForm.jsx apps/web/src/components/ToolForm.jsx`
-       and `cp apps/web/src/templates/tool/ToolOutput.jsx apps/web/src/components/ToolOutput.jsx`
-     - For `dashboard`: `cp apps/web/src/templates/dashboard/StatCard.jsx apps/web/src/components/StatCard.jsx`
-       and `cp apps/web/src/templates/dashboard/DataTable.jsx apps/web/src/components/DataTable.jsx`
-   - Update `apps/web/src/brand.js`: set `shape: '<shape>'`
-   If the shape is `search`, no file copies are needed — it's already the default.
+0. **Activate the right template shape** — edit `apps/web/src/brand.js` and set
+   `shape: '<shape>'` (`'search'`, `'tool'`, or `'dashboard'`). That's it — the
+   shape router in `src/App.jsx` switches instantly on hot reload. No file copying
+   needed.
 
 1. Write the scope: what's being built **now** vs what stays on the **backlog**
    (use `.bullets keep` for "building now" and `.bullets cut` for "backlog", side by

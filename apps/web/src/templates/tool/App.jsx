@@ -10,8 +10,8 @@ import { useState } from 'react';
 import { brand } from '@/brand.js';
 import { searchItems } from '@/api.js';
 import { Skeleton } from '@/components/ui/skeleton';
-import ToolForm from '@/components/ToolForm.jsx';
-import ToolOutput from '@/components/ToolOutput.jsx';
+import ToolForm from './ToolForm.jsx';
+import ToolOutput from './ToolOutput.jsx';
 
 export default function App() {
   const [output, setOutput] = useState(null);

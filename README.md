@@ -111,6 +111,29 @@ whole kit.
 
 ---
 
+## Template shapes — three screen layouts
+
+The starter kit ships three screen shapes. `/4b-scope-design` picks the right one
+based on the founder's magic moment. To preview or switch any shape locally, change
+`shape` in `apps/web/src/brand.js` and save — hot reload switches instantly, no
+restart needed:
+
+```js
+// apps/web/src/brand.js
+shape: 'search',      // ← try 'tool' or 'dashboard'
+```
+
+| Shape | `brand.shape` | Best for | Screen layout |
+|---|---|---|---|
+| **Search / Catalog** | `'search'` | Marketplaces, job boards, recipe finders | Search bar → card grid → detail panel |
+| **Tool / Generator** | `'tool'` | AI generators, analyzers, brief builders | Form inputs → structured output |
+| **Dashboard** | `'dashboard'` | SaaS metrics, spend/inventory trackers | Stat cards → filterable data table |
+
+Each shape's files live in `apps/web/src/templates/<shape>/`. `/5-build` edits them
+there. The shared UI layer (`src/components/ui/`, shadcn/ui) is never touched.
+
+---
+
 ## Make it yours (the 4 edits `/4b` + `/5` automate)
 
 1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, and one hex `primary`

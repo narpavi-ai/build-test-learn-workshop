@@ -4,15 +4,15 @@
 // make it yours. The shape (input → grid → detail) stays the same.
 // ---------------------------------------------------------------------------
 import { useEffect, useMemo, useState } from 'react';
-import { brand } from './brand.js';
-import { searchItems, getItem, createItem } from './api.js';
+import { brand } from '@/brand.js';
+import { searchItems, getItem, createItem } from '@/api.js';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Skeleton } from '@/components/ui/skeleton';
-import Card from './components/Card.jsx';
-import Detail from './components/Detail.jsx';
-import AddForm from './components/AddForm.jsx';
+import Card from './Card.jsx';
+import Detail from './Detail.jsx';
+import AddForm from './AddForm.jsx';
 
 export default function App() {
   const [q, setQ] = useState('');
