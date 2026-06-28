@@ -65,6 +65,11 @@ npm run dev      # starts the API and the web app together
 | **Web** (React + Vite) | http://localhost:5173 | The screen you click |
 | **API** (Express + SQLite) | http://localhost:3001 | `/api/items`, `/api/health` |
 
+The template ships with a **polished design system** out of the box — Inter font,
+dark gradient hero, per-type colored card glows, gradient bar charts, and icon
+badges via `lucide-react`. Browse icons at [lucide.dev](https://lucide.dev) and
+import any you need: `import { TrendingUp } from 'lucide-react'`.
+
 The database (`apps/api/data/app.db`) is created and seeded automatically on first
 run, so the app is never blank. Re-seed any time with `npm run seed`.
 
@@ -99,7 +104,8 @@ build_test_learn_workshop/
 │  │     ├─ App.jsx         # THE screen: input → results → detail
 │  │     ├─ brand.js        # 🎨 name, tagline, logo, colours (edit this!)
 │  │     ├─ api.js          # fetch wrapper for the API
-│  │     └─ components/     # Card.jsx, Detail.jsx
+│  │     ├─ styles.css      # design system (tokens, cards, charts, hero)
+│  │     └─ components/     # Card.jsx, Detail.jsx, AddForm.jsx
 │  └─ api/                  # Node + Express back-end
 │     ├─ server.js          # routes + first-run auto-seed
 │     └─ src/
@@ -109,6 +115,7 @@ build_test_learn_workshop/
 ├─ .claude/skills/          # the harness (the 7 skills above)
 └─ workshop/
    ├─ index.html            # dashboard linking the worked example + your run
+   ├─ inputs/               # 📥 drop raw notes here before running /1-problem
    ├─ examples/kora/        # complete 7-stage worked example
    └─ runs/<your-idea>/     # your harness output (gitignored)
 ```
