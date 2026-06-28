@@ -19,8 +19,12 @@ mistakes), read `reference.md` in this folder.
 `$ARGUMENTS` is the founder's **idea plus any discovery notes** (free text). If
 it's empty, ask for one sentence on the idea.
 
-1. From the idea, pick a short **project name** and derive a kebab-case `<slug>`
-   (e.g. "FridgeChef" → `fridgechef`). Confirm the name with the founder if unsure.
+1. From the idea, pick a short **working project name** and derive a kebab-case
+   `<slug>` (e.g. "FridgeChef" → `fridgechef`). **Say it out loud and flag it as a
+   placeholder** — e.g. "I'll file this under `fridgechef` as a working folder name;
+   you'll pick the real product name at the design stage (`/4b-scope-design`)." If
+   the founder offers a name, use theirs; if they don't like the placeholder, swap
+   it in one step. Don't make naming a gate — the real brand is locked at 4b, not here.
 2. Create the run folder and ensure shared assets exist (see HARNESS.md "Saving"):
    `mkdir -p workshop/runs/<slug> workshop/assets`, then copy the brand CSS + logo
    if missing.
