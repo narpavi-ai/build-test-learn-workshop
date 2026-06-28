@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spec · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 2 · Spec</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">💬</div>
+      <div class="eyebrow">Stage 2 — Spec it with AI</div>
+      <h1>Kora — one-screen spec</h1>
+      <p>Ask a money question. Get a straight answer and one confident number.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · what you told the AI</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">First-time core action</div><div class="a">Ask the AI a plain-English money question — e.g. "Can we afford dinner out this weekend?"</div></li>
+        <li><div class="q">Magic moment</div><div class="a">The "safe to spend" number — one big, confident figure that appears without any spreadsheet math.</div></li>
+        <li><div class="q">Out of scope for the demo</div><div class="a">Accounts / login; real bank connection; two-user live sync.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · what the AI gave back</h2>
+
+    <div class="panel">
+      <h3>The one user</h3>
+      <p>A newly-married couple in their first year of combined finances — two incomes, two old habits, no shared system yet. Tech-comfortable, not spreadsheet-lovers.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Single core action</h3>
+      <p>Open the app → type a money question in plain English → get an instant AI answer + a "safe to spend this week" number.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Inputs → Outputs</h3>
+      <ul class="qa">
+        <li><div class="q">In</div><div class="a">A plain-English question in a chat-style box — e.g. "Can we afford dinner out this weekend?" or "How are we tracking on groceries?"</div></li>
+        <li><div class="q">Out</div><div class="a">A direct AI answer (2–3 sentences) grounded in the spending data, plus one big highlighted number: <strong>Safe to spend this week: $147</strong>.</div></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Data to fake for the demo</h3>
+      <p>~20 hand-written transactions for one realistic couple-month: rent, groceries (×4), streaming subscriptions (×3), dining out (×3), gas, utilities, gym, coffee runs. Income ≈ $6,200. Never "lorem ipsum" — names and amounts should feel lived-in.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Explicitly out of scope</h3>
+      <ul class="bullets cut">
+        <li>Accounts, login, or profiles — demo opens straight to the screen</li>
+        <li>Real bank connection (Plaid / open banking) — fake data only</li>
+        <li>Two-user login and live sync — show one shared view</li>
+        <li>Saved history, favourites, multi-month views</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Coach prompt — paste into any chat AI to regenerate this</h3>
+      <div class="prompt">
+        <div class="label">▷ Paste into ChatGPT / Claude</div>
+        <code>Act as a product coach for a non-technical student founder. I want to build an AI budgeting app for a newly-married couple merging finances for the first time. Define: (1) the one user, (2) the single core action on first open, (3) the inputs and outputs of that one screen, (4) what data to fake for a believable demo, and (5) what to explicitly leave OUT. Keep it to one screen buildable in an evening.</code>
+      </div>
+    </div>
+
+    <p class="note">Next: <strong>/3-opportunity</strong> — size the market and find the edge now that the one screen is clear.</p>
+    <div class="foot"><span>Kora</span><span>Spec · worked example</span></div>
+  </div>
+</body>
+</html>
