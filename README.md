@@ -1,18 +1,59 @@
-# Founder Starter Kit 🚀
+# Build It, Show It — the Rapid-Prototyping Harness 🚀
 
-A tiny, **brandable** full-stack app you build your idea into during the
-*Build It, Show It* workshop (Edmonton Unlimited · Student Founders Launch).
+A repeatable **harness** for turning a raw idea into a clickable demo — plus a
+brandable full-stack **starter kit** to build it into. Made for the *Build It,
+Show It* workshop (Edmonton Unlimited · Student Founders Launch), but it works for
+any founder who wants something a stranger can click *today*.
 
-It's already a real round-trip: **React UI → Express API → SQLite database**.
-Your job is to make it *yours* — rename the resource, swap the seed data, set
-your brand, and ship the one screen that proves your idea.
+Two things live here:
 
-> This repo is also a **harness**: a set of `/` skills that walk you from a raw
-> idea to a clickable demo. See [the harness](#the-harness-skills) below.
+1. **The harness** — seven `/` skills (slash commands) that walk you from problem
+   to demo. Each one **interviews you**, does the work, and saves a branded HTML
+   record of your inputs and outputs.
+2. **The starter kit** — a tiny **React + Express + SQLite** app you build your
+   one screen into. Already a real round-trip; you just make it *yours*.
 
 ---
 
-## Run it (two commands)
+## The harness flow
+
+```mermaid
+flowchart LR
+    P["🎯 /1-problem<br/>who hurts & why"] --> S["💬 /2-spec<br/>one-screen brief"]
+    S --> O["📊 /3-opportunity<br/>market & edge"]
+    O --> A["✦ /4a-lovable<br/>no-code build"]
+    O --> B["✂ /4b-scope-design<br/>scope + brand"]
+    B --> BU["🔧 /5-build<br/>into this template"]
+    BU <--> T["🧪 /6-test-iterate<br/>make it believable"]
+    A --> T
+    T --> SHIP(["🌐 Ship a URL"])
+```
+
+Run them in order in Claude Code. **Opportunity runs after Spec on purpose:** once
+the one-screen spec exists, the market read sizes the *actual* product and feeds
+the Demo Night pitch. The path forks at stage 4 — **both routes end in a clickable
+demo:**
+
+| Stage | Command | What it does | Saves |
+| --- | --- | --- | --- |
+| 1 | `/1-problem` | Name one user, one pain (the front door — creates your run folder) | `01-problem.html` |
+| 2 | `/2-spec` | Cut it to the smallest buildable version — one screen | `02-spec.html` |
+| 3 | `/3-opportunity` | Competitors, demand signals, TAM/SAM/SOM, the wedge | `03-opportunity.html` |
+| 4a | `/4a-lovable` | **Route A** — 3–4 no-code prompts for Lovable | `04a-lovable.html` |
+| 4b | `/4b-scope-design` | **Route B** — lock the screen + brand this starter kit | `04b-scope-design.html` |
+| 5 | `/5-build` | Wire your one screen into the template (real round-trip) | `05-build.html` |
+| 6 | `/6-test-iterate` | Walk the demo path, make it believable, capture learnings | `06-test-iterate.html` |
+
+Each founder's run is saved to `workshop/runs/<your-idea>/` (gitignored — it stays
+local and never overwrites anyone else's). A complete worked example for **Kora**
+(an AI budgeting app for couples) lives in
+[`workshop/examples/kora/`](workshop/examples/kora/) — open `workshop/index.html`
+to browse it. Running it live? [`workshop/DEMO-SCRIPT.md`](workshop/DEMO-SCRIPT.md)
+has paste-ready answers for every stage.
+
+---
+
+## Run the starter kit (two commands)
 
 ```bash
 npm install      # installs both workspaces (web + api) + better-sqlite3
@@ -24,77 +65,62 @@ npm run dev      # starts the API and the web app together
 | **Web** (React + Vite) | http://localhost:5173 | The screen you click |
 | **API** (Express + SQLite) | http://localhost:3001 | `/api/items`, `/api/health` |
 
-The database (`apps/api/data/app.db`) is created and seeded automatically on
-first run, so the app is never blank. Re-seed any time with `npm run seed`.
+The database (`apps/api/data/app.db`) is created and seeded automatically on first
+run, so the app is never blank. Re-seed any time with `npm run seed`.
 
-**Prerequisites:** Node.js 18+ (`node --version`). No accounts, no API keys.
+**Prerequisites:** Node.js **20.19+** (`node --version`) for Vite 8. No accounts,
+no API keys. **Port 3001 busy?** Copy `.env.example` → `.env` and set
+`API_PORT=3002` — both the API and the Vite proxy read it, so one line moves the
+whole kit.
+
+---
+
+## Make it yours (the 4 edits `/4b` + `/5` automate)
+
+1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, colours.
+2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns.
+3. **Demo data** → `apps/api/src/data/seed-items.js` — believable rows.
+4. **Words on the screen** → `apps/web/src/App.jsx` — labels and copy.
+
+Most demos are one screen — but the kit is a real full-stack app, so go bigger if
+your idea needs it. Scope to what you'll actually finish.
 
 ---
 
 ## What's inside
 
 ```
-founder-starter-kit/
-├─ package.json            # npm workspaces + `npm run dev`
+build_test_learn_workshop/
+├─ deck.html                # the workshop slide deck (open in a browser)
+├─ package.json             # npm workspaces + `npm run dev`
 ├─ apps/
-│  ├─ web/                 # React + Vite front-end
+│  ├─ web/                  # React + Vite front-end
 │  │  └─ src/
-│  │     ├─ App.jsx        # THE screen: search → results grid → detail
-│  │     ├─ brand.js       # 🎨 your name, tagline, logo, colours (edit this!)
-│  │     ├─ api.js         # fetch wrapper for the API
-│  │     ├─ styles.css
-│  │     └─ components/    # Card.jsx, Detail.jsx
-│  └─ api/                 # Node + Express back-end
-│     ├─ server.js         # routes + first-run auto-seed
+│  │     ├─ App.jsx         # THE screen: input → results → detail
+│  │     ├─ brand.js        # 🎨 name, tagline, logo, colours (edit this!)
+│  │     ├─ api.js          # fetch wrapper for the API
+│  │     └─ components/     # Card.jsx, Detail.jsx
+│  └─ api/                  # Node + Express back-end
+│     ├─ server.js          # routes + first-run auto-seed
 │     └─ src/
-│        ├─ db.js          # SQLite connection + schema (your data model)
-│        ├─ items.js       # GET/POST routes (+ real-data hook)
-│        ├─ seed.js        # seed runner
-│        └─ data/seed-items.js   # the believable demo data
-└─ .claude/skills/         # the harness (see below)
+│        ├─ db.js           # SQLite connection + schema (your data model)
+│        ├─ items.js        # GET/POST routes (+ real-data hook)
+│        └─ data/seed-items.js   # believable demo data
+├─ .claude/skills/          # the harness (the 7 skills above)
+└─ workshop/
+   ├─ index.html            # dashboard linking the worked example + your run
+   ├─ examples/kora/        # complete 7-stage worked example
+   └─ runs/<your-idea>/     # your harness output (gitignored)
 ```
-
-## Make it yours (4 edits)
-
-1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, colours.
-2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns.
-3. **Demo data** → `apps/api/src/data/seed-items.js` — 5–6 believable rows.
-4. **Words on the screen** → `apps/web/src/App.jsx` — labels and copy.
-
-That's the whole MVP. Everything else is a distraction until a real user needs it.
-
----
-
-## The harness (skills)
-
-Type these in Claude Code to walk your idea from problem to demo. Each one
-**interviews you**, does the work, and saves a branded HTML record of your
-inputs and outputs into `workshop/`.
-
-```
-/1-problem        → who hurts and why          → workshop/01-problem.html
-/2-spec           → the tight build brief       → workshop/02-spec.html
-   ├─ /3a-lovable        → no-code build prompts (the hands-on route)
-   └─ /3b-scope-design   → the one screen + brand (the Claude Code route)
-        → /4-build         → build it into THIS template
-        → /5-test-iterate  → make it work, capture learnings
-```
-
-After `/2-spec` the path forks: build it in **Lovable** (no-code) *or* build it
-right here in this **starter template** with Claude Code. Both are valid demos.
-The number prefixes keep the stages in order in the `/` menu.
-
-**Running it live?** [`workshop/DEMO-SCRIPT.md`](workshop/DEMO-SCRIPT.md) has
-paste-ready answers for every stage's interview (FridgeChef), so you can walk the
-whole harness on stage without improvising.
 
 ---
 
 ## When this becomes "real"
 
 `apps/api/src/items.js` has a **real-data hook** comment. When you outgrow the
-local SQLite seed, that's the only place that changes — swap it for a real API,
-an LLM, or a hosted database. The routes and the entire front-end stay the same.
+local SQLite seed, that's the only place that changes — swap it for a real API, an
+LLM (e.g. Anthropic's Claude), or a hosted database. The routes and the entire
+front-end stay the same.
 
 ```bash
 # turn this into your own GitHub repo
