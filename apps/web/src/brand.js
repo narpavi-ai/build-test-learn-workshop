@@ -4,16 +4,16 @@
 // any time: the name, the tagline, the logo, the colours, the call-to-action.
 // ---------------------------------------------------------------------------
 export const brand = {
-  name: 'Starter',                       // your product name
-  tagline: 'Type something, get something back.', // the one-line promise
-  logo: '✦',                             // an emoji or single character; swap for an <img> later
+  name: 'Shop Brief',                    // your product name
+  tagline: 'Your store, in three sentences.', // the one-line promise
+  logo: '✨',                            // an emoji or single character; swap for an <img> later
   colors: {
-    primary: '#8B4FFB',                  // buttons, accents
+    primary: '#5B21B6',                  // buttons, accents
     ink: '#15123A',                      // body text
-    bg: '#f6f4ff',                       // page background
+    bg: '#F5F3FF',                       // page background
   },
   // The magic-moment screen, in your words:
-  searchPlaceholder: 'Search…',
-  searchButton: 'Search',
-  emptyHint: 'Type above and hit search to see results.',
+  searchPlaceholder: 'Upload your Shopify sales CSV…',
+  searchButton: 'Load data',
+  emptyHint: 'Upload your Shopify sales CSV to generate your brief.',
 };

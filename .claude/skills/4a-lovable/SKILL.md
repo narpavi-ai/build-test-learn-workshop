@@ -22,8 +22,7 @@ If the spec is missing, run `/2-spec` first.
 
 ## Beat 1 — Interview (short)
 
-Lovable's free tier is ~5 credits/day, so plan for **3–4 prompts**. Ask these
-with the **AskUserQuestion** tool:
+Ask these with the **AskUserQuestion** tool:
 
 1. App name and one-line tagline?
 2. Brand vibe — playful, clean, bold? Any colour you want?
@@ -31,24 +30,33 @@ with the **AskUserQuestion** tool:
 
 ## Beat 2 — Do the work
 
-Write a numbered script of **3–4 self-contained prompts**. Each prompt:
-- Is specific enough to paste as-is (names the screen, fields, seed data).
-- Has a one-line **"this should produce…"** note.
-- Has a one-line **"if it breaks live"** fallback (re-prompt, don't debug in circles).
+Write **one comprehensive PRD-style prompt** the founder pastes into Lovable to
+get the full demo in one go — no back-and-forth. Lovable's docs warn against
+five simultaneous vague tasks, but a *structured* single prompt with clear
+named sections (Layout, Data, Brand) works well because Lovable reads it top-down
+as a spec.
 
-Keep it realistic for the free tier: **one screen, no auth, seed data.**
-Typical shape:
-1. Scaffold the screen (layout + input + button + empty results grid).
-2. Add 5–6 believable seed records and render them as cards.
-3. Add the detail view when a card is clicked.
-4. Polish: brand colours, copy, empty/loading states.
+Structure the prompt with these sections:
+1. **App overview** — name, tagline, one-sentence purpose, one user.
+2. **Layout** — every element top-to-bottom: header, headings, cards/sections,
+   footer. Be atomic: name every button label, placeholder text, and field.
+3. **Data / content** — exact seed records or insight text inline. Never say
+   "add some data"; give the rows.
+4. **Brand & style** — exact hex colours, font weight/size, component details.
+5. **Constraints** — no auth, no other pages, no login, seed data only.
+
+Then add **one optional polish prompt** for if the founder has a credit left and
+wants to refine one thing (copy, animation, empty state).
+
+Each prompt should still have a one-line **"this should produce…"** note and a
+one-line **"if it breaks"** re-prompt fallback.
 
 ## Beat 3 — Save & hand off
 
 Save to `workshop/runs/<slug>/04a-lovable.html` (icon ✦, stage 4, label
-"Build · Lovable"): interview answers in Inputs; the prompt script (each prompt in
-a `.prompt` block with its note + fallback) in Outputs.
+"Build · Lovable"): interview answers in Inputs; the PRD prompt (in a `.prompt`
+block with its note + fallback) and the optional polish prompt in Outputs.
 
-Then tell the founder: paste prompt 1 into Lovable, check it produced the right
-thing, then move on. Next: **`/6-test-iterate`** to make the demo believable, then
-publish to a URL.
+Then tell the founder: paste the PRD prompt into Lovable and wait for it to
+finish before touching anything. Next: **`/6-test-iterate`** to make the demo
+believable, then publish to a URL.
