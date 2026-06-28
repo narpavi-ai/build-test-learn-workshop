@@ -11,6 +11,41 @@ need a new architecture; it needs *your* resource, *your* data, and *your* label
 Renaming `items` → `recipes` and swapping the seed is 90% of the work. Resist
 rewrites — they break the boot and burn the evening.
 
+## The design system is already done — don't touch it
+
+The template ships with a polished design system out of the box:
+- **Inter** font (Google Fonts, loaded in `styles.css`)
+- **Dark gradient hero** with decorative orbs and a live data badge
+- **Colored card glows** — each card type gets its own gradient background
+  tint and box-shadow color (set via CSS custom property `--hover-shadow`)
+- **Gradient bar charts** with rounded caps
+- **Pill type badges** with a translucent background
+- **Smooth animations** — fade-in, bar chart width transitions
+
+The only design work a founder needs to do is set the **three brand tokens** in
+`brand.js` (`name`, `logo`, `colors.primary`). Everything else renders from there.
+
+**The goal tonight is a working first slice, not pixel-perfect design.** The
+magic moment should be clickable with real-feeling seed data. CSS is done.
+
+## Icons with lucide-react
+
+The template has `lucide-react` installed. Browse 1,000+ icons at **lucide.dev**.
+Import and drop in wherever you need an icon:
+
+```jsx
+import { TrendingUp, Upload, Send, ArrowLeft } from 'lucide-react';
+
+// In JSX:
+<TrendingUp size={16} strokeWidth={2.5} />
+<ArrowLeft size={14} style={{ verticalAlign: '-2px', marginRight: 4 }} />
+```
+
+Pick icons that match your domain — `ShoppingCart`, `BookOpen`, `Stethoscope`,
+`MapPin`, `Cpu`. Keep `size` between 14–22px for inline use, 24–32px for
+standalone icons next to headings. Use `strokeWidth={2.5}` for bold, `2` for
+normal weight.
+
 ## File map (what each file does)
 
 API (`apps/api/`):
