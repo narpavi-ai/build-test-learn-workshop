@@ -32,9 +32,10 @@ takes the idea + discovery notes and creates the run folder. Skills are human-in
 (`disable-model-invocation: true`). Shared rules + artifact conventions live in
 `.claude/skills/shared/HARNESS.md`; brand CSS + HTML template are in `shared/` too.
 
-A complete worked example for **FridgeChef** lives in
-`workshop/examples/fridgechef/` (the pre-renumber v1 is kept under
-`workshop/examples/archive/`). Live founder runs land in `workshop/runs/<slug>/`.
+A complete worked example for **Kora** (an AI budgeting app for newly-married
+couples) lives in `workshop/examples/kora/`. Live founder runs land in
+`workshop/runs/<slug>/`, which is gitignored — each founder's run stays local and
+never overwrites the tracked example.
 
 ## Starter template
 

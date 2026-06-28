@@ -11,7 +11,7 @@ allowed-tools: Read, Write, Bash(mkdir *), Bash(cp *)
 Goal: get the founder to name **one user** and **one pain** in a single sentence.
 This is the **front door** — it also sets up where the whole run is saved.
 Read `.claude/skills/shared/HARNESS.md` first for the shared rules. For deeper
-guidance (how to pick one user, pain types, the FridgeChef example, common
+guidance (how to pick one user, pain types, the Kora example, common
 mistakes), read `reference.md` in this folder.
 
 ## Beat 0 — Take the idea & open the run folder
@@ -20,8 +20,8 @@ mistakes), read `reference.md` in this folder.
 it's empty, ask for one sentence on the idea.
 
 1. From the idea, pick a short **working project name** and derive a kebab-case
-   `<slug>` (e.g. "FridgeChef" → `fridgechef`). **Say it out loud and flag it as a
-   placeholder** — e.g. "I'll file this under `fridgechef` as a working folder name;
+   `<slug>` (e.g. "Study Buddy" → `study-buddy`). **Say it out loud and flag it as a
+   placeholder** — e.g. "I'll file this under `study-buddy` as a working folder name;
    you'll pick the real product name at the design stage (`/4b-scope-design`)." If
    the founder offers a name, use theirs; if they don't like the placeholder, swap
    it in one step. Don't make naming a gate — the real brand is locked at 4b, not here.

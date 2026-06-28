@@ -42,14 +42,14 @@ A good idea usually has a reason it's solvable/urgent *today*: a price change, a
 new behaviour, a new tool. It's not mandatory for the demo, but it sharpens the
 pitch and the opportunity stage.
 
-## Worked example — FridgeChef
+## Worked example — Kora
 
-- **Idea:** type the few ingredients you actually have → get something to cook tonight.
-- **One user:** a broke, busy student in a shared flat, ~20 min before they give up and order in.
-- **Workaround today:** stare into the fridge, Google "what can I make with eggs and…", get 12-ingredient blog recipes, order takeout.
-- **Cost:** money (takeout adds up) + waste (food goes off) + daily decision stress.
-- **Why now:** grocery prices up, students cooking more, recipe sites assume a planned shop.
-- **Problem statement:** *Broke, busy students struggle to turn the random ingredients they already have into dinner because recipe sites assume a planned grocery shop. Today they Google and give up, which costs them money on takeout and wasted food.*
+- **Idea:** ask your household budget a plain-English question → get a straight answer and a "safe to spend" number.
+- **One user:** a newly-married couple merging their money for the first time — two incomes, two old habits, no shared system yet.
+- **Workaround today:** a spreadsheet they barely update; it goes stale within weeks, so nobody knows where the money went.
+- **Cost:** money (overspending, forgotten subscriptions) + the monthly "where did it all go?" stress.
+- **Why now:** cost-of-living pressure makes control urgent, and AI finally removes the tedium of categorizing and forecasting.
+- **Problem statement:** *Newly-married couples merging their money struggle to keep household spending under control because neither partner has a single, up-to-date picture of where the money goes. Today they keep a spreadsheet that goes stale, which costs them money in overspending and forgotten subscriptions.*
 
 ## Common founder mistakes at this stage
 

@@ -537,15 +537,15 @@ const slides = [
   <div class="footer"><span>The starter kit</span><span>09</span></div>
 </section>`,
 
-/* 9 — DIVIDER: Let's build FridgeChef */
+/* 9 — DIVIDER: Let's build Kora */
 `<section class="slide divider" data-chip="Live build">
   ${blobs()}
   <div class="topbar">${wordmark(true)}<div class="stage-chip">Worked example</div></div>
   <div class="slide-body">
     <div class="num-badge">${ic('wrench')}</div>
     <div class="eyebrow">Follow one idea all the way through</div>
-    <h1>Let's build FridgeChef — through every stage.</h1>
-    <p class="lead">Type the few ingredients you actually have → get a recipe you can cook tonight. We'll walk this single idea through all 9 stages.</p>
+    <h1>Let's build Kora — through every stage.</h1>
+    <p class="lead">Ask your household budget a plain-English question → get a straight answer and a "safe to spend" number. We'll walk this single idea through all 9 stages.</p>
   </div>
   <div class="footer"><span>Section</span><span>10</span></div>
 </section>`,
@@ -559,10 +559,16 @@ const slides = [
     <h2>Who hurts, and why?</h2>
     <p class="lead">Before any tool: name one person and one pain in a single sentence.</p>
     <div class="cards c2">
-      <div class="card"><span class="tag">${ic('users')} The person</span><h3>The broke, busy student</h3><p>Has a half-empty fridge, no plan, and 20 minutes. Ends up ordering in — or throwing food out.</p></div>
-      <div class="card"><span class="tag">${ic('alert')} The pain</span><h3>"What can I even make?"</h3><p>Students waste food and money because they can't connect <strong>what they have</strong> to <strong>what they could cook</strong>.</p></div>
+      <div class="card"><span class="tag">${ic('users')} The person</span><h3>The newly-married couple</h3><p>Two incomes, two old habits, no shared system yet. They merged finances and lost the thread of where the money goes.</p></div>
+      <div class="card"><span class="tag">${ic('alert')} The pain</span><h3>"Where did it all go?"</h3><p>They overspend because <strong>neither partner</strong> has a single, up-to-date picture — the spreadsheet went stale weeks ago.</p></div>
     </div>
-    <p class="note">FridgeChef's whole reason to exist: turn "random ingredients" into "dinner, sorted."</p>
+    <div class="flow">
+      <span class="pill">${ic('users')} Couple</span><span class="arrow">→</span>
+      <span class="pill">${ic('alert')} No shared picture</span><span class="arrow">→</span>
+      <span class="pill">${ic('layers')} Stale spreadsheet</span><span class="arrow">→</span>
+      <span class="pill on">${ic('chart')} Overspend</span>
+    </div>
+    <p class="note">Kora's whole reason to exist: turn "where did it go?" into "here's what's safe to spend."</p>
   </div>
   <div class="footer"><span>Problem</span><span>11</span></div>
 </section>`,
@@ -578,7 +584,7 @@ const slides = [
     <p>Don't start building. Start by making a chat AI define the smallest version <em>for</em> you. Paste this:</p>
     <div class="prompt-box">
       <div class="label">▷ Paste into ChatGPT / Claude</div>
-      <code>Act as a <span class="accentword">product coach</span>. I want to build <span class="accentword">FridgeChef</span>. Define: the <span class="accentword">one user</span>, the <span class="accentword">single core action</span>, the <span class="accentword">inputs and outputs</span> of that one screen, what <span class="accentword">data to fake</span> for a demo, and what to explicitly <span class="accentword">leave OUT</span>. Keep it to one screen buildable in a no-code tool tonight.</code>
+      <code>Act as a <span class="accentword">product coach</span>. I want to build <span class="accentword">Kora — an AI budget app for a newly-married couple</span>. Define: the <span class="accentword">one user</span>, the <span class="accentword">single core action</span>, the <span class="accentword">inputs and outputs</span> of that one screen, what <span class="accentword">data to fake</span> for a demo, and what to explicitly <span class="accentword">leave OUT</span>. Keep it to one screen buildable in a no-code tool tonight.</code>
     </div>
     <p class="note">The output becomes your spec — and the seed for your build prompts in Lovable.</p>
   </div>
@@ -611,8 +617,13 @@ const slides = [
     <div class="eyebrow">Stage 4 — Scope &amp; Design</div>
     <h2>MVP = the one magic-moment screen</h2>
     <div class="cards c2">
-      <div class="card" style="border-color:var(--green);"><span class="tag" style="color:var(--green)">${ic('check')} Keep — the magic moment</span><h3>Ingredients in → recipe out</h3><p>One input box, one button, a grid of recipe cards, and a detail view. That's the entire MVP.</p></div>
-      <div class="card"><span class="tag" style="color:#c23">${ic('scissors')} Cut — for now</span><h3>Everything else</h3><p>No accounts. No saving favourites. No grocery delivery, no nutrition tracking, no social feed.</p></div>
+      <div class="card" style="border-color:var(--green);"><span class="tag" style="color:var(--green)">${ic('check')} Keep — the magic moment</span><h3>Question in → answer + number out</h3><p>One chat box, one button, the "safe to spend" number, and a transaction list. That's the entire MVP.</p></div>
+      <div class="card"><span class="tag" style="color:#c23">${ic('scissors')} Cut — for now</span><h3>Everything else</h3><p>No accounts. No real bank connection. No two-user sync, no multi-month history, no wall of charts.</p></div>
+    </div>
+    <div class="flow">
+      <span class="pill">${ic('chat')} Ask a question</span><span class="arrow">→</span>
+      <span class="pill on">${ic('target')} Answer + safe-to-spend</span><span class="arrow">→</span>
+      <span class="pill">${ic('eye')} Tap a transaction</span>
     </div>
     <p class="note">If a feature isn't the magic moment, it's a distraction tonight. Cut ruthlessly.</p>
   </div>
@@ -645,8 +656,8 @@ const slides = [
     <div class="eyebrow">Stage 6 — Build with AI</div>
       <h2>Two ways to build the same app</h2>
       <ul>
-        <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable FridgeChef with faked recipe data.</li>
-        <li><strong>The real version:</strong> the same app as a proper Node + React project — UI calls an API, API returns real matches.</li>
+        <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable Kora with faked transaction data.</li>
+        <li><strong>The real version:</strong> the same app as a proper Node + React project — UI calls an API, API answers from real data.</li>
       </ul>
       <p class="note">Same idea, same screens — one fakes the data, one does a real round-trip.</p>
     </div>
@@ -663,8 +674,8 @@ const slides = [
     <div class="eyebrow">Stage 7 — Test &amp; iterate</div>
     <h2>Make it work, then make it believable</h2>
     <div class="cards c3">
-      <div class="card"><span class="tag">${ic('check')} Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type ingredients, hit go, open a recipe. Fix what breaks that path.</p></div>
-      <div class="card"><span class="tag">${ic('flask')} Seed it</span><h3>Fake data that feels real</h3><p>Give it 5–6 believable recipes with real titles, times &amp; steps. Empty or "lorem ipsum" kills the illusion.</p></div>
+      <div class="card"><span class="tag">${ic('check')} Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type a question, hit Ask, open a transaction. Fix what breaks that path.</p></div>
+      <div class="card"><span class="tag">${ic('flask')} Seed it</span><h3>Fake data that feels real</h3><p>Give it ~20 believable transactions with real names &amp; amounts. Empty or "lorem ipsum" kills the illusion.</p></div>
       <div class="card"><span class="tag">${ic('alert')} Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
     </div>
   </div>
@@ -780,7 +791,7 @@ const slides = [
       <ul class="reslist">
         <li class="has-ic">${ic('github')}Starter kit + harness repo — <span class="ph">[GitHub link]</span></li>
         <li class="has-ic">${ic('terminal')}The skills: <strong>/1-problem → /6-test-iterate</strong></li>
-        <li class="has-ic">${ic('book')}FridgeChef worked example — <span class="ph">[link]</span> (workshop/index.html)</li>
+        <li class="has-ic">${ic('book')}Kora worked example — <span class="ph">[link]</span> (workshop/index.html)</li>
         <li class="has-ic">${ic('chat')}Reach me: <span class="ph">[email / handle]</span></li>
         <li class="has-ic">${ic('clock')}Office hours before Demo Night — <span class="ph">[when]</span></li>
       </ul>

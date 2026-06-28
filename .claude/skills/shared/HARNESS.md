@@ -22,7 +22,7 @@ something an earlier artifact already answers — read it first.
 
 Every founder's run lives in its own folder so two ideas never overwrite each
 other: **`workshop/runs/<slug>/`**, where `<slug>` is the project name in
-kebab-case (e.g. "FridgeChef" → `fridgechef`, "Study Buddy" → `study-buddy`).
+kebab-case (e.g. "Kora" → `kora`, "Study Buddy" → `study-buddy`).
 
 - **`/1-problem` is the front door.** It takes the idea (+ any discovery notes)
   as its argument, derives `<slug>`, creates `workshop/runs/<slug>/`, and saves the

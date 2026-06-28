@@ -2,7 +2,7 @@
 
 This is the depth behind the SKILL.md beats. Read it before doing the work — it
 has the frameworks, the *why* (so you can handle ideas the templates don't cover),
-the worked FridgeChef example, and where to look online.
+the worked Kora example, and where to look online.
 
 ## Why this stage exists (and why it's after Spec)
 
@@ -71,7 +71,7 @@ One tight paragraph + a one-liner:
 - **Why you** — the unfair insight/access you have (you *are* the user, a community, a skill).
 - **Why now** — what changed that makes this solvable/urgent today.
 - **One-liner positioning:** "the [category] for [one user] that [the edge]."
-  e.g. *"the recipe app for broke students that only uses what's already in your fridge."*
+  e.g. *"the budgeting app for new couples that answers 'can we afford this?' instead of just showing charts."*
 
 If the research sharpened the problem (a tighter user, a clearer edge), say so and
 note what `/4a-lovable` or `/4b-scope-design` should carry forward.
@@ -84,9 +84,9 @@ note what `/4a-lovable` or `/4b-scope-design` should carry forward.
 - **Google Trends / autocomplete** — is interest rising, flat, seasonal?
 Keep it to a few searches — this is a sanity check, not a thesis.
 
-## Worked example — FridgeChef
+## Worked example — Kora
 
-- **Grid gap:** recipe blogs/apps assume a planned shop and a full pantry; none start from "what's in my fridge right now" for a broke student. That cell is the white space.
-- **Signals:** search — "what can I make with" is high-volume; complaints — Reddit threads on overwhelming blog recipes and food waste; money — paid meal-planning apps exist (Mealime, etc.), proving willingness to pay.
-- **Napkin sizing:** TAM ~2M CA students × $50 = $100M; SAM ~600k self-cooking × $50 = $30M; SOM 3 campuses, 5k users = ~$100k.
-- **Wedge:** *"The recipe app for broke students that only uses what's already in your fridge."* Why now: grocery prices up, students cooking more, AI makes ingredient-matching cheap.
+- **Grid gap:** Mint/YNAB/Monarch show you charts of what happened; none answer "can we afford this?" in plain English, free, with zero setup, built for two people. That cell is the white space.
+- **Signals:** search — "Mint/YNAB alternatives 2026" is high-volume (Mint shut down in 2024); complaints — YNAB's price and learning curve drive users away; money — YNAB ($109/yr) and Monarch (~$99/yr) prove willingness to pay.
+- **Napkin sizing:** TAM ~2.7M CA couples × $20/yr = ~$54M; SAM ~400k actively switching × $20 = ~$8M; SOM 1–5k couples via referral = ~$20k–100k.
+- **Wedge:** *"The budgeting app for new couples that answers 'can we afford this?' instead of just showing charts."* Why now: Mint's shutdown freed millions, AI chat is the expected UX, cost-of-living makes control urgent.

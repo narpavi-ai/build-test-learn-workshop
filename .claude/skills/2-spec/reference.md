@@ -13,9 +13,9 @@ nothing here is permanent.
 ## The magic moment
 
 The magic moment is the single instant the user goes "oh, nice." Everything on the
-screen exists to deliver that instant faster. For FridgeChef it's: *type 3
-ingredients → see a recipe I can start right now.* If you can name the moment, you
-can cut everything that isn't on the path to it.
+screen exists to deliver that instant faster. For Kora it's: *ask "can we afford
+dinner out?" → see a confident "safe to spend" number.* If you can name the moment,
+you can cut everything that isn't on the path to it.
 
 Find it by asking: at what exact second does the user get the value? Build the
 screen backwards from that second.
@@ -55,10 +55,10 @@ the *experience*, not the backend.
 > explicitly leave OUT for now. Keep the whole thing to one screen that's buildable
 > in an evening. Push back if my scope is too big.
 
-## Worked example — FridgeChef spec
+## Worked example — Kora spec
 
-- **One user:** broke, busy student, ~20 min before ordering in.
-- **Core action:** type the ingredients you have, hit "Find dinner".
-- **In → Out:** 3–5 ingredients → one recipe card (title, time, 4 steps) + 2 backups.
-- **Fake:** ~30 recipes tagged by ingredient, hand-written, realistic times.
-- **Out of scope:** accounts, saving, shopping lists, nutrition, photos-of-your-fridge AI.
+- **One user:** newly-married couple merging finances for the first time.
+- **Core action:** type a money question, hit "Ask Kora".
+- **In → Out:** a plain-English question → a 2–3 sentence answer + one big "safe to spend this week" number.
+- **Fake:** ~20 hand-written transactions for one couple-month, realistic names and amounts.
+- **Out of scope:** accounts, real bank connection, two-user live sync, multi-month history.

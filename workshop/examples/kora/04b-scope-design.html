@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scope &amp; Design · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 4B · Scope &amp; Design</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">✂</div>
+      <div class="eyebrow">Stage 4B — Scope &amp; Design</div>
+      <h1>Kora</h1>
+      <p>Ask your budget anything.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · what you told the AI</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">One screen confirmed?</div><div class="a">Yes — user types a money question, gets an AI answer + a "safe to spend" number.</div></li>
+        <li><div class="q">What we're cutting</div><div class="a">Multi-month history; accounts/login; real bank connection; two-user live sync.</div></li>
+        <li><div class="q">Product name & tagline</div><div class="a">Kora — "Ask your budget anything."</div></li>
+        <li><div class="q">Logo</div><div class="a">🏠 emoji mark for the demo</div></li>
+        <li><div class="q">Primary colour & vibe</div><div class="a">Warm amber #D97706 · warm + friendly</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · what the AI gave back</h2>
+
+    <div class="panel">
+      <h3>The screen, at a glance</h3>
+      <div class="flow-diagram">
+        <div class="node"><div class="nlabel">Input</div><div class="nbody">Type a money question</div></div>
+        <div class="arrow">→</div>
+        <div class="node good"><div class="nlabel">Answer (magic moment)</div><div class="nbody">Plain-English reply + "safe to spend" number</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="nlabel">Detail</div><div class="nbody">Tap a transaction for the full record</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Scope</h3>
+      <div class="scope-split">
+        <div>
+          <p style="font-family:var(--head);font-weight:700;color:var(--green);font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Keep — the magic moment</p>
+          <ul class="bullets keep">
+            <li>Chat-style question input</li>
+            <li>AI answer grounded in spending data</li>
+            <li>Always-visible "safe to spend this week"</li>
+            <li>Transaction list + tap-through detail</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family:var(--head);font-weight:700;color:#d2466b;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Cut — for now</p>
+          <ul class="bullets cut">
+            <li>Accounts / login / profiles</li>
+            <li>Real bank connection (Plaid)</li>
+            <li>Two-user live sync</li>
+            <li>Multi-month history & trends</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Brand applied to <code>apps/web/src/brand.js</code></h3>
+      <ul class="qa">
+        <li><div class="q">name / tagline</div><div class="a">'Kora' · 'Ask your budget anything.'</div></li>
+        <li><div class="q">logo</div><div class="a">'🏠'</div></li>
+        <li><div class="q">colors.primary / bg / ink</div><div class="a">#D97706 · #FFFBEB · #1C1917</div></li>
+        <li><div class="q">searchPlaceholder</div><div class="a">'Can we afford dinner out this weekend?'</div></li>
+        <li><div class="q">searchButton</div><div class="a">'Ask Kora'</div></li>
+        <li><div class="q">emptyHint</div><div class="a">'Ask Kora anything — "How are we tracking on groceries?"'</div></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Note for /5-build — data model rename</h3>
+      <p>Rename the starter's <code>items</code> resource to <code>transactions</code> in <code>apps/api/src/db.js</code>: each row is one household transaction (date, description, amount, category). Seed ~20 realistic couple-month records.</p>
+    </div>
+
+    <p class="note">The app is now branded as <strong>Kora</strong>. Next: <strong>/5-build</strong> to wire the one screen into the starter template.</p>
+    <div class="foot"><span>Kora</span><span>Scope &amp; Design · worked example</span></div>
+  </div>
+</body>
+</html>
