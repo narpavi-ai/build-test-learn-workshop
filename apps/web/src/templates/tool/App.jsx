@@ -23,17 +23,18 @@ export default function App() {
     setError('');
     setOutput(null);
     try {
-      // 👉 REAL-DATA HOOK
-      // Right now this searches your seed data with the user's primary input.
-      // In /5-build (or after Demo Night), swap this for a real API call:
-      //   const result = await fetch('/api/generate', { method: 'POST', body: JSON.stringify(inputs) }).then(r => r.json());
-      //   setOutput([result]);
-      const results = await searchItems(inputs.primary || '');
-      if (results.length === 0) {
-        setError('No results — try different inputs, or check your seed data.');
-      } else {
-        setOutput(results);
-      }
+      // 👉 REAL-DATA HOOK — this is the ONE place that changes after Demo Night.
+      // Right now it returns all seed records as demo output.
+      // Swap for a real call once you have an API or LLM:
+      //   const result = await fetch('/api/generate', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(inputs),
+      //   }).then(r => r.json());
+      //   setOutput(Array.isArray(result) ? result : [result]);
+      const results = await searchItems('');   // '' = return all seed records
+      setOutput(results.length > 0 ? results : null);
+      if (results.length === 0) setError('No results — add some seed data with `npm run seed`.');
     } catch {
       setError("Couldn't reach the API. Is it running on :3001? Try `npm run dev`.");
     } finally {
