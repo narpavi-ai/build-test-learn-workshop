@@ -47,6 +47,15 @@ Keep it to this one file. Don't restyle components — the colour + copy carry i
 
 ## Hand-off to /5-build
 
-Note the resource rename the data model needs (`items` → `recipes`/`listings`/…) so
-`/5-build` can do the actual rename in `apps/api/src/db.js`. You're only deciding
-the name here; build does the wiring.
+Write a clear data model summary that `/5-build` can execute without ambiguity:
+- **Resource name**: what `items` becomes (e.g. `recipes`, `listings`, `sessions`)
+- **Field mapping** to the template's schema:
+  | Template field | Founder's concept |
+  |---|---|
+  | `title` | the record headline (e.g. "Recipe name") |
+  | `blurb` | the one-liner on the card (e.g. "Short description") |
+  | `tags` | comma-separated categories (e.g. "Cuisine type") |
+  | `body` | full text in the detail view (e.g. "Instructions") |
+  | *(extra)* | any additional columns (e.g. `prep_time`, `price`, `location`) |
+- `/5-build` will rename the table, columns, SQL queries, and all three component
+  files (`Card.jsx`, `Detail.jsx`, `AddForm.jsx`) from this spec.

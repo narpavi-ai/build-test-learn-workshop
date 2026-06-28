@@ -16,8 +16,14 @@ re-seed), read `reference.md` in this folder.
 ## Beat 0 — Load context
 
 Resolve the active run and read `workshop/runs/<slug>/04b-scope-design.html` and
-`02-spec.html`. The brand was already applied to `apps/web/src/brand.js` by
-`/4b-scope-design` — verify it's set.
+`02-spec.html`. Read `apps/web/src/brand.js` and note the `shape` field —
+it tells you which template is active and which component files to edit:
+
+| `brand.shape` | Active components (in `apps/web/src/components/`) |
+|---|---|
+| `search` | `Card.jsx`, `Detail.jsx`, `AddForm.jsx` |
+| `tool` | `ToolForm.jsx`, `ToolOutput.jsx` |
+| `dashboard` | `StatCard.jsx`, `DataTable.jsx` |
 
 ## Beat 1 — Confirm the build (short)
 
@@ -31,21 +37,60 @@ Read the spec's MVP + product backlog and the scope chosen in `/4b`. Ask with th
 
 ## Beat 2 — Do the work
 
-Work the starter template, one file at a time, keeping it runnable:
+Wire the data model through the whole stack, one file at a time:
 
-1. **Data model** — `apps/api/src/db.js`: rename the table and columns to match.
-2. **Seed** — `apps/api/src/data/seed-items.js`: replace with **5–6 believable
-   rows** from the founder's domain (real-sounding titles/tags, full body text).
-3. **API** — `apps/api/src/items.js`: rename the route/queries to match the model.
-4. **Front-end** — `apps/web/src/App.jsx` + components: update labels/fields the
-   screen renders. Keep the input → results → detail shape.
-5. **Run it** — `npm install` if needed, then `npm run dev`. Hit
-   `curl http://localhost:3001/api/health` and the list endpoint to confirm the
-   round-trip works. If port 3001 is taken, start the API with `PORT=<n>`.
+1. **`apps/api/src/db.js`** — rename the table (`items` → your resource) and every
+   column to match the data model from Beat 1. Keep `id` and `created_at`.
 
-Make small changes and keep the app booting after each. If you're building more
-than the MVP, add one feature at a time — get each one booting and clickable before
-starting the next. Don't rewrite the architecture — only the data and the words change.
+2. **`apps/api/src/data/seed-items.js`** — replace all rows with 5–6 believable
+   records from the founder's domain. Each seed object's **keys must use the new
+   column names** — if you renamed `blurb` to `description`, the seed object must
+   say `description:`, not `blurb:`.
+
+3. **`apps/api/src/items.js`** — rename the exported router variable and update
+   every SQL column name in the SELECT and INSERT queries to match `db.js`.
+
+4. **`apps/api/server.js`** — if you renamed the router export in `items.js`,
+   update the import and `app.use()` line to match.
+
+5. **`apps/web/src/api.js`** — update the fetch paths if you renamed the API route
+   (e.g. `/api/items` → `/api/recipes`).
+
+**For `shape: 'search'`** — update all three components:
+
+6. **`apps/web/src/components/Card.jsx`** — update `item.title`, `item.blurb`,
+   `item.tags` to the renamed fields.
+
+7. **`apps/web/src/components/Detail.jsx`** — update `item.title`, `item.blurb`,
+   `item.tags`, `item.body`. Add extra field rows in the `CardContent` block
+   (there's a comment placeholder showing the pattern).
+
+8. **`apps/web/src/components/AddForm.jsx`** — update state variable names, input
+   placeholders, and the `onAdd({ … })` object keys to match the actual fields.
+
+**For `shape: 'tool'`** — update the two tool components:
+
+6. **`apps/web/src/components/ToolForm.jsx`** — rename the `primary`/`secondary`
+   state vars and their placeholders to match the founder's inputs. Add extra
+   `<input>` or `<textarea>` rows if the tool needs more fields.
+
+7. **`apps/web/src/components/ToolOutput.jsx`** — update `item.title`, `item.blurb`,
+   `item.tags`, `item.body` to the renamed fields. Add extra field rows below
+   `item.body` using the comment placeholder in the file.
+
+**For `shape: 'dashboard'`** — update the two dashboard components:
+
+6. **`apps/web/src/App.jsx`** (dashboard only) — update the three `StatCard` labels
+   and value computations in the `stats` useMemo block to reflect the data model
+   (e.g. rename "Categories" to "Brands", compute a sum instead of a count).
+
+7. **`apps/web/src/components/DataTable.jsx`** — rename the `<th>` headers and the
+   `item.*` field references in each `<td>` to match the renamed columns.
+
+9. **Run it** — `npm run seed` (reload the new data), then `npm run dev`. Confirm
+   with `curl http://localhost:3001/api/items` (or the renamed route).
+
+Make one file change at a time and keep the app booting after each.
 
 ## Beat 3 — Save & hand off
 

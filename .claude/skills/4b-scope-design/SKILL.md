@@ -24,17 +24,34 @@ If the spec is missing, run `/2-spec` first.
 Ask with the **AskUserQuestion** tool — these are choice-friendly, so offer
 options (the founder picks **Other** to type their own).
 
+**Shape** — pick the screen shape that matches the magic moment (read the spec):
+1. What shape does the demo screen take?
+   - **Search/Catalog** — user types or filters → sees a grid of results → clicks for detail *(recipe finders, job boards, marketplaces)*
+   - **Tool/Generator** — user fills a form → gets a structured result *(AI generators, analyzers, brief builders, calculators)*
+   - **Dashboard** — land on summary stats + browse/filter a data table *(SaaS metrics, trackers, spend/inventory tools)*
+   If the magic moment doesn't clearly fit any shape, default to Search/Catalog or recommend Route A (Lovable).
+
 **Scope** — decide how much to build now (read the spec's MVP + product backlog):
-1. What do we build now? (offer: MVP only · MVP + 1–2 backlog items · Scaffold all)
-2. Confirm everything else stays on the product backlog (deferred, not deleted).
+2. What do we build now? (offer: MVP only · MVP + 1–2 backlog items · Scaffold all)
+3. Confirm everything else stays on the product backlog (deferred, not deleted).
 
 **Brand** — make it theirs:
-3. Product name and one-line tagline?
-4. Logo — a simple emoji/letter mark for now, or an image you'll drop in?
-5. Primary colour (offer swatches: purple #8B4FFB · green #00BA6E · blue #008CFF · Other for a custom hex).
-6. Vibe (offer: warm + friendly · sharp + techy · bold + playful · calm + minimal).
+4. Product name and one-line tagline?
+5. Logo — a simple emoji/letter mark for now, or an image you'll drop in?
+6. Primary colour (offer swatches: purple #8B4FFB · green #00BA6E · blue #008CFF · Other for a custom hex).
+7. Vibe (offer: warm + friendly · sharp + techy · bold + playful · calm + minimal).
 
 ## Beat 2 — Do the work
+
+0. **Activate the right template shape** — if the chosen shape is not `search`:
+   - Copy the template files into the live app:
+     - `cp apps/web/src/templates/<shape>/App.jsx apps/web/src/App.jsx`
+     - For `tool`: `cp apps/web/src/templates/tool/ToolForm.jsx apps/web/src/components/ToolForm.jsx`
+       and `cp apps/web/src/templates/tool/ToolOutput.jsx apps/web/src/components/ToolOutput.jsx`
+     - For `dashboard`: `cp apps/web/src/templates/dashboard/StatCard.jsx apps/web/src/components/StatCard.jsx`
+       and `cp apps/web/src/templates/dashboard/DataTable.jsx apps/web/src/components/DataTable.jsx`
+   - Update `apps/web/src/brand.js`: set `shape: '<shape>'`
+   If the shape is `search`, no file copies are needed — it's already the default.
 
 1. Write the scope: what's being built **now** vs what stays on the **backlog**
    (use `.bullets keep` for "building now" and `.bullets cut` for "backlog", side by
@@ -49,8 +66,13 @@ options (the founder picks **Other** to type their own).
    and the search placeholder/button/empty copy to match the idea. Keep it
    lightweight — one file. If a logo image is provided, note where to drop it;
    otherwise use the emoji/letter mark.
-3. Note the data model rename they'll need in `apps/api/src/db.js` (e.g.
-   `items` → `recipes`) — `/5-build` will do the actual rename.
+3. Lock the data model for `/5-build` — derive it from the spec if it was captured
+   there; otherwise pin it now:
+   - **Resource name**: what `items` becomes (e.g. `recipes`, `listings`, `sessions`)
+   - **Field mapping**: which spec field maps to `title`, `blurb`, `tags`, `body`
+     in the template, and any extra columns beyond those four (e.g. `prep_time`,
+     `price`, `location`). Write it out explicitly — `/5-build` will rename the
+     table, columns, queries, and all three components without ambiguity.
 
 ## Beat 3 — Save & hand off
 

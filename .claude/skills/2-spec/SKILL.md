@@ -41,7 +41,13 @@ Produce a spec with these sections:
 - **Product backlog** — every other feature, ordered by priority (high → low).
   Nothing is cut; it's sequenced. This is the roadmap after the MVP ships.
 - **Inputs → Outputs** of the **MVP**
-- **Seed data** for the demo
+- **Data model** — name the resource (e.g. `recipe`, `listing`, `session`) and its
+  3–5 fields. Map each field to the starter template's schema: which is the `title`
+  (headline on the card)? Which is the `blurb` (one-liner below it)? Which is
+  `tags` (searchable categories)? Which is `body` (full detail text)? List any
+  extra fields beyond those four. This is what `/5-build` wires into the database.
+- **Seed data** for the demo — 2–3 example rows using the actual field names from
+  the data model above (not generic "sample item one" placeholders).
 
 Most founders still demo the MVP first — but the starter kit is a real full-stack
 app, so the spec captures the whole product and `/4b` + `/5` decide how much to

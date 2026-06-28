@@ -91,10 +91,15 @@ npm run dev      # starts the API and the web app together
 | **Web** (React + Vite) | http://localhost:5173 | The screen you click |
 | **API** (Express + SQLite) | http://localhost:3001 | `/api/items`, `/api/health` |
 
-The template ships with a **polished design system** out of the box — Inter font,
-dark gradient hero, per-type colored card glows, gradient bar charts, and icon
-badges via `lucide-react`. Browse icons at [lucide.dev](https://lucide.dev) and
-import any you need: `import { TrendingUp } from 'lucide-react'`.
+The template ships with **[shadcn/ui](https://ui.shadcn.com)** pre-installed — a
+polished component library (Radix UI + Tailwind CSS) that makes demos look
+product-quality out of the box. All core components are pre-added so founders
+never need to run `npx shadcn add` during the workshop:
+
+`Button` · `Card` · `Input` · `Badge` · `Select` · `Skeleton` · `Separator`
+
+Browse icons at [lucide.dev](https://lucide.dev) — `lucide-react` is also
+pre-installed: `import { TrendingUp } from 'lucide-react'`.
 
 The database (`apps/api/data/app.db`) is created and seeded automatically on first
 run, so the app is never blank. Re-seed any time with `npm run seed`.
@@ -108,10 +113,13 @@ whole kit.
 
 ## Make it yours (the 4 edits `/4b` + `/5` automate)
 
-1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, colours.
+1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, and one hex `primary`
+   colour. That single hex drives the entire shadcn/ui colour palette at runtime.
 2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns.
-3. **Demo data** → `apps/api/src/data/seed-items.js` — believable rows.
-4. **Words on the screen** → `apps/web/src/App.jsx` — labels and copy.
+3. **Demo data** → `apps/api/src/data/seed-items.js` — believable rows (use the
+   new column names, not the template defaults).
+4. **Components** → `apps/web/src/components/Card.jsx`, `Detail.jsx`,
+   `AddForm.jsx` — update the `item.*` field references to match the renamed columns.
 
 Most demos are one screen — but the kit is a real full-stack app, so go bigger if
 your idea needs it. Scope to what you'll actually finish.
@@ -125,13 +133,21 @@ build_test_learn_workshop/
 ├─ deck.html                # the workshop slide deck (open in a browser)
 ├─ package.json             # npm workspaces + `npm run dev`
 ├─ apps/
-│  ├─ web/                  # React + Vite front-end
+│  ├─ web/                  # React + Vite + Tailwind CSS + shadcn/ui
+│  │  ├─ tailwind.config.js # Tailwind v3 config (shadcn colour tokens)
+│  │  ├─ components.json    # shadcn/ui config (run `npx shadcn add <x>` to extend)
 │  │  └─ src/
 │  │     ├─ App.jsx         # THE screen: input → results → detail
-│  │     ├─ brand.js        # 🎨 name, tagline, logo, colours (edit this!)
+│  │     ├─ brand.js        # 🎨 name, tagline, logo, primary hex (edit this!)
+│  │     ├─ main.jsx        # hex→HSL conversion; sets --primary CSS var
 │  │     ├─ api.js          # fetch wrapper for the API
-│  │     ├─ styles.css      # design system (tokens, cards, charts, hero)
-│  │     └─ components/     # Card.jsx, Detail.jsx, AddForm.jsx
+│  │     ├─ styles.css      # Tailwind directives + shadcn CSS variable layer
+│  │     ├─ lib/utils.js    # cn() Tailwind merge helper
+│  │     └─ components/
+│  │        ├─ Card.jsx     # result card (title · blurb · tags)
+│  │        ├─ Detail.jsx   # full record view (all fields)
+│  │        ├─ AddForm.jsx  # create form (proves real persistence)
+│  │        └─ ui/          # shadcn/ui primitives (Button, Card, Input, Badge…)
 │  └─ api/                  # Node + Express back-end
 │     ├─ server.js          # routes + first-run auto-seed
 │     └─ src/
