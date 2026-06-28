@@ -1,6 +1,6 @@
 ---
 name: 3-opportunity
-description: Opportunity stage of the Build It, Show It workshop — now that the one-screen spec exists, sizes the market and finds the edge (competitor white-space, demand signals, back-of-napkin TAM/SAM/SOM, the wedge), then presents the two build routes. Use after /2-spec or when the user types /3-opportunity.
+description: Opportunity stage of the Build It, Show It workshop — now that the spec (MVP + backlog) exists, sizes the market and finds the edge (competitor white-space, demand signals, back-of-napkin TAM/SAM/SOM, the wedge), then presents the two build routes. Use after /2-spec or when the user types /3-opportunity.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, WebSearch, WebFetch, Bash(mkdir *), Bash(cp *)

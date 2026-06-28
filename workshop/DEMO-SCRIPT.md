@@ -36,8 +36,8 @@ answers below as the skill asks. These match the worked example in
    The confident "safe to spend" number appearing — no spreadsheet math.
 4. **What data can we fake?**
    ~20 believable transactions for one couple-month (rent, groceries, subscriptions, dining, gas, utilities, coffee, two paydays).
-5. **What to leave OUT?**
-   Accounts, real bank connection, two-user live sync, multi-month history.
+5. **Other features — and which is the MVP to build first?**
+   MVP: ask a money question → answer + "safe to spend" number. Backlog: forecast nudge, two-user sync, real bank connection, multi-month trends, savings goals.
 
 → Next: **`/3-opportunity`**.
 
@@ -72,16 +72,17 @@ Then jump to `/6-test-iterate` (below).
 ## Route B — Claude Code + starter template
 
 ### `/4b-scope-design`
-1. **Confirm the one screen?** Yes — question in → answer + safe-to-spend number → tap a transaction for detail.
-2. **What are we cutting?** Accounts, real bank connection, two-user sync, multi-month history.
+1. **What do we build now?** The MVP only — question in → answer + safe-to-spend number → tap a transaction for detail.
+2. **What stays on the backlog?** Forecast nudge, two-user sync, real bank connection, multi-month trends, savings goals.
 3. **Product name & tagline?** Kora — "Ask your budget anything."
 4. **Logo?** Emoji mark for now: 🏠
 5. **Primary colour?** Warm amber — #D97706.
 6. **Vibe in two words?** Warm + friendly.
 
 ### `/5-build`
-1. **Resource name?** items → transactions
-2. **Fields each record needs?** date, description, amount (negative = expense, positive = income), category.
+1. **What do we build this session?** The MVP first.
+2. **Resource name?** items → transactions
+3. **Fields each record needs?** date, description, amount (negative = expense, positive = income), category.
 
 ---
 

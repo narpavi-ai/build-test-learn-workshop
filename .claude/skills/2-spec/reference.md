@@ -1,14 +1,15 @@
 # Stage 2 — Spec · founder guidance
 
-The SKILL.md has the beats. This is the depth: how to cut to one screen, find the
-magic moment, and what to fake.
+The SKILL.md has the beats. This is the depth: how to pick the MVP, find the magic
+moment, prioritize the backlog, and what to fake.
 
-## Why one screen
+## Why MVP-first
 
-Tonight you're building a *demo*, not a product. A demo's job is to make one
-person feel one thing in two minutes. One screen that does the magic moment beats
-ten screens of plumbing. Everything you cut now, you can add after Demo Night —
-nothing here is permanent.
+Tonight you're building a *demo*, not the whole product. A demo's job is to make
+one person feel one thing in two minutes — so you build the **MVP** (the
+magic-moment feature) first. The rest of the product isn't thrown away; it goes on
+the **product backlog**, sequenced by priority, ready to build after Demo Night.
+One screen that nails the magic moment beats ten half-built ones.
 
 ## The magic moment
 
@@ -27,17 +28,18 @@ gets **something out**. Name both precisely:
 - **In:** the smallest input that's still believable (3 ingredients, not a full pantry).
 - **Out:** the payoff, shown well (one great recipe card, not a wall of 50 results).
 
-## Scope-cutting heuristics (what to leave OUT)
+## MVP vs backlog (what to defer)
 
-Default to cutting all of these for the demo — say so explicitly so it's a
-decision, not an accident:
+These usually belong in the backlog, not the MVP — name them so it's a deliberate
+sequencing decision, not an accident:
 - Accounts / login / profiles
 - Saving, favouriting, history
 - Payments / subscriptions
-- Settings, onboarding, multiple screens
-- Real integrations (use faked data instead)
+- Settings, onboarding, extra screens
+- Real integrations (fake the data for the demo instead)
 
-Rule of thumb: if it isn't on the path to the magic moment, it's out for tonight.
+Rule of thumb: if it isn't on the path to the magic moment, it's backlog — built
+after the MVP ships, not never.
 
 ## What "fake" means (and why it's fine)
 
@@ -50,15 +52,14 @@ the *experience*, not the backend.
 
 > Act as a product coach for a non-technical student founder. I want to build
 > [idea] for [one user]. In plain language, define: (1) the one user, (2) the
-> single core action they take on first open, (3) the inputs and outputs of that
-> one screen, (4) what data we can fake to make a believable demo, and (5) what to
-> explicitly leave OUT for now. Keep the whole thing to one screen that's buildable
-> in an evening. Push back if my scope is too big.
+> magic-moment feature as the MVP, (3) the inputs and outputs of that MVP screen,
+> (4) what data we can fake to make a believable demo, and (5) the rest of the
+> features as a prioritized product backlog. Keep the MVP buildable in an evening.
 
 ## Worked example — Kora spec
 
 - **One user:** newly-married couple merging finances for the first time.
-- **Core action:** type a money question, hit "Ask Kora".
-- **In → Out:** a plain-English question → a 2–3 sentence answer + one big "safe to spend this week" number.
+- **Magic moment / MVP:** type a money question, hit "Ask Kora" → a 2–3 sentence answer + one big "safe to spend this week" number (one screen).
+- **In → Out:** a plain-English question → the answer + the safe-to-spend number.
 - **Fake:** ~20 hand-written transactions for one couple-month, realistic names and amounts.
-- **Out of scope:** accounts, real bank connection, two-user live sync, multi-month history.
+- **Backlog:** two-user live sync, real bank connection (Plaid), multi-month trends, savings goals, accounts/login.

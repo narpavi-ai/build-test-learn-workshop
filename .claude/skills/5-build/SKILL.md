@@ -1,6 +1,6 @@
 ---
 name: 5-build
-description: Route B of the Build It, Show It workshop — wires the founder's one screen into the React + Express + SQLite starter template (renames the resource, swaps the seed, adjusts the UI), then saves a branded HTML artifact. Use after /4b-scope-design or when the user types /5-build.
+description: Route B of the Build It, Show It workshop — wires the founder's chosen feature(s) — the MVP first, plus any backlog items they pick — into the React + Express + SQLite starter template (renames the resource, swaps the seed, adjusts the UI), then saves a branded HTML artifact. Use after /4b-scope-design or when the user types /5-build.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Edit, Bash(npm *), Bash(curl *), Bash(mkdir *), Bash(cp *)
@@ -21,11 +21,13 @@ Resolve the active run and read `workshop/runs/<slug>/04b-scope-design.html` and
 
 ## Beat 1 — Confirm the build (short)
 
-Ask with the **AskUserQuestion** tool:
+Read the spec's MVP + product backlog and the scope chosen in `/4b`. Ask with the
+**AskUserQuestion** tool:
 
-1. Confirm the resource name (e.g. `items` → `recipes`, `listings`, `prompts`).
-2. Confirm the fields each record needs (title + a few — keep it to what the
-   screen shows).
+1. What do we build this session — the **MVP only**, the **MVP + a backlog item or
+   two**, or **scaffold all**? (Default: the MVP first.)
+2. Confirm the resource name (e.g. `items` → `recipes`, `transactions`, `listings`).
+3. Confirm the fields each record needs (keep it to what the built feature(s) show).
 
 ## Beat 2 — Do the work
 
@@ -41,8 +43,9 @@ Work the starter template, one file at a time, keeping it runnable:
    `curl http://localhost:3001/api/health` and the list endpoint to confirm the
    round-trip works. If port 3001 is taken, start the API with `PORT=<n>`.
 
-Make small changes and keep the app booting after each. Don't rewrite the
-architecture — only the data and the words change.
+Make small changes and keep the app booting after each. If you're building more
+than the MVP, add one feature at a time — get each one booting and clickable before
+starting the next. Don't rewrite the architecture — only the data and the words change.
 
 ## Beat 3 — Save & hand off
 

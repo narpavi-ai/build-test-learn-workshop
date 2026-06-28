@@ -1,6 +1,6 @@
 ---
 name: 4b-scope-design
-description: Route B of the Build It, Show It workshop — cuts the spec down to one magic-moment screen and captures the brand (name, tagline, logo, colours) for the starter template, then saves a branded HTML artifact. Use after /3-opportunity for the Claude Code path or when the user types /4b-scope-design.
+description: Route B of the Build It, Show It workshop — scopes the build (the MVP first, with the rest kept as a product backlog) and captures the brand (name, tagline, logo, colours) for the starter template, then saves a branded HTML artifact. Use after /3-opportunity for the Claude Code path or when the user types /4b-scope-design.
 disable-model-invocation: true
 argument-hint: [project name]
 allowed-tools: Read, Write, Edit, Bash(mkdir *), Bash(cp *)
@@ -24,9 +24,9 @@ If the spec is missing, run `/2-spec` first.
 Ask with the **AskUserQuestion** tool — these are choice-friendly, so offer
 options (the founder picks **Other** to type their own).
 
-**Scope** — confirm one screen, cut the rest:
-1. Confirm the one magic-moment screen (input → results → detail). Right?
-2. What are we cutting for now? (offer: accounts · saving favourites · payments · extra screens)
+**Scope** — decide how much to build now (read the spec's MVP + product backlog):
+1. What do we build now? (offer: MVP only · MVP + 1–2 backlog items · Scaffold all)
+2. Confirm everything else stays on the product backlog (deferred, not deleted).
 
 **Brand** — make it theirs:
 3. Product name and one-line tagline?
@@ -36,13 +36,14 @@ options (the founder picks **Other** to type their own).
 
 ## Beat 2 — Do the work
 
-1. Write the scope: what's IN, what's CUT (use `.bullets keep` and `.bullets cut`,
-   side by side in a `.scope-split`). Add a **screen-flow diagram** so the build is
-   obvious at a glance — use the shared `.flow-diagram` markup (styled in
-   `eu-brand.css`): **Input → Results → Detail**, in the founder's own words (e.g.
-   "Ingredients in" → "Recipe cards" → "Full recipe"). Mark the payoff node
-   `class="node good"`. Most demos are one screen, but if the founder wants a bigger
-   build, the starter template supports it — scope to what they'll finish, don't force one screen.
+1. Write the scope: what's being built **now** vs what stays on the **backlog**
+   (use `.bullets keep` for "building now" and `.bullets cut` for "backlog", side by
+   side in a `.scope-split`). Add a **screen-flow diagram** so the build is obvious
+   at a glance — use the shared `.flow-diagram` markup (styled in `eu-brand.css`):
+   **Input → Results → Detail**, in the founder's own words (e.g. "Ingredients in" →
+   "Recipe cards" → "Full recipe"). Mark the payoff node `class="node good"`. Most
+   demos are just the MVP, but the starter template is real full-stack — if the
+   founder chose more, scope to what they'll actually finish.
 2. Apply the brand to the starter template by editing
    **`apps/web/src/brand.js`**: set `name`, `tagline`, `logo`, `colors.primary`,
    and the search placeholder/button/empty copy to match the idea. Keep it
