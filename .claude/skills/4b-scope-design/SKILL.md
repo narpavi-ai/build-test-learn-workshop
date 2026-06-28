@@ -36,8 +36,13 @@ options (the founder picks **Other** to type their own).
 
 ## Beat 2 — Do the work
 
-1. Write the scope: the one screen, what's IN, what's CUT (use `.bullets keep` and
-   `.bullets cut`).
+1. Write the scope: what's IN, what's CUT (use `.bullets keep` and `.bullets cut`,
+   side by side in a `.scope-split`). Add a **screen-flow diagram** so the build is
+   obvious at a glance — use the shared `.flow-diagram` markup (styled in
+   `eu-brand.css`): **Input → Results → Detail**, in the founder's own words (e.g.
+   "Ingredients in" → "Recipe cards" → "Full recipe"). Mark the payoff node
+   `class="node good"`. Most demos are one screen, but if the founder wants a bigger
+   build, the starter template supports it — scope to what they'll finish, don't force one screen.
 2. Apply the brand to the starter template by editing
    **`apps/web/src/brand.js`**: set `name`, `tagline`, `logo`, `colors.primary`,
    and the search placeholder/button/empty copy to match the idea. Keep it

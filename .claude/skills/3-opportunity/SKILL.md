@@ -34,6 +34,11 @@ Ask with the **AskUserQuestion** tool (founders pick **Other** to type their own
 Search for real signals; cite what you find. Produce four things (see `reference.md`
 for templates and the *why*):
 
+**Guardrail — never fabricate.** Only cite sources you actually found, and link
+them. If a demand signal isn't there, say "not found" — don't invent a statistic,
+a competitor, or a market number to fill the gap. An honest, student-sized read
+beats an impressive fake one, and a judge will catch the fake one on Demo Night.
+
 1. **Competitor white-space grid** — 3–5 real alternatives (incl. the "do it
    manually" workaround) × a few dimensions the user cares about. Name the **gap**
    the spec's one screen fills.

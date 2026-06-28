@@ -230,3 +230,7 @@ npm-debug.log*
 # SQLite database (created on first run)
 apps/api/data/*.db
 apps/api/data/*.db-*
+
+# Live founder runs — each founder's harness output stays local, never committed.
+# The canonical worked example lives in workshop/examples/ and IS tracked.
+workshop/runs/

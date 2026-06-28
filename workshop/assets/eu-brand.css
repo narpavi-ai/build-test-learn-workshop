@@ -85,3 +85,19 @@ a.tile .n{font-family:var(--head);font-weight:800;font-size:13px;color:var(--pur
 a.tile h3{font-family:var(--head);font-size:19px;color:var(--navy);margin:6px 0 4px;}
 a.tile p{color:var(--muted);font-size:14px;}
 a.tile.todo{opacity:.55;border-style:dashed;}
+
+/* Flow diagram — problem flow (1-problem) & screen flow (4b-scope-design) */
+.flow-diagram{display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin:14px 0 4px;}
+.flow-diagram .node{flex:1;min-width:130px;background:var(--paper-soft);border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;}
+.flow-diagram .node .nlabel{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:6px;}
+.flow-diagram .node .nbody{font-size:14px;color:var(--ink);line-height:1.35;}
+.flow-diagram .arrow{display:flex;align-items:center;justify-content:center;flex:none;padding:0 10px;color:var(--purple);font-weight:700;font-size:22px;}
+.flow-diagram .node.cost{background:rgba(210,70,107,.08);border-color:rgba(210,70,107,.35);}
+.flow-diagram .node.cost .nlabel{color:#d2466b;}
+.flow-diagram .node.good{background:rgba(0,186,110,.08);border-color:rgba(0,186,110,.35);}
+.flow-diagram .node.good .nlabel{color:var(--green);}
+@media(max-width:640px){.flow-diagram{flex-direction:column;}.flow-diagram .arrow{transform:rotate(90deg);padding:6px 0;}}
+
+/* Keep/Cut scope split (4b-scope-design) */
+.scope-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
+@media(max-width:640px){.scope-split{grid-template-columns:1fr;}}

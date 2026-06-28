@@ -52,6 +52,23 @@ Write a tight problem statement in this shape:
 Then add 2–3 supporting points: who the person is, the moment the pain hits, and
 what "solved" would feel like. Keep it concrete and free of jargon.
 
+**Add a problem-flow diagram.** Include a simple visual that maps the pain so a
+stranger gets it at a glance. Use the shared `.flow-diagram` markup (styled in
+`eu-brand.css`): four nodes — **User → Pain → Workaround → Cost** (mark the Cost
+node `class="node cost"`). Fill each with the founder's own words. Example:
+
+```html
+<div class="flow-diagram">
+  <div class="node"><div class="nlabel">User</div><div class="nbody">…</div></div>
+  <div class="arrow">→</div>
+  <div class="node"><div class="nlabel">Pain</div><div class="nbody">…</div></div>
+  <div class="arrow">→</div>
+  <div class="node"><div class="nlabel">Workaround today</div><div class="nbody">…</div></div>
+  <div class="arrow">→</div>
+  <div class="node cost"><div class="nlabel">What it costs</div><div class="nbody">…</div></div>
+</div>
+```
+
 ## Beat 3 — Save & hand off
 
 Save the artifact to `workshop/runs/<slug>/01-problem.html` following the **Saving
