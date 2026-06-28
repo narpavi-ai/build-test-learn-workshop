@@ -17,7 +17,7 @@ prompt-writing patterns, free-tier budgeting, and live-fail fallbacks, read
 
 Resolve the active run and read `workshop/runs/<slug>/02-spec.html` (and
 `01-problem.html`, `03-opportunity.html`). Build from the spec's one screen,
-inputs/outputs, and faked data; let the opportunity wedge shape the name/copy.
+inputs/outputs, and seed data; let the opportunity wedge shape the name/copy.
 If the spec is missing, run `/2-spec` first.
 
 ## Beat 1 — Interview (short)
@@ -32,14 +32,14 @@ with the **AskUserQuestion** tool:
 ## Beat 2 — Do the work
 
 Write a numbered script of **3–4 self-contained prompts**. Each prompt:
-- Is specific enough to paste as-is (names the screen, fields, fake data).
+- Is specific enough to paste as-is (names the screen, fields, seed data).
 - Has a one-line **"this should produce…"** note.
 - Has a one-line **"if it breaks live"** fallback (re-prompt, don't debug in circles).
 
-Keep it realistic for the free tier: **one screen, no auth, faked data.**
+Keep it realistic for the free tier: **one screen, no auth, seed data.**
 Typical shape:
 1. Scaffold the screen (layout + input + button + empty results grid).
-2. Add 5–6 believable fake records and render them as cards.
+2. Add 5–6 believable seed records and render them as cards.
 3. Add the detail view when a card is clicked.
 4. Polish: brand colours, copy, empty/loading states.
 

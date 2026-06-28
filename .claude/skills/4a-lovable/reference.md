@@ -15,7 +15,7 @@ if it drifts instead of starting over.
 Each prompt should name:
 - **The screen/section** it's building ("a single search screen").
 - **The exact elements** (input placeholder text, button label, results as cards).
-- **The fake data** to use (give 2 sample rows inline so it copies your tone).
+- **The seed data** to use (give 2 sample rows inline so it copies your tone).
 - **The look** (brand colour, vibe) — once, in the polish prompt.
 Keep one prompt = one visible outcome. Don't ask for five things at once.
 
@@ -24,7 +24,7 @@ Keep one prompt = one visible outcome. Don't ask for five things at once.
 1. **Scaffold** — "Build a single screen with a centered search box (placeholder
    '…'), a primary button labelled '…', and an empty results grid below. No login,
    no other pages."
-2. **Fake data** — "Add 6 example [records] as cards. Here are two: [row], [row].
+2. **Seed data** — "Add 6 example [records] as cards. Here are two: [row], [row].
    Match that style for the rest." 
 3. **Detail** — "When a card is clicked, open a detail view showing [fields]. Add a
    back button."

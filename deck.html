@@ -584,7 +584,7 @@ const slides = [
     <p>Don't start building. Start by making a chat AI define the smallest version <em>for</em> you. Paste this:</p>
     <div class="prompt-box">
       <div class="label">▷ Paste into ChatGPT / Claude</div>
-      <code>Act as a <span class="accentword">product coach</span>. I want to build <span class="accentword">Kora — an AI budget app for a newly-married couple</span>. Define: the <span class="accentword">one user</span>, the <span class="accentword">single core action</span>, the <span class="accentword">inputs and outputs</span> of that one screen, what <span class="accentword">data to fake</span> for a demo, and what to explicitly <span class="accentword">leave OUT</span>. Keep it to one screen buildable in a no-code tool tonight.</code>
+      <code>Act as a <span class="accentword">product coach</span>. I want to build <span class="accentword">Kora — an AI budget app for a newly-married couple</span>. Define: the <span class="accentword">one user</span>, the <span class="accentword">single core action</span>, the <span class="accentword">inputs and outputs</span> of that one screen, what <span class="accentword">data to seed</span> for a demo, and what to explicitly <span class="accentword">leave OUT</span>. Keep it to one screen buildable in a no-code tool tonight.</code>
     </div>
     <p class="note">The output becomes your spec — and the seed for your build prompts in Lovable.</p>
   </div>
@@ -637,7 +637,7 @@ const slides = [
     <div class="stage-icon">${ic('layers')}</div>
     <div class="eyebrow">Stage 5 — Just-enough tech + tools</div>
     <h2>The front of the app vs. the data behind it</h2>
-    <p class="lead">The <strong>front-end</strong> is what people see and click. The <strong>data</strong> is what fills it. For a demo, you can <strong>fake the data</strong> — and nobody can tell.</p>
+    <p class="lead">The <strong>front-end</strong> is what people see and click. The <strong>data</strong> is what fills it. For a demo, you can <strong>seed the data</strong> — believable sample records, no backend needed.</p>
     <div class="cards c2">
       <div class="card"><span class="tag">${ic('heart')} Hands-on tonight</span><h3>Lovable <em>(free tier)</em></h3><p>~5 credits/day, so aim for <strong>3–4 specific prompts</strong>. Don't debug in circles — re-prompt clearly instead.</p></div>
       <div class="card"><span class="tag">${ic('terminal')} The level-up</span><h3>Claude Code</h3><p>The full build — a real front-end + back-end + data. We'll <em>show</em> this one; you don't build it tonight.</p></div>
@@ -656,10 +656,10 @@ const slides = [
     <div class="eyebrow">Stage 6 — Build with AI</div>
       <h2>Two ways to build the same app</h2>
       <ul>
-        <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable Kora with faked transaction data.</li>
+        <li><strong>Live, in Lovable:</strong> 3–4 prompts → a clickable Kora with seeded transaction data.</li>
         <li><strong>The real version:</strong> the same app as a proper Node + React project — UI calls an API, API answers from real data.</li>
       </ul>
-      <p class="note">Same idea, same screens — one fakes the data, one does a real round-trip.</p>
+      <p class="note">Same idea, same screens — one runs on seed data, one does a real round-trip.</p>
     </div>
     <div class="slot">[ Live screen-share<br/>of Lovable build ]<br/><br/>(switch to browser here)</div>
   </div>
@@ -675,7 +675,7 @@ const slides = [
     <h2>Make it work, then make it believable</h2>
     <div class="cards c3">
       <div class="card"><span class="tag">${ic('check')} Make it work</span><h3>Click your own demo</h3><p>Walk the exact path your audience will: type a question, hit Ask, open a transaction. Fix what breaks that path.</p></div>
-      <div class="card"><span class="tag">${ic('flask')} Seed it</span><h3>Fake data that feels real</h3><p>Give it ~20 believable transactions with real names &amp; amounts. Empty or "lorem ipsum" kills the illusion.</p></div>
+      <div class="card"><span class="tag">${ic('flask')} Seed it</span><h3>Seed data that feels real</h3><p>Give it ~20 believable transactions with real names &amp; amounts. Empty or "lorem ipsum" kills the illusion.</p></div>
       <div class="card"><span class="tag">${ic('alert')} Expect chaos</span><h3>Demos are unpredictable</h3><p>Something will glitch live. That's normal — we troubleshoot together, and a calm fix is part of the show.</p></div>
     </div>
   </div>
@@ -742,11 +742,11 @@ const slides = [
     <h2>Pick your one screen and build it</h2>
     <div class="cards c2">
       <div class="card"><span class="tag">${ic('globe')} Pre-product?</span><h3>Build a validation / landing page</h3><p>Your magic-moment screen can be a landing page that explains the promise and captures interest. That's a valid demo.</p></div>
-      <div class="card"><span class="tag">${ic('scope')} Already building?</span><h3>Build your core screen</h3><p>Isolate the one screen that shows your magic moment and make <em>that</em> clickable with faked data.</p></div>
+      <div class="card"><span class="tag">${ic('scope')} Already building?</span><h3>Build your core screen</h3><p>Isolate the one screen that shows your magic moment and make <em>that</em> clickable with seed data.</p></div>
     </div>
     <ul class="reslist" style="margin-top:22px;">
       <li class="has-ic">${ic('checkc')}<strong>Checkpoint 1:</strong> Scoped to ONE screen &amp; specced with AI?</li>
-      <li class="has-ic">${ic('checkc')}<strong>Checkpoint 2:</strong> Built in Lovable with fake data that looks real?</li>
+      <li class="has-ic">${ic('checkc')}<strong>Checkpoint 2:</strong> Built in Lovable with seed data that looks real?</li>
       <li class="has-ic">${ic('checkc')}<strong>Checkpoint 3:</strong> Published to a URL you can open on your phone?</li>
     </ul>
   </div>
@@ -783,7 +783,7 @@ const slides = [
       <ul>
         <li>Learn the <strong>stages</strong>, swap the tool.</li>
         <li>Scope to <strong>one magic-moment screen</strong>.</li>
-        <li><strong>Fake the data</strong> — ship a URL, not a slide.</li>
+        <li><strong>Seed the data</strong> — ship a URL, not a slide.</li>
       </ul>
     </div>
     <div>

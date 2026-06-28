@@ -55,7 +55,7 @@ beats an impressive fake one, and a judge will catch the fake one on Demo Night.
 
 The path now splits — **both are valid demos**:
 - **Route A · Lovable (no-code):** run `/4a-lovable` → 3–4 prompts → a clickable
-  app with faked data. Best if you don't want to touch code.
+  app with seed data. Best if you don't want to touch code.
 - **Route B · Claude Code + starter template:** run `/4b-scope-design` → `/5-build` →
   `/6-test-iterate` → a real React+API+SQLite app you own. The level-up.
 

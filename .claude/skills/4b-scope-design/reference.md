@@ -13,8 +13,11 @@ scope mid-build and run out of evening.
 ## What "one magic-moment screen" means here
 
 The template's shape is input → results grid → detail. Confirm the founder's magic
-moment maps onto it (almost everything does). If they're describing multiple
-screens or a flow, pull it back to the single screen that delivers the payoff.
+moment maps onto it (almost everything does). The magic moment can span this small
+flow — grid → detail is two views and that's fine; "one screen" means one flow, not
+one literal view. If they're describing a sprawling product — many features,
+settings, separate sections — pull the extras back to the backlog and keep the one
+magic-moment flow that delivers the payoff.
 
 ## The brand.js field map (the one file you edit)
 

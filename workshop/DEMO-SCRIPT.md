@@ -34,7 +34,7 @@ answers below as the skill asks. These match the worked example in
    In: a question like "Can we afford dinner out this weekend?". Out: a 2–3 sentence answer + one big "safe to spend this week" number.
 3. **The magic moment?**
    The confident "safe to spend" number appearing — no spreadsheet math.
-4. **What data can we fake?**
+4. **What seed data can we use?**
    ~20 believable transactions for one couple-month (rent, groceries, subscriptions, dining, gas, utilities, coffee, two paydays).
 5. **Other features — and which is the MVP to build first?**
    MVP: ask a money question → answer + "safe to spend" number. Backlog: forecast nudge, two-user sync, real bank connection, multi-month trends, savings goals.

@@ -28,7 +28,7 @@ Ask these with the **AskUserQuestion** tool (one or two panels; founders pick
 1. When someone opens this for the first time, what's the **one action** they take?
 2. What do they put **in**, and what do they get **out**?
 3. What's the **magic moment** — the instant they go "oh, nice"?
-4. For a demo, what data can we **fake** so it looks real?
+4. For a demo, what **sample data** can we seed so it looks real?
 5. What other features do you imagine — and which **one** is the magic moment (the MVP) to build first?
 
 ## Beat 2 — Do the work
@@ -41,7 +41,7 @@ Produce a spec with these sections:
 - **Product backlog** — every other feature, ordered by priority (high → low).
   Nothing is cut; it's sequenced. This is the roadmap after the MVP ships.
 - **Inputs → Outputs** of the **MVP**
-- **Data to fake** for the demo
+- **Seed data** for the demo
 
 Most founders still demo the MVP first — but the starter kit is a real full-stack
 app, so the spec captures the whole product and `/4b` + `/5` decide how much to
@@ -50,7 +50,7 @@ chat AI to regenerate this (full version in `reference.md`):
 
 > Act as a product coach. I want to build [idea]. Define: the one user, the
 > magic-moment feature as the MVP, the inputs and outputs of that MVP screen, what
-> data to fake for a demo, and the rest of the features as a prioritized product
+> seed data to use for a demo, and the rest of the features as a prioritized product
 > backlog. Keep the MVP buildable tonight.
 
 ## Beat 3 — Save & hand off

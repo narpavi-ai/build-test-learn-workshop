@@ -1,7 +1,7 @@
 # Stage 2 — Spec · founder guidance
 
 The SKILL.md has the beats. This is the depth: how to pick the MVP, find the magic
-moment, prioritize the backlog, and what to fake.
+moment, prioritize the backlog, and what to seed.
 
 ## Why MVP-first
 
@@ -23,6 +23,10 @@ screen backwards from that second.
 
 ## Inputs → Outputs is the whole spec
 
+"One screen" is shorthand — the magic moment can span a couple of tightly-coupled
+views (like grid → detail). The line is one **flow** vs. a full multi-feature
+product, not a literal view count.
+
 A one-screen app is just: the user puts **something in**, presses one button, and
 gets **something out**. Name both precisely:
 - **In:** the smallest input that's still believable (3 ingredients, not a full pantry).
@@ -36,24 +40,26 @@ sequencing decision, not an accident:
 - Saving, favouriting, history
 - Payments / subscriptions
 - Settings, onboarding, extra screens
-- Real integrations (fake the data for the demo instead)
+- Real integrations (seed sample data for the demo instead)
 
 Rule of thumb: if it isn't on the path to the magic moment, it's backlog — built
 after the MVP ships, not never.
 
-## What "fake" means (and why it's fine)
+## What "seed data" means (and why it's fine)
 
-A demo with believable fake data is more convincing than a half-working real
-integration. Fake = 5–6 hand-written records that look real: real-sounding
+A demo with believable seed data is more convincing than a half-working real
+integration. Seed data = 5–6 hand-written records that look real: real-sounding
 titles, realistic numbers, full body text — never "lorem ipsum". You're proving
-the *experience*, not the backend.
+the *experience*, not the backend. It's standing in for real data, not faking the
+product — say so plainly when you demo ("running on seed data; real integration is
+next").
 
 ## The reusable coach prompt (paste into any chat AI)
 
 > Act as a product coach for a non-technical student founder. I want to build
 > [idea] for [one user]. In plain language, define: (1) the one user, (2) the
 > magic-moment feature as the MVP, (3) the inputs and outputs of that MVP screen,
-> (4) what data we can fake to make a believable demo, and (5) the rest of the
+> (4) what sample data we can seed to make a believable demo, and (5) the rest of the
 > features as a prioritized product backlog. Keep the MVP buildable in an evening.
 
 ## Worked example — Kora spec
@@ -61,5 +67,5 @@ the *experience*, not the backend.
 - **One user:** newly-married couple merging finances for the first time.
 - **Magic moment / MVP:** type a money question, hit "Ask Kora" → a 2–3 sentence answer + one big "safe to spend this week" number (one screen).
 - **In → Out:** a plain-English question → the answer + the safe-to-spend number.
-- **Fake:** ~20 hand-written transactions for one couple-month, realistic names and amounts.
+- **Seed data:** ~20 hand-written transactions for one couple-month, realistic names and amounts.
 - **Backlog:** two-user live sync, real bank connection (Plaid), multi-month trends, savings goals, accounts/login.
