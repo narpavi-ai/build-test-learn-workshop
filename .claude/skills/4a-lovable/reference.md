@@ -3,44 +3,70 @@
 The SKILL.md has the beats. This is how to write prompts that land on the first
 try and survive a live demo.
 
-## Why a prompt *script* (not freestyle)
+## What Lovable's own docs say
 
-Lovable's free tier is ~5 credits a day — each prompt costs one. If you improvise,
-you burn credits fixing your own vagueness. A pre-written script of 3–4 specific
-prompts means every credit buys real progress, and you can re-run a single prompt
-if it drifts instead of starting over.
+From [docs.lovable.dev/prompting](https://docs.lovable.dev/prompting/prompting-one)
+and the [Lovable Prompting Handbook](https://lovable.dev/blog/2025-01-16-lovable-prompting-handbook):
 
-## Anatomy of a good Lovable prompt
+- *"A full-page prompt gets you noise. A section-based prompt gets you signal."*
+- *"Avoid assigning five tasks to Lovable simultaneously — it creates confusion."*
+- *"Be explicit. Use atomic UI language. Include real content, not placeholders."*
+- A strong initial prompt follows a **PRD (Product Requirements Document) structure**:
+  purpose → user flow → layout → data/content → brand.
+- Iterate with the Edit button for targeted fixes, not by rewriting entire prompts.
 
-Each prompt should name:
-- **The screen/section** it's building ("a single search screen").
-- **The exact elements** (input placeholder text, button label, results as cards).
-- **The fake data** to use (give 2 sample rows inline so it copies your tone).
-- **The look** (brand colour, vibe) — once, in the polish prompt.
-Keep one prompt = one visible outcome. Don't ask for five things at once.
+## Why one PRD prompt (not a 4-step script)
 
-## The 3–4 prompt shape (reuse this)
+The old advice was 3–4 prompts for credit budgeting. But that creates
+back-and-forth friction in a live workshop. Lovable handles a well-structured
+single prompt reliably when it's organized into clear *named sections* — it reads
+them as a spec, not as simultaneous vague requests. One good prompt → one review
+→ done.
 
-1. **Scaffold** — "Build a single screen with a centered search box (placeholder
-   '…'), a primary button labelled '…', and an empty results grid below. No login,
-   no other pages."
-2. **Fake data** — "Add 6 example [records] as cards. Here are two: [row], [row].
-   Match that style for the rest." 
-3. **Detail** — "When a card is clicked, open a detail view showing [fields]. Add a
-   back button."
-4. **Polish** — "Use [colour] as the primary colour, [vibe]. Add a friendly empty
-   state and a loading state."
+## The PRD prompt template (reuse this shape)
 
-## "If it breaks live" — fallbacks
+```
+**App:** [name] — "[tagline]"
+**User:** [one-sentence user + pain]
+**Purpose:** [what the screen does in one line]
 
-- It built the wrong thing → **re-prompt the same step** more specifically; don't
-  pile a fix on top.
-- It's close but ugly → save the polish for prompt 4; don't tweak mid-build.
-- You're out of credits → demo what you have; the screenshot of the magic moment is
-  enough for Demo Night.
-- Never debug in circles live. One re-prompt, then move on.
+---
+
+## Layout (top to bottom)
+[every element, every label, every button — be atomic]
+
+## Data / content
+[exact seed records or insight text — never say "add some data"]
+
+## Brand & style
+- Primary: [hex]
+- Accent: [hex]
+- Background: [hex]
+[every colour token, font sizes, component details]
+
+## Constraints
+No login. No navigation. No other pages. Seed data only.
+```
+
+## "If it breaks live" fallbacks
+
+- Wrong layout → re-prompt the Layout section only: "Keep everything else as-is.
+  Fix only the layout: [specific fix]."
+- Wrong data → re-prompt: "Don't change the design. Replace the content in
+  [card/section] with exactly: [text]."
+- Out of credits → demo what you have; a screenshot of the magic moment is enough
+  for Demo Night.
+- Never debug in circles. One focused re-prompt, then move on.
+
+## Optional polish prompt
+
+If the founder has one credit left after the PRD prompt lands:
+
+> "Keep all functionality and data. Polish only:
+> [one specific thing — e.g., 'make the card headlines larger and bolder' or
+> 'add a 0.4s fade-in on the cards']. Nothing else."
 
 ## Shipping
 
-Lovable can publish to a URL — do that at the end so the founder has a link to show
-and share. That URL *is* the demo.
+Lovable can publish to a URL — do that at the end so the founder has a link to
+show and share. That URL *is* the demo.

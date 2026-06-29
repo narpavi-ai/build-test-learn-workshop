@@ -13,6 +13,10 @@ Two things live here:
 2. **The starter kit** — a tiny **React + Express + SQLite** app you build your
    one screen into. Already a real round-trip; you just make it *yours*.
 
+**Built for Claude Code · also works in Cursor.** The harness is plain Markdown —
+`.cursor/rules/harness.mdc` wires it into Cursor automatically. See
+[Using with Cursor](#using-with-cursor) below.
+
 ---
 
 ## The harness flow
@@ -53,6 +57,28 @@ has paste-ready answers for every stage.
 
 ---
 
+## Using with Cursor
+
+The harness was designed for **Claude Code** (slash commands, automatic
+artifact-saving). If you have **Cursor** instead, `.cursor/rules/harness.mdc`
+loads into every Cursor session automatically — no setup needed.
+
+**Instead of `/1-problem`, say:** "run stage 1" or "let's do the problem stage."
+Cursor reads the same SKILL.md files and follows the same interview → artifact
+flow. The one difference: questions arrive as chat messages rather than
+interactive pickers.
+
+| Tool | How to start a stage | Artifact saving |
+|---|---|---|
+| Claude Code | `/1-problem my idea` | Automatic |
+| Cursor | "run stage 1 — my idea" | Automatic (Cursor has file access) |
+
+No Claude Pro? The **no-code path** (stages 1–3 + stage 4a) works with
+[Lovable](https://lovable.dev) for the build step and requires no local coding
+tool at all.
+
+---
+
 ## Run the starter kit (two commands)
 
 ```bash
@@ -65,6 +91,16 @@ npm run dev      # starts the API and the web app together
 | **Web** (React + Vite) | http://localhost:5173 | The screen you click |
 | **API** (Express + SQLite) | http://localhost:3001 | `/api/items`, `/api/health` |
 
+The template ships with **[shadcn/ui](https://ui.shadcn.com)** pre-installed — a
+polished component library (Radix UI + Tailwind CSS) that makes demos look
+product-quality out of the box. All core components are pre-added so founders
+never need to run `npx shadcn add` during the workshop:
+
+`Button` · `Card` · `Input` · `Badge` · `Select` · `Skeleton` · `Separator`
+
+Browse icons at [lucide.dev](https://lucide.dev) — `lucide-react` is also
+pre-installed: `import { TrendingUp } from 'lucide-react'`.
+
 The database (`apps/api/data/app.db`) is created and seeded automatically on first
 run, so the app is never blank. Re-seed any time with `npm run seed`.
 
@@ -75,12 +111,38 @@ whole kit.
 
 ---
 
+## Template shapes — three screen layouts
+
+The starter kit ships three screen shapes. `/4b-scope-design` picks the right one
+based on the founder's magic moment. To preview or switch any shape locally, change
+`shape` in `apps/web/src/brand.js` and save — hot reload switches instantly, no
+restart needed:
+
+```js
+// apps/web/src/brand.js
+shape: 'search',      // ← try 'tool' or 'dashboard'
+```
+
+| Shape | `brand.shape` | Best for | Screen layout |
+|---|---|---|---|
+| **Search / Catalog** | `'search'` | Marketplaces, job boards, recipe finders | Search bar → card grid → detail panel |
+| **Tool / Generator** | `'tool'` | AI generators, analyzers, brief builders | Form inputs → structured output |
+| **Dashboard** | `'dashboard'` | SaaS metrics, spend/inventory trackers | Stat cards → filterable data table |
+
+Each shape's files live in `apps/web/src/templates/<shape>/`. `/5-build` edits them
+there. The shared UI layer (`src/components/ui/`, shadcn/ui) is never touched.
+
+---
+
 ## Make it yours (the 4 edits `/4b` + `/5` automate)
 
-1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, colours.
+1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, and one hex `primary`
+   colour. That single hex drives the entire shadcn/ui colour palette at runtime.
 2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns.
-3. **Demo data** → `apps/api/src/data/seed-items.js` — believable rows.
-4. **Words on the screen** → `apps/web/src/App.jsx` — labels and copy.
+3. **Demo data** → `apps/api/src/data/seed-items.js` — believable rows (use the
+   new column names, not the template defaults).
+4. **Components** → `apps/web/src/components/Card.jsx`, `Detail.jsx`,
+   `AddForm.jsx` — update the `item.*` field references to match the renamed columns.
 
 Most demos are one screen — but the kit is a real full-stack app, so go bigger if
 your idea needs it. Scope to what you'll actually finish.
@@ -94,12 +156,21 @@ build_test_learn_workshop/
 ├─ deck.html                # the workshop slide deck (open in a browser)
 ├─ package.json             # npm workspaces + `npm run dev`
 ├─ apps/
-│  ├─ web/                  # React + Vite front-end
+│  ├─ web/                  # React + Vite + Tailwind CSS + shadcn/ui
+│  │  ├─ tailwind.config.js # Tailwind v3 config (shadcn colour tokens)
+│  │  ├─ components.json    # shadcn/ui config (run `npx shadcn add <x>` to extend)
 │  │  └─ src/
 │  │     ├─ App.jsx         # THE screen: input → results → detail
-│  │     ├─ brand.js        # 🎨 name, tagline, logo, colours (edit this!)
+│  │     ├─ brand.js        # 🎨 name, tagline, logo, primary hex (edit this!)
+│  │     ├─ main.jsx        # hex→HSL conversion; sets --primary CSS var
 │  │     ├─ api.js          # fetch wrapper for the API
-│  │     └─ components/     # Card.jsx, Detail.jsx
+│  │     ├─ styles.css      # Tailwind directives + shadcn CSS variable layer
+│  │     ├─ lib/utils.js    # cn() Tailwind merge helper
+│  │     └─ components/
+│  │        ├─ Card.jsx     # result card (title · blurb · tags)
+│  │        ├─ Detail.jsx   # full record view (all fields)
+│  │        ├─ AddForm.jsx  # create form (proves real persistence)
+│  │        └─ ui/          # shadcn/ui primitives (Button, Card, Input, Badge…)
 │  └─ api/                  # Node + Express back-end
 │     ├─ server.js          # routes + first-run auto-seed
 │     └─ src/
@@ -109,6 +180,7 @@ build_test_learn_workshop/
 ├─ .claude/skills/          # the harness (the 7 skills above)
 └─ workshop/
    ├─ index.html            # dashboard linking the worked example + your run
+   ├─ inputs/               # 📥 drop raw notes here before running /1-problem
    ├─ examples/kora/        # complete 7-stage worked example
    └─ runs/<your-idea>/     # your harness output (gitignored)
 ```

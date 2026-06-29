@@ -7,7 +7,7 @@ Read this when you need depth. The SKILL.md has the steps; this explains the
 
 A demo that tries to help "everyone" helps no one — you can't design a screen, a
 data set, or a pitch for an average of all humans. Narrowing to one named user
-makes every later decision easy: the spec writes itself, the fake data is
+makes every later decision easy: the spec writes itself, the seed data is
 obvious, and the Demo Night story has a hero. Narrow is not small — it's the
 beachhead you expand from later.
 

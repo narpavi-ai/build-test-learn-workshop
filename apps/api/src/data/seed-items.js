@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Seed data — the "fake data that looks real" for your demo.
+// Seed data — the sample data that looks real for your demo.
 // Replace these rows with believable examples from YOUR idea. Good demo data
 // has real-sounding titles, tags people would actually search, and a body
 // with enough detail to feel finished. Empty or "lorem ipsum" kills the demo.

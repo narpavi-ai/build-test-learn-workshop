@@ -27,6 +27,11 @@ kebab-case (e.g. "Kora" → `kora`, "Study Buddy" → `study-buddy`).
 - **`/1-problem` is the front door.** It takes the idea (+ any discovery notes)
   as its argument, derives `<slug>`, creates `workshop/runs/<slug>/`, and saves the
   first artifact there.
+- **The inputs drop zone — `workshop/inputs/`.** Founders can drop raw notes (a
+  problem statement, discovery notes, a survey/data export) here *before* running
+  anything; `/1-problem` reads whatever it finds and pre-fills the interview. It's
+  a shared, gitignored drop zone (only its README is tracked), so it stays local
+  and should be cleared between ideas. See `workshop/inputs/README.md`.
 - **Later skills resolve the active run** by: using `$ARGUMENTS` if it names a
   project/slug; otherwise the **most-recently-modified** folder under
   `workshop/runs/`. Read prior artifacts from that same folder.

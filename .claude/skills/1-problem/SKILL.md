@@ -3,7 +3,7 @@ name: 1-problem
 description: Front door of the Build It, Show It workshop — takes a founder's idea (plus any discovery notes), pins down one user and one pain, creates the run folder, and saves a branded HTML artifact. Use when starting a new idea or when the user types /1-problem.
 disable-model-invocation: true
 argument-hint: [idea + any discovery notes]
-allowed-tools: Read, Write, Bash(mkdir *), Bash(cp *)
+allowed-tools: Read, Write, Bash(ls *), Bash(mkdir *), Bash(cp *)
 ---
 
 # Stage 1 — Problem
@@ -16,8 +16,12 @@ mistakes), read `reference.md` in this folder.
 
 ## Beat 0 — Take the idea & open the run folder
 
-`$ARGUMENTS` is the founder's **idea plus any discovery notes** (free text). If
-it's empty, ask for one sentence on the idea.
+`$ARGUMENTS` is the founder's **idea plus any discovery notes** (free text).
+
+**First, check the drop zone.** `ls workshop/inputs/` — if the founder dropped any
+files there (a problem statement, discovery notes, a survey export), `Read` them
+and treat them as discovery notes alongside `$ARGUMENTS`. If both the drop zone and
+`$ARGUMENTS` are empty, ask for one sentence on the idea.
 
 1. From the idea, pick a short **working project name** and derive a kebab-case
    `<slug>` (e.g. "Study Buddy" → `study-buddy`). **Say it out loud and flag it as a

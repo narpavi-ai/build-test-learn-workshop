@@ -13,8 +13,11 @@ scope mid-build and run out of evening.
 ## What "one magic-moment screen" means here
 
 The template's shape is input → results grid → detail. Confirm the founder's magic
-moment maps onto it (almost everything does). If they're describing multiple
-screens or a flow, pull it back to the single screen that delivers the payoff.
+moment maps onto it (almost everything does). The magic moment can span this small
+flow — grid → detail is two views and that's fine; "one screen" means one flow, not
+one literal view. If they're describing a sprawling product — many features,
+settings, separate sections — pull the extras back to the backlog and keep the one
+magic-moment flow that delivers the payoff.
 
 ## The brand.js field map (the one file you edit)
 
@@ -44,6 +47,15 @@ Keep it to this one file. Don't restyle components — the colour + copy carry i
 
 ## Hand-off to /5-build
 
-Note the resource rename the data model needs (`items` → `recipes`/`listings`/…) so
-`/5-build` can do the actual rename in `apps/api/src/db.js`. You're only deciding
-the name here; build does the wiring.
+Write a clear data model summary that `/5-build` can execute without ambiguity:
+- **Resource name**: what `items` becomes (e.g. `recipes`, `listings`, `sessions`)
+- **Field mapping** to the template's schema:
+  | Template field | Founder's concept |
+  |---|---|
+  | `title` | the record headline (e.g. "Recipe name") |
+  | `blurb` | the one-liner on the card (e.g. "Short description") |
+  | `tags` | comma-separated categories (e.g. "Cuisine type") |
+  | `body` | full text in the detail view (e.g. "Instructions") |
+  | *(extra)* | any additional columns (e.g. `prep_time`, `price`, `location`) |
+- `/5-build` will rename the table, columns, SQL queries, and all three component
+  files (`Card.jsx`, `Detail.jsx`, `AddForm.jsx`) from this spec.

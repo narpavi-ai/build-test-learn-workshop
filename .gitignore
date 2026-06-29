@@ -234,3 +234,8 @@ apps/api/data/*.db-*
 # Live founder runs — each founder's harness output stays local, never committed.
 # The canonical worked example lives in workshop/examples/ and IS tracked.
 workshop/runs/
+
+# Raw notes a founder drops before /1-problem reads them — local, never committed.
+# The README that explains the drop zone IS tracked so the folder always exists.
+workshop/inputs/*
+!workshop/inputs/README.md

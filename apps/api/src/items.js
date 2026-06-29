@@ -31,7 +31,7 @@ items.get('/:id', (req, res) => {
   res.json(row);
 });
 
-// POST /api/items  → create a record (proves real persistence, not fake data).
+// POST /api/items  → create a record (proves real persistence, not just seed data).
 items.post('/', (req, res) => {
   const { title, blurb = '', tags = '', body = '' } = req.body || {};
   if (!title) return res.status(400).json({ error: 'title is required' });
