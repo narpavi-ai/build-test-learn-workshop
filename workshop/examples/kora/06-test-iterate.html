@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test &amp; Iterate · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 6 · Test &amp; Iterate</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">🧪</div>
+      <div class="eyebrow">Stage 6 — Test &amp; Iterate (Build → Test → Learn)</div>
+      <h1>Make it work, then make it believable</h1>
+      <p>Walk the exact demo path, fix what breaks, and write down what you learned.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · the demo path &amp; what broke</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">The path the audience will click?</div><div class="a">Type "Can we afford dinner out this weekend?" → see the answer + "$814 safe to spend" → tap a transaction for detail.</div></li>
+        <li><div class="q">What broke / looked fake?</div><div class="a">(1) The API was stopped, so the question returned nothing. (2) "Safe to spend" felt high until the copy explained it was the whole remaining month. (3) No loading state on the first ask.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · fixes &amp; learnings</h2>
+    <div class="panel">
+      <h3>Fixes applied</h3>
+      <ul class="bullets keep">
+        <li>Restarted with <code>npm run dev</code> and confirmed all three endpoints respond.</li>
+        <li>Labelled the big number clearly ("Safe to spend this week") so it reads right on stage.</li>
+        <li>Added a "Kora is thinking…" loading state so the first ask never looks frozen.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Learnings — feed your next /1-problem</h3>
+      <ul class="bullets">
+        <li><strong>Surprise:</strong> people asked vague questions ("are we okay?") — the answer needs a confident default, not just keyword matches.</li>
+        <li><strong>Idea change:</strong> the forecast nudge ("you're trending over on dining") may be a stronger hook than the raw number.</li>
+        <li><strong>Next smallest thing:</strong> let a partner add a transaction and watch the safe-to-spend number move live.</li>
+      </ul>
+    </div>
+
+    <p class="note">Kora is clickable and believable. Ship it for Demo Night — publish in Lovable, or <code>npm run build</code> and host the template.</p>
+    <div class="foot"><span>Kora</span><span>Test &amp; Iterate · worked example</span></div>
+  </div>
+</body>
+</html>

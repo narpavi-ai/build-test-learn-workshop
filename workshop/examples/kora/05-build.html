@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 5 · Build</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">🔧</div>
+      <div class="eyebrow">Stage 5 — Build (into the starter template)</div>
+      <h1>Kora is running</h1>
+      <p>One screen, real round-trip, AI answers — no API key needed for the demo.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · build decisions</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">Resource name</div><div class="a">transactions (renamed from items)</div></li>
+        <li><div class="q">Fields</div><div class="a">id, date, description, amount (REAL — negative = expense, positive = income), category</div></li>
+        <li><div class="q">AI approach</div><div class="a">Smart-fake: reads the real SQLite data, routes the question by keyword, returns a plain-English answer + safe-to-spend number. Swap for a Claude API call at the REAL-DATA HOOK.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · what changed</h2>
+    <div class="panel">
+      <h3>Files changed</h3>
+      <ul class="qa">
+        <li><div class="q">apps/api/src/db.js</div><div class="a">Table items → transactions (date, description, amount REAL, category).</div></li>
+        <li><div class="q">apps/api/src/data/seed-items.js</div><div class="a">~20 realistic couple transactions (income, housing, groceries, dining, subscriptions, gas, utilities, coffee).</div></li>
+        <li><div class="q">apps/api/src/items.js</div><div class="a">Queries renamed to transactions; added /api/ask router with a generateAnswer() smart-fake AI behind the REAL-DATA HOOK.</div></li>
+        <li><div class="q">apps/api/server.js</div><div class="a">Mounted /api/ask.</div></li>
+        <li><div class="q">apps/web/src/App.jsx</div><div class="a">Submit calls askKora(); AI panel shows the safe-to-spend number + answer; transaction grid below.</div></li>
+        <li><div class="q">apps/web/src/components/*</div><div class="a">Card + Detail render transaction fields (coloured amounts).</div></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Working endpoints</h3>
+      <ul class="bullets keep">
+        <li><code>GET /api/health</code> → {"ok":true}</li>
+        <li><code>GET /api/items</code> → ~20 transactions</li>
+        <li><code>GET /api/ask?q=can we afford dinner out</code> → {"answer":"Yes…","safeToSpend":814}</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Real-data hook — upgrade path</h3>
+      <p>The <code>generateAnswer()</code> function in <code>apps/api/src/items.js</code> is the one place to swap for a real Claude API call later. Add <code>ANTHROPIC_API_KEY</code> to <code>.env</code>, install <code>@anthropic-ai/sdk</code>, replace the function body — the route and the whole front-end stay the same.</p>
+    </div>
+
+    <p class="note">Runs at http://localhost:5173. Next: <strong>/6-test-iterate</strong> to walk the demo path and capture learnings.</p>
+    <div class="foot"><span>Kora</span><span>Build · worked example</span></div>
+  </div>
+</body>
+</html>

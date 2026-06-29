@@ -1,0 +1,22 @@
+[
+  { "date": "2026-05-19", "customer": "c001", "product": "Ethiopia Light Roast", "channel": "email",   "qty": 2, "amount": 36.0 },
+  { "date": "2026-05-21", "customer": "c002", "product": "Sampler Pack",          "channel": "tiktok",  "qty": 1, "amount": 24.0 },
+  { "date": "2026-05-24", "customer": "c003", "product": "House Blend",           "channel": "google",  "qty": 1, "amount": 17.0 },
+  { "date": "2026-05-26", "customer": "c001", "product": "House Blend",           "channel": "email",   "qty": 1, "amount": 17.0 },
+  { "date": "2026-05-28", "customer": "c004", "product": "Decaf Roast",           "channel": "direct",  "qty": 1, "amount": 18.0 },
+  { "date": "2026-06-02", "customer": "c005", "product": "Cold Brew Kit",         "channel": "google",  "qty": 1, "amount": 29.0 },
+  { "date": "2026-06-03", "customer": "c002", "product": "House Blend",           "channel": "email",   "qty": 1, "amount": 17.0 },
+  { "date": "2026-06-05", "customer": "c006", "product": "Sampler Pack",          "channel": "tiktok",  "qty": 1, "amount": 24.0 },
+  { "date": "2026-06-07", "customer": "c003", "product": "House Blend",           "channel": "email",   "qty": 2, "amount": 34.0 },
+  { "date": "2026-06-09", "customer": "c007", "product": "Ethiopia Light Roast",  "channel": "organic", "qty": 1, "amount": 18.0 },
+  { "date": "2026-06-11", "customer": "c008", "product": "Decaf Roast",           "channel": "direct",  "qty": 1, "amount": 18.0 },
+  { "date": "2026-06-12", "customer": "c001", "product": "Cold Brew Kit",         "channel": "email",   "qty": 1, "amount": 29.0 },
+  { "date": "2026-06-15", "customer": "c009", "product": "Sampler Pack",          "channel": "google",  "qty": 1, "amount": 24.0 },
+  { "date": "2026-06-16", "customer": "c004", "product": "House Blend",           "channel": "email",   "qty": 1, "amount": 17.0 },
+  { "date": "2026-06-18", "customer": "c010", "product": "Colombia Dark Roast",   "channel": "tiktok",  "qty": 1, "amount": 19.0 },
+  { "date": "2026-06-20", "customer": "c006", "product": "House Blend",           "channel": "organic", "qty": 1, "amount": 17.0 },
+  { "date": "2026-06-22", "customer": "c011", "product": "Sampler Pack",          "channel": "google",  "qty": 1, "amount": 24.0 },
+  { "date": "2026-06-23", "customer": "c002", "product": "Ethiopia Light Roast",  "channel": "email",   "qty": 2, "amount": 36.0 },
+  { "date": "2026-06-25", "customer": "c012", "product": "House Blend",           "channel": "direct",  "qty": 1, "amount": 17.0 },
+  { "date": "2026-06-26", "customer": "c003", "product": "Cold Brew Kit",         "channel": "email",   "qty": 1, "amount": 29.0 }
+]
