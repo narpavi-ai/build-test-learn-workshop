@@ -34,13 +34,13 @@ for dinner" stress).
 
 Whatever they do *today* (a spreadsheet, a group chat, Googling, giving up) is
 what you're actually competing with. Name it — it tells you the bar to beat and
-seeds the competitor work in `/3-opportunity`.
+seeds the market read in `/2-blueprint`.
 
 ## "Why now"
 
 A good idea usually has a reason it's solvable/urgent *today*: a price change, a
 new behaviour, a new tool. It's not mandatory for the demo, but it sharpens the
-pitch and the opportunity stage.
+pitch and the market read.
 
 ## Worked example — Kora
 
