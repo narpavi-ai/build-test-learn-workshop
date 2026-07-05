@@ -11,4 +11,7 @@ The thing I keep hearing: they don't know what's working. They just guess.
 I think AI could help — look at their data and just tell them what's going on,
 maybe with some visuals. Not sure what it actually looks like yet.
 
-For the demo I've got a bit of a friend's coffee-shop sales data to play with.
+For the demo I've got a friend's coffee-brand data to play with: her Shopify
+order export for April–June, about 175 orders across ~10 products and 6 sales
+channels (email, TikTok, Instagram, Google, organic, direct). She's never
+actually analyzed it — perfect test case.
