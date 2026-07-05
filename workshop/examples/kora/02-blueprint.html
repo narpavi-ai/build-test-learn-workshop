@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 2 · Blueprint</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">📐</div>
+      <div class="eyebrow">Stage 2 — Blueprint</div>
+      <h1>Kora</h1>
+      <p>Ask a money question. Get a straight answer and one confident number — plus the market read and brand that back it.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · what you told the AI</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">Magic moment (picked from 2 AI-proposed options)</div><div class="a">Type a plain-English money question → get an AI answer + a "safe to spend this week" number.</div></li>
+        <li><div class="q">Product name + tagline (picked from 3 AI-proposed names)</div><div class="a">Kora — "Ask your budget anything."</div></li>
+        <li><div class="q">Look & feel</div><div class="a">Warm amber #D97706 · warm + friendly vibe</div></li>
+        <li><div class="q">Known competitors</div><div class="a">Mint / Intuit Credit Karma, YNAB, Monarch Money — plus the spreadsheet workaround from Stage 1</div></li>
+        <li><div class="q">Correction pass</div><div class="a">Shipped as drafted — no changes to the Must list, data model, or brand.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · what the AI gave back</h2>
+
+    <div class="panel">
+      <h3>The one user + pain</h3>
+      <p>A newly-married couple in their first year of combined finances — two incomes, two old habits, no shared system yet. Today they keep a spreadsheet that goes stale within weeks, and overspend without noticing.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Magic moment + 2-minute demo script</h3>
+      <div class="flow-diagram">
+        <div class="node"><div class="nlabel">Input</div><div class="nbody">Type "Can we afford dinner out this weekend?"</div></div>
+        <div class="arrow">→</div>
+        <div class="node good"><div class="nlabel">Answer (magic moment)</div><div class="nbody">Plain-English reply + "$814 safe to spend"</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="nlabel">Detail</div><div class="nbody">Tap a transaction for the full record</div></div>
+      </div>
+      <p style="margin-top:0.75rem;">This script is what <strong>/3-build</strong> builds toward and <strong>/4-test-iterate</strong> tests against.</p>
+    </div>
+
+    <div class="panel">
+      <h3>MoSCoW backlog</h3>
+      <div class="scope-split">
+        <div>
+          <p style="font-family:var(--head);font-weight:700;color:var(--green);font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Must (demo breaks without it)</p>
+          <ul class="bullets keep">
+            <li>Chat-style question input</li>
+            <li>AI answer grounded in spending data</li>
+            <li>Always-visible "safe to spend this week" number</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family:var(--head);font-weight:700;color:var(--purple-deep);font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Should / Could</p>
+          <ul class="bullets">
+            <li><strong>Should</strong> — transaction list + tap-through detail</li>
+            <li><strong>Should</strong> — forecast nudge ("trending over on dining")</li>
+            <li><strong>Could</strong> — multi-month trends</li>
+            <li><strong>Could</strong> — savings goals</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note" style="margin-top:14px;">Won't (tonight) — two-user live sync; real bank connection (Plaid). Deferred, not deleted: 3 Musts out of 9 total items keeps the demo honest about what "must" means.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Data model + seed data</h3>
+      <p><strong>Resource:</strong> <code>transactions</code> (renamed from the template's <code>items</code>) — <code>date</code>, <code>description</code>, <code>amount</code> (REAL, negative = expense, positive = income), <code>category</code>.</p>
+      <p style="margin-top:8px;"><strong>Seed data:</strong> ~20 hand-written transactions for one realistic couple-month — rent, groceries (×4), streaming subscriptions (×3), dining out (×3), gas, utilities, gym, coffee runs. Income ≈ $6,200. Real names and amounts, never "lorem ipsum".</p>
+    </div>
+
+    <div class="panel">
+      <h3>Market read</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin-top:0.75rem;">
+        <thead>
+          <tr style="background:#f0f4ff;">
+            <th style="padding:8px;text-align:left;border:1px solid #dde3f0;">Option</th>
+            <th style="padding:8px;text-align:center;border:1px solid #dde3f0;">Zero setup</th>
+            <th style="padding:8px;text-align:center;border:1px solid #dde3f0;">Built for 2</th>
+            <th style="padding:8px;text-align:center;border:1px solid #dde3f0;">AI answers Q's</th>
+            <th style="padding:8px;text-align:center;border:1px solid #dde3f0;">Forecasts</th>
+            <th style="padding:8px;text-align:center;border:1px solid #dde3f0;">Free</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:8px;border:1px solid #dde3f0;">Spreadsheet (workaround)</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✓</td></tr>
+          <tr style="background:#fafbff;"><td style="padding:8px;border:1px solid #dde3f0;">Mint / Credit Karma</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">~</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✓</td></tr>
+          <tr><td style="padding:8px;border:1px solid #dde3f0;">YNAB</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">~</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">~</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗ ($109/yr)</td></tr>
+          <tr style="background:#fafbff;"><td style="padding:8px;border:1px solid #dde3f0;">Monarch Money</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✓</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">~</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">~</td><td style="padding:8px;text-align:center;border:1px solid #dde3f0;">✗ (~$99/yr)</td></tr>
+          <tr style="background:#eef3ff;font-weight:600;"><td style="padding:8px;border:1px solid #c0cef0;">Kora</td><td style="padding:8px;text-align:center;border:1px solid #c0cef0;">✓</td><td style="padding:8px;text-align:center;border:1px solid #c0cef0;">✓</td><td style="padding:8px;text-align:center;border:1px solid #c0cef0;">✓</td><td style="padding:8px;text-align:center;border:1px solid #c0cef0;">✓</td><td style="padding:8px;text-align:center;border:1px solid #c0cef0;">✓</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.75rem;"><strong>White space:</strong> no app is free, zero-setup, couple-native, and able to answer "can we afford this?" in plain English.</p>
+      <ul class="qa" style="margin-top:12px;">
+        <li><div class="q">✅ Search demand — FOUND</div><div class="a">"YNAB alternatives 2026" and "Mint alternatives 2026" are high-volume; Mint shut down in 2024, leaving millions hunting for a replacement. Sources: <a href="https://www.nerdwallet.com/finance/learn/best-budget-apps" target="_blank">NerdWallet</a>, <a href="https://envelopebudgeting.com/articles/ynab-alternatives" target="_blank">Envelope Budgeting</a>.</div></li>
+        <li><div class="q">✅ People complaining — FOUND</div><div class="a">Top reasons users leave YNAB: $109/yr price, steep learning curve, sync issues. Source: <a href="https://www.nerdwallet.com/finance/learn/best-budget-apps" target="_blank">NerdWallet review roundup</a>.</div></li>
+        <li><div class="q">✅ Someone already making money — FOUND</div><div class="a">YNAB ($109/yr) and Monarch Money (~$99/yr) prove willingness to pay. Source: <a href="https://www.19pine.ai/blog/alternative-you-need-a-budget-ynab-apps" target="_blank">Pine AI</a>.</div></li>
+      </ul>
+      <p style="margin-top:12px;"><strong>TAM/SAM/SOM:</strong> TAM ~2.7M Canadian couples × $20/yr affiliate value ≈ $54M CAD/yr. SAM ~400k actively switching × $20/yr ≈ $8M CAD/yr. SOM (next 12 mo) 1,000–5,000 via Demo Night + referral ≈ $20k–$100k CAD.</p>
+      <p style="margin-top:12px;"><strong>The wedge:</strong> <em>"The budgeting app for new couples that answers 'can we afford this?' instead of just showing you charts."</em> Why now: Mint's 2024 shutdown freed millions of users, AI chat is the expected UX, and cost-of-living pressure makes shared control urgent.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Brand — applied to <code>apps/web/src/brand.js</code></h3>
+      <ul class="qa">
+        <li><div class="q">name / tagline</div><div class="a">'Kora' · 'Ask your budget anything.'</div></li>
+        <li><div class="q">logo</div><div class="a">'🏠'</div></li>
+        <li><div class="q">colors.primary</div><div class="a">#D97706 (warm amber)</div></li>
+        <li><div class="q">shape (starting point)</div><div class="a">'search' — Q&amp;A + transaction grid maps closest to Search/Catalog; /3-build is free to reshape it</div></li>
+        <li><div class="q">searchPlaceholder / searchButton</div><div class="a">'Can we afford dinner out this weekend?' · 'Ask Kora'</div></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Build plan — demo-path order</h3>
+      <ul class="bullets keep">
+        <li><strong>1 (15 min)</strong> — rename <code>items</code> → <code>transactions</code> in the API, load real seed data.</li>
+        <li><strong>2 (20 min)</strong> — wire the AI answer + safe-to-spend number to the question input.</li>
+        <li><strong>3 (15 min)</strong> — transaction list + tap-through detail.</li>
+        <li><strong>4 (remaining time)</strong> — design pass: hero, empty/loading states, believable copy.</li>
+      </ul>
+      <p class="note">If a Must slips past its box, demote it to Should and protect the demo path.</p>
+    </div>
+
+    <p class="note">Next: <strong>/3-build</strong> — build the Musts against this blueprint.</p>
+    <div class="foot"><span>Kora</span><span>Blueprint · worked example</span></div>
+  </div>
+</body>
+</html>

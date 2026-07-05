@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 3 · Build</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">🔧</div>
+      <div class="eyebrow">Stage 3 — Build</div>
+      <h1>Kora is running</h1>
+      <p>The 3 Musts wired end-to-end, then a design pass so it looks like a real product, not a reskinned template.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · session choices</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">Build the blueprint's Musts as listed, or adjust?</div><div class="a">As listed — no changes.</div></li>
+        <li><div class="q">Visual reference for the design pass</div><div class="a">Linear's marketing site — restrained colour, generous whitespace, one accent colour used sparingly.</div></li>
+        <li><div class="q">AI approach for the answer</div><div class="a">Smart-fake: reads the real SQLite data, routes the question by keyword, returns a plain-English answer + safe-to-spend number. Swap for a Claude API call at the real-data hook.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · what shipped</h2>
+
+    <div class="panel">
+      <h3>Musts shipped vs. blueprint</h3>
+      <ul class="bullets keep">
+        <li><strong>Chat-style question input</strong> — built as planned.</li>
+        <li><strong>AI answer grounded in spending data</strong> — built; also added the <code>/api/ask</code> route the blueprint didn't specify by name (blueprint updated to note it).</li>
+        <li><strong>"Safe to spend this week" number</strong> — built, shown as the hero stat above the answer.</li>
+      </ul>
+      <p class="note">All three Musts match the blueprint's demo script. The transaction list + tap-through detail (Should) was also built — it fit inside the timebox.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Files changed</h3>
+      <ul class="qa">
+        <li><div class="q">apps/api/src/db.js</div><div class="a">Table items → transactions (date, description, amount REAL, category).</div></li>
+        <li><div class="q">apps/api/src/data/seed-items.js</div><div class="a">~20 realistic couple transactions (income, housing, groceries, dining, subscriptions, gas, utilities, coffee).</div></li>
+        <li><div class="q">apps/api/src/items.js</div><div class="a">Queries renamed to transactions; added /api/ask with a generateAnswer() smart-fake AI behind the real-data hook.</div></li>
+        <li><div class="q">apps/api/server.js</div><div class="a">Mounted /api/ask.</div></li>
+        <li><div class="q">apps/web/src/templates/search/*</div><div class="a">Submit calls askKora(); AI panel shows the safe-to-spend number + answer above the transaction grid.</div></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Design pass</h3>
+      <ul class="bullets keep">
+        <li>Hero states the value in one line: "Ask your budget anything" above the input, not just the logo.</li>
+        <li>Colour restraint — the warm amber accent used only on the safe-to-spend number and the primary button; everything else neutral.</li>
+        <li>Loading state — "Kora is thinking…" while the answer streams in, instead of a frozen screen.</li>
+        <li>Empty state on the transaction list before the first question is asked.</li>
+        <li>Mobile squint test passed at 375px — the answer card and grid both reflow cleanly.</li>
+      </ul>
+      <p class="note">No new packages needed for this build — shadcn's Card, Badge, and Skeleton covered the answer panel and loading state.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Working endpoints</h3>
+      <ul class="bullets keep">
+        <li><code>GET /api/health</code> → {"ok":true}</li>
+        <li><code>GET /api/items</code> → ~20 transactions</li>
+        <li><code>GET /api/ask?q=can we afford dinner out</code> → {"answer":"Yes…","safeToSpend":814}</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>apps/README.md — kept current</h3>
+      <p>Written during this session with a mermaid architecture diagram (React+Vite → Express <code>/api/ask</code> + <code>/api/items</code> → SQLite <code>transactions</code> table), the data-model table above, and one decisions-log line: <em>"Added /api/ask instead of extending /api/items — kept the AI logic separate from plain CRUD."</em></p>
+    </div>
+
+    <p class="note">Runs at http://localhost:5173. Next: <strong>/4-test-iterate</strong> to walk the demo path and capture learnings.</p>
+    <div class="foot"><span>Kora</span><span>Build · worked example</span></div>
+  </div>
+</body>
+</html>

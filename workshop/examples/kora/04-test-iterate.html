@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test &amp; Iterate · Kora</title>
+  <link rel="stylesheet" href="../../assets/eu-brand.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="bar">
+      <div class="wordmark"><img class="logo-img" src="../../assets/eu-logo-navy.svg" alt="Edmonton Unlimited" /><small>Build It, Show It</small></div>
+      <div class="chip">Stage 4 · Test &amp; Iterate</div>
+    </div>
+
+    <div class="hero">
+      <div class="stage-icon">🧪</div>
+      <div class="eyebrow">Stage 4 — Test &amp; Iterate (Build → Test → Learn)</div>
+      <h1>Make it work, then make it shareable</h1>
+      <p>Walk the exact demo path, fix or bounce back to Build, ship a link, then write down what you learned.</p>
+    </div>
+
+    <h2 class="sec in">Inputs · the demo path &amp; what broke</h2>
+    <div class="panel">
+      <ul class="qa">
+        <li><div class="q">The path the audience will click</div><div class="a">Type "Can we afford dinner out this weekend?" → see the answer + "$814 safe to spend" → tap a transaction for detail.</div></li>
+        <li><div class="q">What broke / looked fake</div><div class="a">(1) The API was stopped, so the question returned nothing. (2) "Safe to spend" felt high until the copy explained it was the whole remaining month. (3) A founder asked for a forecast nudge mid-walkthrough — a real feature gap, not a polish issue.</div></li>
+      </ul>
+    </div>
+
+    <h2 class="sec out">Outputs · fixes, one bounce, and learnings</h2>
+    <div class="panel">
+      <h3>Fixed inline</h3>
+      <ul class="bullets keep">
+        <li>Restarted with <code>npm run dev</code> and confirmed all three endpoints respond.</li>
+        <li>Relabelled the big number clearly ("Safe to spend this week, after bills") so it reads right on stage.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Bounced back to /3-build</h3>
+      <p>The forecast nudge ("you're trending over on dining out") was on the blueprint's Should list, not built yet. Since it changed what the app does — not just how it looks — this went back to <strong>/3-build</strong> rather than being patched here: the blueprint's Should item was promoted to Must for this demo, one short build session added it, then testing resumed from this same walkthrough.</p>
+    </div>
+    <div class="panel">
+      <h3>Believability pass</h3>
+      <ul class="bullets keep">
+        <li>Re-ran <code>npm run seed</code> after confirming the 20 transactions still read as one realistic couple-month.</li>
+        <li>Added a "Kora is thinking…" loading state so the first ask never looks frozen.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Shipped</h3>
+      <p>Demoed from localhost for the live walkthrough; shared a temporary link via <code>npx localtunnel --port 5173</code> so a friend could try it before Demo Night.</p>
+    </div>
+    <div class="panel">
+      <h3>Learnings — feed the next /1-problem</h3>
+      <ul class="bullets">
+        <li><strong>Surprise:</strong> people asked vague questions ("are we okay?") — the answer needs a confident default, not just keyword matches.</li>
+        <li><strong>Idea change:</strong> the forecast nudge turned out to be a stronger hook than the raw number — worth leading with next time.</li>
+        <li><strong>Next smallest thing:</strong> let a partner add a transaction and watch the safe-to-spend number move live.</li>
+      </ul>
+    </div>
+
+    <p class="note">Kora is clickable, believable, and shareable. Ready for Demo Night.</p>
+    <div class="foot"><span>Kora</span><span>Test &amp; Iterate · worked example</span></div>
+  </div>
+</body>
+</html>
