@@ -7,11 +7,12 @@ any founder who wants something a stranger can click *today*.
 
 Two things live here:
 
-1. **The harness** — seven `/` skills (slash commands) that walk you from problem
+1. **The harness** — four `/` skills (slash commands) that walk you from problem
    to demo. Each one **interviews you**, does the work, and saves a branded HTML
    record of your inputs and outputs.
-2. **The starter kit** — a tiny **React + Express + SQLite** app you build your
-   one screen into. Already a real round-trip; you just make it *yours*.
+2. **The starter kit** — a **React + Express + SQLite** app, styled with
+   shadcn/ui, you build your idea into. Already a real round-trip; free to grow
+   past its starting layout as your idea needs it.
 
 **Built for Claude Code · also works in Cursor.** The harness is plain Markdown —
 `.cursor/rules/harness.mdc` wires it into Cursor automatically. See
@@ -23,37 +24,30 @@ Two things live here:
 
 ```mermaid
 flowchart LR
-    P["🎯 /1-problem<br/>who hurts & why"] --> S["💬 /2-spec<br/>one-screen brief"]
-    S --> O["📊 /3-opportunity<br/>market & edge"]
-    O --> A["✦ /4a-lovable<br/>no-code build"]
-    O --> B["✂ /4b-scope-design<br/>scope + brand"]
-    B --> BU["🔧 /5-build<br/>into this template"]
-    BU <--> T["🧪 /6-test-iterate<br/>make it believable"]
-    A --> T
+    P["🎯 /1-problem<br/>who hurts & why"] --> BL["📐 /2-blueprint<br/>spec + market + brand"]
+    BL --> BU["🔧 /3-build<br/>into this template"]
+    BU <--> T["🧪 /4-test-iterate<br/>make it believable"]
     T --> SHIP(["🌐 Ship a URL"])
 ```
 
-Run them in order in Claude Code. **Opportunity runs after Spec on purpose:** once
-the one-screen spec exists, the market read sizes the *actual* product and feeds
-the Demo Night pitch. The path forks at stage 4 — **both routes end in a clickable
-demo:**
+Run them in order in Claude Code. **Blueprint does the thinking in one mostly
+auto-generated pass:** it asks at most 4 questions, then drafts the MVP, a
+MoSCoW backlog, the market read, and the brand for you to correct — no more
+sitting through three separate interviews before any code exists. That
+blueprint becomes the single source of truth Build works against.
 
 | Stage | Command | What it does | Saves |
 | --- | --- | --- | --- |
 | 1 | `/1-problem` | Name one user, one pain (the front door — creates your run folder) | `01-problem.html` |
-| 2 | `/2-spec` | Cut it to the smallest buildable version — one screen | `02-spec.html` |
-| 3 | `/3-opportunity` | Competitors, demand signals, TAM/SAM/SOM, the wedge | `03-opportunity.html` |
-| 4a | `/4a-lovable` | **Route A** — 3–4 no-code prompts for Lovable | `04a-lovable.html` |
-| 4b | `/4b-scope-design` | **Route B** — lock the screen + brand this starter kit | `04b-scope-design.html` |
-| 5 | `/5-build` | Wire your one screen into the template (real round-trip) | `05-build.html` |
-| 6 | `/6-test-iterate` | Walk the demo path, make it believable, capture learnings | `06-test-iterate.html` |
+| 2 | `/2-blueprint` | Spec, MoSCoW backlog, market read, and brand — mostly auto-drafted | `02-blueprint.html` |
+| 3 | `/3-build` | Build the Musts into the template — free to go past its starting shape | `03-build.html` |
+| 4 | `/4-test-iterate` | Walk the demo path, make it believable, ship it, capture learnings | `04-test-iterate.html` |
 
 Each founder's run is saved to `workshop/runs/<your-idea>/` (gitignored — it stays
 local and never overwrites anyone else's). A complete worked example for **Kora**
 (an AI budgeting app for couples) lives in
 [`workshop/examples/kora/`](workshop/examples/kora/) — open `workshop/index.html`
-to browse it. Running it live? [`workshop/DEMO-SCRIPT.md`](workshop/DEMO-SCRIPT.md)
-has paste-ready answers for every stage.
+to browse it.
 
 **No idea yet? Start from the samples.** [`workshop/inputs/`](workshop/inputs/)
 ships with sample notes — `problem-statement.md`, `discovery-notes.md`, and
@@ -78,10 +72,6 @@ interactive pickers.
 | Claude Code | `/1-problem my idea` | Automatic |
 | Cursor | "run stage 1 — my idea" | Automatic (Cursor has file access) |
 
-No Claude Pro? The **no-code path** (stages 1–3 + stage 4a) works with
-[Lovable](https://lovable.dev) for the build step and requires no local coding
-tool at all.
-
 ---
 
 ## Run the starter kit (two commands)
@@ -98,13 +88,15 @@ npm run dev      # starts the API and the web app together
 
 The template ships with **[shadcn/ui](https://ui.shadcn.com)** pre-installed — a
 polished component library (Radix UI + Tailwind CSS) that makes demos look
-product-quality out of the box. All core components are pre-added so founders
-never need to run `npx shadcn add` during the workshop:
+product-quality out of the box:
 
-`Button` · `Card` · `Input` · `Badge` · `Select` · `Skeleton` · `Separator`
+`Button` · `Card` · `Input` · `Badge` · `Select` · `Skeleton` · `Separator` ·
+`Label` · `Textarea` · `Tabs` · `Dialog` · `Tooltip` · `Table`
 
-Browse icons at [lucide.dev](https://lucide.dev) — `lucide-react` is also
-pre-installed: `import { TrendingUp } from 'lucide-react'`.
+Need something else? `npx shadcn@latest add <component>` pulls in any component
+from ui.shadcn.com in the same style — `/3-build` is free to do this. Browse
+icons at [lucide.dev](https://lucide.dev) — `lucide-react` is also pre-installed:
+`import { TrendingUp } from 'lucide-react'`.
 
 The database (`apps/api/data/app.db`) is created and seeded automatically on first
 run, so the app is never blank. Re-seed any time with `npm run seed`.
@@ -116,12 +108,13 @@ whole kit.
 
 ---
 
-## Template shapes — three screen layouts
+## Template shapes — three starting layouts
 
-The starter kit ships three screen shapes. `/4b-scope-design` picks the right one
-based on the founder's magic moment. To preview or switch any shape locally, change
-`shape` in `apps/web/src/brand.js` and save — hot reload switches instantly, no
-restart needed:
+The starter kit ships three screen shapes as a **running start**, not a ceiling.
+`/2-blueprint` picks the one closest to the founder's magic moment; `/3-build` is
+free to extend, restructure, or add screens beyond it. To preview or switch any
+shape locally, change `shape` in `apps/web/src/brand.js` and save — hot reload
+switches instantly, no restart needed:
 
 ```js
 // apps/web/src/brand.js
@@ -134,23 +127,26 @@ shape: 'search',      // ← try 'tool' or 'dashboard'
 | **Tool / Generator** | `'tool'` | AI generators, analyzers, brief builders | Form inputs → structured output |
 | **Dashboard** | `'dashboard'` | SaaS metrics, spend/inventory trackers | Stat cards → filterable data table |
 
-Each shape's files live in `apps/web/src/templates/<shape>/`. `/5-build` edits them
-there. The shared UI layer (`src/components/ui/`, shadcn/ui) is never touched.
+Each shape's files live in `apps/web/src/templates/<shape>/`. `/3-build` edits
+them there — and can freely touch `src/components/ui/` or `App.jsx`'s shape
+router too, if the idea has outgrown the three starting shapes.
 
 ---
 
-## Make it yours (the 4 edits `/4b` + `/5` automate)
+## Make it yours (what `/2-blueprint` + `/3-build` automate)
 
 1. **Brand** → `apps/web/src/brand.js` — name, tagline, logo, and one hex `primary`
    colour. That single hex drives the entire shadcn/ui colour palette at runtime.
-2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns.
+2. **Data model** → `apps/api/src/db.js` — rename `items` and its columns (or add more).
 3. **Demo data** → `apps/api/src/data/seed-items.js` — believable rows (use the
    new column names, not the template defaults).
-4. **Components** → `apps/web/src/components/Card.jsx`, `Detail.jsx`,
-   `AddForm.jsx` — update the `item.*` field references to match the renamed columns.
+4. **Screens** → `apps/web/src/templates/<shape>/` — update the field references
+   to match the renamed columns, and add whatever components or screens the idea needs.
+5. **Docs** → `apps/README.md` — kept current with an architecture diagram, the
+   data model, and a short decisions log as the build evolves.
 
-Most demos are one screen — but the kit is a real full-stack app, so go bigger if
-your idea needs it. Scope to what you'll actually finish.
+Scope to what you'll actually finish tonight — the kit is a real full-stack app,
+so there's room to grow it if your idea needs more than one screen.
 
 ---
 
@@ -158,35 +154,32 @@ your idea needs it. Scope to what you'll actually finish.
 
 ```
 build_test_learn_workshop/
-├─ deck.html                # the workshop slide deck (open in a browser)
 ├─ package.json             # npm workspaces + `npm run dev`
 ├─ apps/
+│  ├─ README.md             # the founder's app README (written by /3-build)
 │  ├─ web/                  # React + Vite + Tailwind CSS + shadcn/ui
 │  │  ├─ tailwind.config.js # Tailwind v3 config (shadcn colour tokens)
 │  │  ├─ components.json    # shadcn/ui config (run `npx shadcn add <x>` to extend)
 │  │  └─ src/
-│  │     ├─ App.jsx         # THE screen: input → results → detail
-│  │     ├─ brand.js        # 🎨 name, tagline, logo, primary hex (edit this!)
+│  │     ├─ App.jsx         # shape router — freely restructured by /3-build
+│  │     ├─ brand.js        # 🎨 name, tagline, logo, primary hex, shape (edit this!)
 │  │     ├─ main.jsx        # hex→HSL conversion; sets --primary CSS var
 │  │     ├─ api.js          # fetch wrapper for the API
-│  │     ├─ styles.css      # Tailwind directives + shadcn CSS variable layer
+│  │     ├─ styles.css      # Tailwind directives + shadcn CSS variable layer (incl. dark tokens)
 │  │     ├─ lib/utils.js    # cn() Tailwind merge helper
-│  │     └─ components/
-│  │        ├─ Card.jsx     # result card (title · blurb · tags)
-│  │        ├─ Detail.jsx   # full record view (all fields)
-│  │        ├─ AddForm.jsx  # create form (proves real persistence)
-│  │        └─ ui/          # shadcn/ui primitives (Button, Card, Input, Badge…)
+│  │     ├─ templates/      # search/ · tool/ · dashboard/ — the three starting shapes
+│  │     └─ components/ui/  # shadcn/ui primitives (Button, Card, Input, Badge, Dialog…)
 │  └─ api/                  # Node + Express back-end
 │     ├─ server.js          # routes + first-run auto-seed
 │     └─ src/
 │        ├─ db.js           # SQLite connection + schema (your data model)
 │        ├─ items.js        # GET/POST routes (+ real-data hook)
 │        └─ data/seed-items.js   # believable demo data
-├─ .claude/skills/          # the harness (the 7 skills above)
+├─ .claude/skills/          # the harness (the 4 skills above)
 └─ workshop/
    ├─ index.html            # dashboard linking the worked example + your run
    ├─ inputs/               # 📥 drop raw notes here (ships with sample inputs)
-   ├─ examples/kora/        # complete 7-stage worked example
+   ├─ examples/kora/        # complete 4-stage worked example
    └─ runs/<your-idea>/     # your harness output (gitignored)
 ```
 

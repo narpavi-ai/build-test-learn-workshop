@@ -1,11 +1,11 @@
 ---
-description: Build It Show It workshop harness — context and stage-invocation rules for the 7-stage founder workflow. Always active so Cursor knows the repo purpose and how to run each stage on request.
+description: Build It Show It workshop harness — context and stage-invocation rules for the 4-stage founder workflow. Always active so Cursor knows the repo purpose and how to run each stage on request.
 alwaysApply: true
 ---
 
 # Build It, Show It — Cursor Adapter
 
-This repo is a **7-stage harness** that walks a student founder from a raw idea to
+This repo is a **4-stage harness** that walks a student founder from a raw idea to
 a clickable demo. The harness was built for Claude Code (slash commands in
 `.claude/skills/`) but all stage logic lives in plain SKILL.md files that Cursor
 can read and follow directly.
@@ -28,28 +28,28 @@ same flow, just as conversation.
 | User says | Read this skill | What it does |
 |---|---|---|
 | stage 1 / problem | `.claude/skills/1-problem/SKILL.md` | Name one user + one pain, create run folder |
-| stage 2 / spec | `.claude/skills/2-spec/SKILL.md` | Cut to the smallest buildable screen |
-| stage 3 / opportunity | `.claude/skills/3-opportunity/SKILL.md` | Competitors, demand signals, market size |
-| stage 4a / lovable | `.claude/skills/4a-lovable/SKILL.md` | No-code route — 3–4 Lovable prompts |
-| stage 4b / scope / design | `.claude/skills/4b-scope-design/SKILL.md` | Lock the screen + set the brand |
-| stage 5 / build | `.claude/skills/5-build/SKILL.md` | Wire the screen into the starter template |
-| stage 6 / test | `.claude/skills/6-test-iterate/SKILL.md` | Walk the demo path, make it believable |
+| stage 2 / blueprint | `.claude/skills/2-blueprint/SKILL.md` | Spec, MoSCoW backlog, market read, brand — mostly auto-drafted |
+| stage 3 / build | `.claude/skills/3-build/SKILL.md` | Build into the starter template, free to go past its starting shape |
+| stage 4 / test | `.claude/skills/4-test-iterate/SKILL.md` | Walk the demo path, make it believable, ship it |
 
 ## Flow
 
 ```
-stage 1 → stage 2 → stage 3 → ┬─ stage 4a (no-code, Lovable)
-                                └─ stage 4b → stage 5 ⇄ stage 6
+stage 1 → stage 2 → stage 3 ⇄ stage 4
 ```
 
-Stages must run in order — each one reads the previous stage's artifact.
+Stages run in order — each one reads the previous stage's artifact. The
+blueprint from stage 2 is the single source of truth stage 3 builds against;
+the `⇄` between stage 3 and 4 means a fix that changes the blueprint bounces
+back to stage 3, not that the build restarts from scratch.
 
 ## Key file locations
 
 - **Run folder**: `workshop/runs/<slug>/` — all artifacts land here (gitignored)
-- **Brand file**: `apps/web/src/brand.js` — the one file stage 4b edits
+- **Brand file**: `apps/web/src/brand.js` — set up at stage 2, extendable at stage 3
+- **App docs**: `apps/README.md` — written and kept current by stage 3 (architecture diagram, data model, decisions log)
 - **Shared rules**: `.claude/skills/shared/HARNESS.md`
-- **Worked example**: `workshop/examples/kora/` — a complete 7-stage run to reference
+- **Worked example**: `workshop/examples/kora/` — a complete 4-stage run to reference
 
 ## Starter kit
 
