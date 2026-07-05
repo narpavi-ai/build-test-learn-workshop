@@ -1,10 +1,9 @@
 # Notes from talking to people
 
-Talked to three founders who run small stores: my friend with the coffee brand
-(the one who gave me her data), a candle maker on Etsy, and a guy doing skincare
-on Shopify. Rough notes:
+Talked to my friend who runs a small coffee brand on Shopify (the one who gave me
+her data) plus a couple of other one-person shop owners for context. Rough notes:
 
-- "I have so much data and no idea what it means." — all three, basically.
+- "I have so much data and no idea what it means."
 - Coffee friend didn't notice her **best seller (a light roast) was out of stock
   for about 10 days in early June**. Only found out when a subscriber emailed her.
   She figures she lost a few hundred dollars. This is the story that sold me.
@@ -12,13 +11,12 @@ on Shopify. Rough notes:
   orders spiked — but she says those buyers "bought once and vanished." Her
   email list is the opposite: small, but they keep coming back. She'd never
   actually compared the two until I asked.
-- Candle maker keeps making scents she *likes* instead of what sells. Gut / vibes.
-- Skincare guy pays for Google ads but has no idea if they're worth it vs. the
-  free traffic.
+- She pays for Google ads too but has no idea if they're worth it vs. the
+  free/organic traffic she already gets.
 - They don't want another dashboard — they want to be *told what to do*.
-  "Just text me if something's wrong" (candle maker, only half joking).
+  "Just text me if something's wrong."
 - Nobody has time. Everything happens at 11pm.
 - They mostly care about: what's selling, what's not, where to spend, and
   "is anything broken right now that I can't see."
 
-Not sure who exactly to focus on yet — coffee? skincare? all of them?
+Focusing on the coffee brand for the demo — it's the one with real data to test.

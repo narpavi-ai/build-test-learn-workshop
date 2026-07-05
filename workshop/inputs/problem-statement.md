@@ -1,10 +1,10 @@
 # My idea
 
 I want to build something for people who run small online shops — like a one-person
-coffee brand or a candle maker selling on Shopify or Etsy (the websites people use
-to set up a store and sell their products online, without building it themselves).
-Usually it's just the founder doing everything. They have a LOT of numbers piling
-up (sales, website visits, ad spend) but no time to actually look at any of it.
+coffee brand selling on Shopify or Etsy (the websites people use to set up a store
+and sell their products online, without building it themselves). Usually it's just
+the founder doing everything. They have a LOT of numbers piling up (sales, website
+visits, ad spend) but no time to actually look at any of it.
 
 The thing I keep hearing: they don't know what's working. They just guess.
 
