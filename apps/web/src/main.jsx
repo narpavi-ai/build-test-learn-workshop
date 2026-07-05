@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import { brand } from './brand.js';
+import '@fontsource-variable/inter';
 import './styles.css';
 
 // Convert a hex colour to the "H S% L%" string shadcn CSS vars expect.
