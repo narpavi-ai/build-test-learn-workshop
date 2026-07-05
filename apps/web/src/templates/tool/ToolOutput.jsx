@@ -1,5 +1,5 @@
 // The output side of the Tool shape.
-// In /5-build: update item.* field names to match the data model.
+// In /3-build: update item.* field names to match the data model.
 // The top result is shown prominently; the rest appear as a compact list.
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

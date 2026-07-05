@@ -3,8 +3,8 @@
 // Perfect for: SaaS metrics, spend/inventory trackers, analytics tools,
 // anything where a founder needs to show data at-a-glance.
 //
-// Activated by /4b-scope-design when the founder picks the Dashboard shape.
-// Customise in /5-build: update StatCard labels + DataTable column headers.
+// Activated by /2-blueprint when the founder picks the Dashboard shape.
+// Customise in /3-build: update StatCard labels + DataTable column headers.
 // ---------------------------------------------------------------------------
 import { useEffect, useMemo, useState } from 'react';
 import { brand } from '@/brand.js';
@@ -35,7 +35,7 @@ export default function App() {
   }
 
   // Summary stats derived from the full dataset.
-  // In /5-build: rename labels and change value computations to match your data model.
+  // In /3-build: rename labels and change value computations to match your data model.
   const stats = useMemo(() => {
     if (items.length === 0) return { total: 0, categories: 0, topCategory: '—' };
     const allTags = items.flatMap(i =>
@@ -85,7 +85,7 @@ export default function App() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            {/* In /5-build: rename these labels and compute domain-specific values */}
+            {/* In /3-build: rename these labels and compute domain-specific values */}
             <StatCard label="Total records" value={stats.total} />
             <StatCard label="Categories" value={stats.categories} />
             <StatCard label="Top category" value={stats.topCategory} />

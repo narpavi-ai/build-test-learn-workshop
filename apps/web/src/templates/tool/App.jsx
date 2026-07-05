@@ -3,8 +3,8 @@
 // Perfect for: AI brief generators, analyzers, recommendation engines,
 // calculators — anything where the user puts something IN and gets something OUT.
 //
-// Activated by /4b-scope-design when the founder picks the Tool shape.
-// Customise in /5-build: update ToolForm fields + ToolOutput display fields.
+// Activated by /2-blueprint when the founder picks the Tool shape.
+// Customise in /3-build: update ToolForm fields + ToolOutput display fields.
 // ---------------------------------------------------------------------------
 import { useState } from 'react';
 import { brand } from '@/brand.js';

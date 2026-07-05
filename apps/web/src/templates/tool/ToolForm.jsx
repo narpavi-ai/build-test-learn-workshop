@@ -1,5 +1,5 @@
 // The input side of the Tool shape.
-// In /5-build: rename fields, update labels + placeholders, add/remove inputs
+// In /3-build: rename fields, update labels + placeholders, add/remove inputs
 // to match the founder's idea. onGenerate() passes all values to App.jsx.
 import { useState } from 'react';
 import { brand } from '@/brand.js';
@@ -25,7 +25,7 @@ export default function ToolForm({ onGenerate, loading }) {
       <CardContent>
         <form onSubmit={submit} className="flex flex-col gap-4">
 
-          {/* Primary input — update label + placeholder in /5-build */}
+          {/* Primary input — update label + placeholder in /3-build */}
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium">
               {brand.primaryLabel ?? 'What do you need?'} <span className="text-destructive">*</span>
@@ -39,7 +39,7 @@ export default function ToolForm({ onGenerate, loading }) {
             />
           </div>
 
-          {/* Secondary input — rename or remove in /5-build */}
+          {/* Secondary input — rename or remove in /3-build */}
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-medium text-muted-foreground">
               {brand.secondaryLabel ?? 'Additional context'}{' '}

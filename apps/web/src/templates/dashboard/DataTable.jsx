@@ -1,5 +1,5 @@
 // A simple data table for the Dashboard shape.
-// In /5-build: rename the column headers (<th>) and field references (item.*)
+// In /3-build: rename the column headers (<th>) and field references (item.*)
 // to match the data model. Add or remove <td> columns as needed.
 import { Badge } from '@/components/ui/badge';
 
@@ -18,7 +18,7 @@ export default function DataTable({ items }) {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-muted/50 border-b border-border">
-              {/* In /5-build: rename these headers to match your columns */}
+              {/* In /3-build: rename these headers to match your columns */}
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground">Name</th>
               <th className="text-left px-4 py-3 font-semibold text-muted-foreground hidden sm:table-cell">
                 Description
@@ -39,7 +39,7 @@ export default function DataTable({ items }) {
                     i % 2 === 1 ? 'bg-muted/10' : ''
                   }`}
                 >
-                  {/* In /5-build: rename item.title → item.<your-field> */}
+                  {/* In /3-build: rename item.title → item.<your-field> */}
                   <td className="px-4 py-3 font-medium">{item.title}</td>
                   <td className="px-4 py-3 text-muted-foreground max-w-xs truncate hidden sm:table-cell">
                     {item.blurb}

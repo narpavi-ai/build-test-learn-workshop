@@ -1,5 +1,5 @@
 // A single metric card for the Dashboard shape.
-// In /5-build: keep the component as-is; update the label/value props in App.jsx.
+// In /3-build: keep the component as-is; update the label/value props in App.jsx.
 // Add a `sub` prop for a secondary line (e.g. "vs last month").
 import { Card, CardContent } from '@/components/ui/card';
 
