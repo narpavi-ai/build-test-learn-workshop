@@ -1,6 +1,6 @@
 /* ===========================================================================
    Edmonton Unlimited brand — shared stylesheet for workshop artifacts.
-   Matches deck.html. Each stage artifact links to this file:
+   Each stage artifact links to this file:
      <link rel="stylesheet" href="assets/eu-brand.css" />
    =========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -67,7 +67,8 @@ ul.bullets.cut li::before{background:#d2466b;}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:640px){.cols{grid-template-columns:1fr;}}
 
-/* Route cards (the post-spec fork) */
+/* Route cards — unused since the workshop dropped the Lovable/template fork,
+   kept in case a future stage needs a two-option choice card. */
 .routes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
 .route{border:2px solid var(--line);border-radius:16px;padding:22px;}
 .route.a{border-color:var(--blue);} .route.b{border-color:var(--green);}
@@ -86,7 +87,7 @@ a.tile h3{font-family:var(--head);font-size:19px;color:var(--navy);margin:6px 0 
 a.tile p{color:var(--muted);font-size:14px;}
 a.tile.todo{opacity:.55;border-style:dashed;}
 
-/* Flow diagram — problem flow (1-problem) & screen flow (4b-scope-design) */
+/* Flow diagram — problem flow (1-problem) & demo-path flow (2-blueprint) */
 .flow-diagram{display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin:14px 0 4px;}
 .flow-diagram .node{flex:1;min-width:130px;background:var(--paper-soft);border:1px solid var(--line);border-radius:14px;padding:16px 14px;text-align:center;}
 .flow-diagram .node .nlabel{font-family:var(--head);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:6px;}
@@ -98,6 +99,6 @@ a.tile.todo{opacity:.55;border-style:dashed;}
 .flow-diagram .node.good .nlabel{color:var(--green);}
 @media(max-width:640px){.flow-diagram{flex-direction:column;}.flow-diagram .arrow{transform:rotate(90deg);padding:6px 0;}}
 
-/* Keep/Cut scope split (4b-scope-design) */
+/* Keep/Cut scope split (2-blueprint's MoSCoW backlog) */
 .scope-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
 @media(max-width:640px){.scope-split{grid-template-columns:1fr;}}

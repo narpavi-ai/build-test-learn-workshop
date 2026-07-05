@@ -1,22 +1,28 @@
 # The Build It, Show It harness — shared conventions
 
-All seven workshop skills share these rules. Each SKILL.md links here for the
+All four workshop skills share these rules. Each SKILL.md links here for the
 artifact-saving step so the instructions stay DRY.
 
 ## The flow
 
 ```
-/1-problem → /2-spec → /3-opportunity → ┬─ /4a-lovable                       (no-code route)
-                                          └─ /4b-scope-design → /5-build ⇄ /6-test-iterate
+/1-problem → /2-blueprint → /3-build ⇄ /4-test-iterate
 ```
 
-Why this order: **Problem** names who hurts. **Spec** cuts it to one buildable
-screen — so by **Opportunity** the founder is sizing the *actual* product, not a
-vague idea, which makes the competitor read and the market story sharp enough to
-build with and pitch on Demo Night. Stage 3 then forks into the two build routes.
+Why this order: **Problem** names who hurts. **Blueprint** turns that into a
+build-ready spec — the MVP, a MoSCoW backlog, the market read, and the brand —
+in one mostly auto-generated stage, so the founder answers only what AI can't
+decide. The blueprint becomes the **single source of truth**: **Build** builds
+against it and checks its work against it, and **Test & Iterate** tests the
+demo script it defines. If a build session needs something the blueprint
+doesn't cover, the blueprint gets updated, not skipped — that's what the `⇄`
+between Build and Test & Iterate means: another focused build session picking
+up the updated blueprint, not starting over.
 
 Each stage reads the previous stages' artifacts and builds on them. Never re-ask
-something an earlier artifact already answers — read it first.
+something an earlier artifact already answers — read it first. The blueprint
+stage in particular asks at most 4 questions total and drafts the rest for the
+founder to correct — speed comes from inference, not from skipping steps.
 
 ## The run folder (where artifacts are saved)
 
@@ -73,12 +79,9 @@ Edmonton-Unlimited-branded HTML file inside the run folder.
 | Skill | File (in `workshop/runs/<slug>/`) | Stage label | Icon |
 | --- | --- | --- | --- |
 | /1-problem | `01-problem.html` | Problem | 🎯 |
-| /2-spec | `02-spec.html` | Spec | 💬 |
-| /3-opportunity | `03-opportunity.html` | Opportunity | 📊 |
-| /4a-lovable | `04a-lovable.html` | Build · Lovable | ✦ |
-| /4b-scope-design | `04b-scope-design.html` | Scope & Design | ✂ |
-| /5-build | `05-build.html` | Build | 🔧 |
-| /6-test-iterate | `06-test-iterate.html` | Test & Iterate | 🧪 |
+| /2-blueprint | `02-blueprint.html` | Blueprint | 📐 |
+| /3-build | `03-build.html` | Build | 🔧 |
+| /4-test-iterate | `04-test-iterate.html` | Test & Iterate | 🧪 |
 
 Use `$ARGUMENTS` (if provided) as the project name; otherwise read it from the
 most recent artifact, or ask. Keep the same project name (and `<slug>`) across all
